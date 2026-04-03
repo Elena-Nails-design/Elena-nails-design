@@ -66,7 +66,9 @@ export default function Contact() {
                       </div>
                       <h3 className="font-bold text-dark dark:text-white uppercase tracking-wider text-xs">{t('contact.phone_title')}</h3>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 pl-14 text-sm tracking-widest" dir="ltr">{phoneNumber}</p>
+                     <p className="text-gray-600 dark:text-gray-400 pl-14 text-sm tracking-widest" dir="ltr">
+                       <a href="tel:+9720534611370" className="hover:text-primary transition-colors">053-461-1370</a>
+                     </p>
                   </div>
                 </div>
 
@@ -89,16 +91,22 @@ export default function Contact() {
 
               <div className="mt-12 pt-10 border-t border-black/5 dark:border-white/5">
                 <h3 className="text-xs font-bold text-dark dark:text-white uppercase tracking-[0.2em] mb-6">{t('footer.social_title')}</h3>
-                <div className="flex gap-4">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" 
-                     className="w-12 h-12 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                  <a href={whatsappUrl} target="_blank" rel="noreferrer" 
-                     className="w-12 h-12 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300">
-                    <Send className="w-5 h-5" />
-                  </a>
-                </div>
+                  <div className="flex gap-4">
+                    <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+                       className="w-12 h-12 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#25D366] transition-all duration-300">
+                      <MessageCircle className="w-5 h-5" />
+                    </a>
+                    <a href="https://www.instagram.com/nails_epshtein?igsh=cDR6aTF5OG1qbm1p" target="_blank" rel="noreferrer" aria-label="Instagram"
+                       className="w-12 h-12 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#E1306C] transition-all duration-300">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                    <a href="https://www.facebook.com/share/18afmCSD26/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook"
+                       className="w-12 h-12 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#1877F2] transition-all duration-300">
+                      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                    </a>
+                  </div>
               </div>
             </div>
           </div>
@@ -108,7 +116,7 @@ export default function Contact() {
             <div className="glass-luxury p-4 h-full border border-white/40 dark:border-white/5 overflow-hidden group">
               <div className="w-full h-full rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-1000 shadow-inner">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13511.458999827038!2d34.8214!3d32.1648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4841a00a4fb1%3A0x600f6c2f56708ab0!2sHerzliya%2C%20Israel!5e0!3m2!1sen!2sus!4v1711200000000!5m2!1sen!2sus" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.9!2d34.6474!3d31.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502b40ebec88f2f%3A0x1c2b2a2b2a2b2a2b!2z15DXqdeQ16fXlCDXl9eT16vXnNen16kgOTMsINeQ16nXlNec16L!5e0!3m2!1siw!2sil!4v1711200000000!5m2!1siw!2sil" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
