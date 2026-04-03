@@ -4,12 +4,12 @@ import { MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function FloatingWhatsApp() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRtl = i18n.dir() === 'rtl';
   
   // Use the same phone number from Contact.jsx
   const phoneNumber = '+972501234567';
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent('היי ילנה, אשמח לקבוע תור!')}`;
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(t('contact.whatsapp_msg'))}`;
 
   return (
     <motion.a

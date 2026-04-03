@@ -24,6 +24,10 @@
     "social_title": "Follow Us",
     "rights": "All rights reserved."
   },
+  "theme": {
+    "light_mode": "Light Mode",
+    "dark_mode": "Dark Mode"
+  },
   "home": {
     "hero_title": "Flawless Luxury for Your Hands",
     "welcome_badge": "Premium Beauty Studio",
