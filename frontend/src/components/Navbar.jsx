@@ -29,7 +29,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 text-primary dark:text-primary-dark font-bold text-2xl tracking-wide shrink-0" style={{ fontFamily: 'var(--font-heading)' }}>
+          <Link to="/" className="flex items-center gap-2 text-primary-dark dark:text-gold font-bold text-2xl tracking-wide shrink-0" style={{ fontFamily: 'var(--font-heading)' }}>
             <Scissors className="w-7 h-7" />
             <span>{t('nav.logo_text')}</span>
           </Link>
@@ -42,8 +42,8 @@ export default function Navbar() {
                 to={link.path}
                 className={`transition-colors font-medium ${
                   location.pathname === link.path 
-                    ? 'text-primary-dark dark:text-primary drop-shadow-sm' 
-                    : 'text-dark dark:text-white hover:text-primary-dark dark:hover:text-primary'
+                    ? 'text-primary-dark dark:text-gold drop-shadow-sm' 
+                    : 'text-dark dark:text-white hover:text-primary-dark dark:hover:text-gold'
                 }`}
               >
                 {link.name}
@@ -52,9 +52,9 @@ export default function Navbar() {
 
             {/* Language Switcher & Theme */}
             <div className="flex items-center gap-2 ms-4 border-s border-gray-300 dark:border-gray-700 ps-4">
-              <button onClick={() => changeLanguage('he')} className={i18n.language === 'he' ? 'font-bold text-primary-dark dark:text-primary' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors'}>HE</button>
-              <button onClick={() => changeLanguage('ru')} className={i18n.language === 'ru' ? 'font-bold text-primary-dark dark:text-primary' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors'}>RU</button>
-              <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'font-bold text-primary-dark dark:text-primary' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors'}>EN</button>
+              <button onClick={() => changeLanguage('he')} className={i18n.language === 'he' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gold transition-colors'}>HE</button>
+              <button onClick={() => changeLanguage('ru')} className={i18n.language === 'ru' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gold transition-colors'}>RU</button>
+              <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gold transition-colors'}>EN</button>
               <div className="ms-2 border-s border-gray-300 dark:border-gray-700 ps-2">
                 <ThemeToggle />
               </div>
@@ -91,17 +91,17 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium text-start ${
                     location.pathname === link.path
-                      ? 'bg-nude dark:bg-gray-800 text-primary-dark'
-                      : 'text-dark dark:text-gray-200 hover:bg-nude-dark dark:hover:bg-gray-800 hover:text-primary-dark transition-colors'
+                      ? 'bg-nude dark:bg-gray-800 text-primary-dark dark:text-gold'
+                      : 'text-dark dark:text-gray-200 hover:bg-nude-dark dark:hover:bg-gray-800 hover:text-primary-dark dark:hover:text-gold transition-colors'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
               <div className="pt-4 flex gap-4 px-3 justify-start">
-                <button onClick={() => changeLanguage('he')} className={i18n.language === 'he' ? 'font-bold text-primary-dark dark:text-primary' : 'text-gray-500 dark:text-gray-400'}>HE</button>
-                <button onClick={() => changeLanguage('ru')} className={i18n.language === 'ru' ? 'font-bold text-primary-dark dark:text-primary' : 'text-gray-500 dark:text-gray-400'}>RU</button>
-                <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'font-bold text-primary-dark dark:text-primary' : 'text-gray-500 dark:text-gray-400'}>EN</button>
+                <button onClick={() => changeLanguage('he')} className={i18n.language === 'he' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400'}>HE</button>
+                <button onClick={() => changeLanguage('ru')} className={i18n.language === 'ru' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400'}>RU</button>
+                <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400'}>EN</button>
               </div>
             </div>
           </motion.div>
