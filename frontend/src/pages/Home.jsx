@@ -110,7 +110,7 @@ export default function Home() {
                 Excellence
               </span>
               <h2 className="text-4xl md:text-6xl font-bold text-dark dark:text-white mb-8 tracking-luxury">
-                {t('home.features.title') || t('home.why_us')}
+                {t('home.features.title')}
               </h2>
               <div className="w-24 h-[2px] bg-primary mx-auto rounded-full"></div>
             </div>
