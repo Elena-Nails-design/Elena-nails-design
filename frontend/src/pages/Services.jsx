@@ -11,12 +11,12 @@ export default function Services() {
   const serviceListData = t('services.list', { returnObjects: true }) || {};
   
   const serviceImages = {
-    "1": "https://images.unsplash.com/photo-1621335829175-95f437384d7c?auto=format&fit=crop&q=80",
-    "2": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80",
-    "3": "https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&q=80",
-    "4": "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80",
-    "5": "https://images.unsplash.com/photo-1634712282282-132537046e8c?auto=format&fit=crop&q=80",
-    "6": "https://images.unsplash.com/photo-1604654894611-6973b376cbde?auto=format&fit=crop&q=80",
+    "1": `${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`,
+    "2": `${import.meta.env.BASE_URL}assets/nails_epshtein/624361448_18075893492616810_7424546104696132483_n.jpg`,
+    "3": `${import.meta.env.BASE_URL}assets/nails_epshtein/556455388_18061812473616810_1155595810853411427_n.jpg`,
+    "4": `${import.meta.env.BASE_URL}assets/nails_epshtein/560055750_18062046065616810_932821717540010631_n.jpg`,
+    "5": `${import.meta.env.BASE_URL}assets/nails_epshtein/587303262_18069986417616810_3260988139436728763_n.jpg`,
+    "6": `${import.meta.env.BASE_URL}assets/nails_epshtein/586685411_18070598063616810_1738139733143951263_n.jpg`,
   };
 
   const services = Object.keys(serviceListData).map(key => ({
