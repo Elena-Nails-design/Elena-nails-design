@@ -53,10 +53,10 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
           {services.map((service, index) => (
-            <Reveal key={service.id} delay={0.1 * index} width="100%">
+            <Reveal key={service.id} delay={0.1 * index} width="100%" className="h-full">
               <motion.div 
                 whileHover={{ y: -15 }}
-                className="group bg-white dark:bg-[#0A0A0A] rounded-[3rem] overflow-hidden shadow-luxury hover:shadow-luxury-hover transition-all duration-500 border border-dark/5 dark:border-white/5 relative"
+                className="group bg-white dark:bg-[#0A0A0A] rounded-[3rem] overflow-hidden shadow-luxury hover:shadow-luxury-hover transition-all duration-500 border border-dark/5 dark:border-white/5 relative h-full flex flex-col"
               >
                 {/* Popular Badge */}
                 {service.id === "1" && (
@@ -68,7 +68,7 @@ export default function Services() {
                   </div>
                 )}
 
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-80 shrink-0 overflow-hidden">
                   <motion.img 
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 1.2 }}
@@ -86,7 +86,7 @@ export default function Services() {
                   </div>
                 </div>
                 
-                <div className="p-10">
+                <div className="p-10 flex flex-col flex-grow">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-8 h-[1px] bg-primary group-hover:w-16 transition-all duration-500" />
                     <Sparkles className="w-3 h-3 text-primary opacity-50" />
@@ -96,24 +96,26 @@ export default function Services() {
                     {service.title}
                   </h3>
                   
-                  <p className="text-text-secondary dark:text-text-secondary-dark mb-10 leading-relaxed font-light line-clamp-3 italic opacity-90">
+                  <p className="text-text-secondary dark:text-text-secondary-dark mb-10 leading-relaxed font-light italic opacity-90 flex-grow">
                     {service.desc}
                   </p>
                   
-                  <Link 
-                    to="/booking" 
-                    className="inline-flex items-center gap-3 text-dark dark:text-white font-bold text-xs uppercase tracking-[0.2em] group-hover:text-primary transition-all duration-300"
-                  >
-                    <span className="border-b border-current pb-1">{t('services.book_btn')}</span>
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5 }}
-                    >→</motion.span>
-                  </Link>
+                  <div className="mt-auto">
+                    <Link 
+                      to="/booking" 
+                      className="inline-flex items-center gap-3 text-dark dark:text-white font-bold text-xs uppercase tracking-[0.2em] group-hover:text-primary transition-all duration-300"
+                    >
+                      <span className="border-b border-current pb-1">{t('services.book_btn')}</span>
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5 }}
+                      >→</motion.span>
+                    </Link>
+                  </div>
                 </div>
                 
                 {/* Decorative background element */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary/10 transition-colors duration-500" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary/10 transition-colors duration-500 pointer-events-none" />
               </motion.div>
             </Reveal>
           ))}
