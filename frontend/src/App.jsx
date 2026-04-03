@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -12,6 +13,32 @@ import Contact from './pages/Contact';
 import { ThemeProvider } from './contexts/ThemeContext';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+      >
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   const { i18n } = useTranslation();
@@ -35,15 +62,7 @@ function App() {
         <div className="min-h-screen flex flex-col transition-colors duration-500">
           <Navbar />
           <main className="flex-grow pt-[88px]">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-            </Routes>
+            <AnimatedRoutes />
           </main>
           <Footer />
           <FloatingWhatsApp />
