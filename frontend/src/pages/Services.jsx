@@ -9,6 +9,8 @@ export default function Services() {
 
   // Mapping the new JSON structure (object with numbered keys) to a display array
   const serviceListData = t('services.list', { returnObjects: true }) || {};
+  const menuData = t('services.menu', { returnObjects: true }) || {};
+  const menuItems = menuData?.items ? Object.keys(menuData.items).map(k => menuData.items[k]) : [];
   
   const serviceImages = {
     "1": `${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`,
@@ -119,6 +121,48 @@ export default function Services() {
             </Reveal>
           ))}
         </div>
+
+        {/* Pricing Menu */}
+        {menuItems.length > 0 && (
+          <div className="mt-32 max-w-4xl mx-auto">
+            <Reveal delay={0.1}>
+              <div className="text-center mb-16">
+                <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">
+                  {menuData.subtitle}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold text-dark dark:text-white tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                  {menuData.title}
+                </h2>
+              </div>
+            </Reveal>
+            
+            <Reveal delay={0.2} width="100%">
+              <div className="bg-white/50 dark:bg-black/30 backdrop-blur-sm rounded-[3rem] p-8 md:p-14 shadow-luxury border border-black/5 dark:border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full -ml-32 -mb-32 blur-3xl pointer-events-none" />
+                
+                <div className="relative z-10 space-y-8">
+                  {menuItems.map((item, idx) => (
+                    <div key={idx} className="group">
+                      <div className="flex justify-between items-baseline mb-2 gap-4">
+                        <h4 className="text-lg md:text-2xl font-bold text-dark dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                          {item.name}
+                        </h4>
+                        <div className="flex-grow border-b border-dotted border-gray-300 dark:border-gray-700 mx-2 md:mx-4 opacity-50 relative top-[-6px]" />
+                        <span className="text-lg md:text-2xl font-bold text-primary whitespace-nowrap">
+                          {item.price}
+                        </span>
+                      </div>
+                      <p className="text-gray-500 dark:text-gray-400 font-light text-sm md:text-base leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        )}
 
         {/* ★ CTA Section */}
         <div className="mt-24 py-20 bg-dark rounded-[3rem] text-center relative overflow-hidden">
