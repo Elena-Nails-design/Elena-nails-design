@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Scissors, Award, Users } from 'lucide-react';
 
 export default function About() {
   const { t, i18n } = useTranslation();
