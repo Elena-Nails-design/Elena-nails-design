@@ -16,7 +16,7 @@ export default function Contact() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(t('contact.whatsapp_msg'))}`;
 
   return (
-    <div className="pt-24 pb-20 bg-nude dark:bg-gray-900 min-h-screen transition-colors duration-500 overflow-hidden relative">
+    <div className="pt-32 pb-20 bg-[#FAF9F6] dark:bg-[#050505] min-h-screen transition-colors duration-700 overflow-hidden relative">
       {/* Abstract Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full animate-float"></div>
@@ -42,7 +42,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info Cards */}
           <div className="space-y-8 animate-fade-in-left">
-            <div className="glass-luxury p-10 border border-white/40 dark:border-white/5">
+            <div className="glass-luxury p-10 rounded-[2.5rem] shadow-luxury border border-black/5 dark:border-white/5 relative z-10 bg-white/60 dark:bg-black/40 backdrop-blur-xl">
               <h2 className="text-3xl font-bold text-dark dark:text-white mb-10 tracking-tight" 
                   style={{ fontFamily: 'var(--font-heading)' }}>
                 {t('contact.info_title')}
@@ -136,7 +136,7 @@ export default function Contact() {
 
           {/* Action Card */}
           <div className="h-full animate-fade-in-right" style={{ animationDelay: '0.2s' }}>
-            <div className="glass-luxury p-10 h-full border border-white/40 dark:border-white/5 flex flex-col justify-center text-center">
+            <div className="glass-luxury p-10 rounded-[2.5rem] shadow-luxury h-full border border-black/5 dark:border-white/5 flex flex-col justify-center text-center relative z-10 bg-white/60 dark:bg-black/40 backdrop-blur-xl">
               <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-8">
                 <Send className="w-10 h-10" />
               </div>
