@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Sparkles, ShieldCheck, Waves, Star, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, ShieldCheck, Waves, Star, MessageCircle, Instagram, ChevronDown } from 'lucide-react';
 import Reveal from '../components/Reveal';
 
 const STUDIO_PHONE = '9720534611370';
@@ -177,6 +177,60 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ★ INSTAGRAM SECTION (Recent Works) */}
+      <section className="py-32 bg-white dark:bg-[#050505] transition-colors duration-700 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal delay={0.1} width="100%">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">
+                  {t('home.instagram_section.title')}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold text-dark dark:text-white tracking-tight">
+                  {t('home.instagram_section.subtitle')}
+                </h2>
+              </div>
+              <motion.a 
+                whileHover={{ x: 5 }}
+                href={t('footer.instagram')}
+                target="_blank"
+                rel="noreferrer"
+                className="text-primary font-bold text-sm uppercase tracking-[0.2em] flex items-center gap-3 group"
+              >
+                <span>{t('home.instagram_section.follow_btn')}</span>
+                <Instagram size={18} className="group-hover:rotate-12 transition-transform" />
+              </motion.a>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {[
+              "558698237_18061812464616810_6222784228286618641_n.jpg",
+              "586709405_18068153549616810_774998090838186494_n.jpg",
+              "587284153_18068201762616810_7162009895631000978_n.jpg",
+              "625551669_18076320683616810_2664619712328729322_n.jpg"
+            ].map((img, i) => (
+              <Reveal key={i} delay={0.1 * i} width="100%">
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="aspect-square rounded-3xl overflow-hidden relative group cursor-pointer"
+                >
+                  <img 
+                    src={`${import.meta.env.BASE_URL}assets/nails_epshtein/${img}`} 
+                    alt="Latest Work" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-dark/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Instagram className="text-white w-8 h-8 opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-500" />
+                  </div>
+                </motion.div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ★ TESTIMONIALS SECTION */}
       <section className="py-32 bg-nude dark:bg-[#080808] transition-colors duration-700 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
@@ -250,6 +304,42 @@ export default function Home() {
               </motion.div>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ★ FAQ SECTION */}
+      <section className="py-32 bg-white dark:bg-[#050505] transition-colors duration-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal delay={0.1} width="100%">
+            <div className="text-center mb-20">
+              <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">
+                FAQ
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-dark dark:text-white tracking-tight">
+                {t('home.faq.subtitle')}
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="space-y-4">
+            {[1, 2, 3, 4].map((i) => (
+              <Reveal key={i} delay={0.1 * i} width="100%">
+                <div className="border-b border-dark/5 dark:border-white/5">
+                  <details className="group">
+                    <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
+                      <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-white group-hover:text-primary transition-colors pr-8">
+                        {t(`home.faq.q${i}`)}
+                      </h3>
+                      <ChevronDown className="w-6 h-6 text-primary transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="pb-8 text-text-secondary dark:text-text-secondary-dark text-lg font-light leading-relaxed">
+                      <p>{t(`home.faq.a${i}`)}</p>
+                    </div>
+                  </details>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </div>

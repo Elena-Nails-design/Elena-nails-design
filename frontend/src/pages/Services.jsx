@@ -72,6 +72,7 @@ export default function Services() {
                     transition={{ duration: 1.2 }}
                     src={service.image} 
                     alt={service.title}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />

@@ -31,20 +31,37 @@
     "dark_mode": "Dark Mode"
   },
   "home": {
-    "hero_title": "The Art of Refined Precision",
-    "welcome_badge": "Bespoke Beauty Studio",
-    "hero_subtitle": "Experience where medical-grade safety meets high-end aesthetics. Discover a treatment tailored to the woman who demands excellence.",
+    "hero_title": "Luxury Nail Design - Uncompromising Precision to the Millimeter",
+    "welcome_badge": "Precision • Aesthetics • Luxury",
+    "hero_subtitle": "The most sterile and professional studio in Ashdod, giving you the confidence you deserve. Personal attention and long-lasting results.",
     "features": {
       "title": "Why Choose Elena?"
     },
-    "book_now": "Secure Your Appointment",
-    "why_us": "The Luxury Standard",
-    "quality_title": "Nail Architecture",
-    "quality_desc": "We don't just apply color; we build structure. We exclusively use world-class materials to ensure integrity and a high-gloss finish.",
-    "hygiene_title": "Clinical Sterilization",
-    "hygiene_desc": "Your peace of mind is our foundation. Every instrument undergoes a rigorous hospital-grade autoclave sterilization before your visit.",
-    "atmosphere_title": "An Exclusive Sanctuary",
-    "atmosphere_desc": "Escape the daily rush. Our studio offers a calm, pampering sanctuary tailored exclusively for your relaxation and beauty."
+    "book_now": "Check Availability & Book",
+    "why_us": "Choosing Luxury & Quality",
+    "quality_title": "Nal Architecture",
+    "quality_desc": "We don't just apply color. We use the world's most luxurious materials, ensuring exceptional durability while fully protecting your natural nail health.",
+    "hygiene_title": "Clinical-Grade Sterilization",
+    "hygiene_desc": "Your peace of mind is our priority. Every tool undergoes strict medical-grade sterilization (Autoclave) before every single treatment.",
+    "atmosphere_title": "A Moment of Absolute Peace",
+    "atmosphere_desc": "A break from the daily race. The studio was designed for a personal, pampering, and relaxing experience where you get full attention.",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know before your treatment",
+      "q1": "How long does a treatment take?",
+      "a1": "Treatment time varies by service. Premium Gel Manicures take about 75 minutes, while restorative medical pedicures can take up to 2 hours. I never rush – quality and precision are my focus.",
+      "q2": "What is the sterilization level at the studio?",
+      "a2": "I follow strict clinical sterilization standards. All tools are disinfected and sterilized in a professional Autoclave before every client. Your health is my top priority.",
+      "q3": "Do you perform anatomical structure?",
+      "a3": "Certainly. Creating an anatomical structure is an integral part of my manicure treatment. This is what gives the nail its strength, durability, and a smooth, perfect look.",
+      "q4": "How do I book an appointment?",
+      "a4": "You can easily book through the website's booking button, a quick WhatsApp message, or a phone call. It is recommended to reserve your spot at least a week in advance."
+    },
+    "instagram_section": {
+      "title": "Recent Works from Instagram",
+      "subtitle": "Follow my latest creations on the feed",
+      "follow_btn": "More Works on Instagram ↗️"
+    }
   },
   "about": {
     "title": "Our Story",

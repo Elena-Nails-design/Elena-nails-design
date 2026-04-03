@@ -111,23 +111,29 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Map Section */}
-          <div className="h-full min-h-[400px] animate-fade-in-right" style={{ animationDelay: '0.2s' }}>
-            <div className="glass-luxury p-4 h-full border border-white/40 dark:border-white/5 overflow-hidden group">
-              <div className="w-full h-full rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-1000 shadow-inner">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.9!2d34.6474!3d31.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502b40ebec88f2f%3A0x1c2b2a2b2a2b2a2b!2z15DXqdeQ16fXlCDXl9eT16vXnNen16kgOTMsINeQ16nXlNec16L!5e0!3m2!1siw!2sil!4v1711200000000!5m2!1siw!2sil" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Studio Location"
-                  className="opacity-80 group-hover:opacity-100 transition-opacity"
-                ></iframe>
-                <div className="absolute inset-0 pointer-events-none bg-primary/5"></div>
+          {/* Action Card */}
+          <div className="h-full animate-fade-in-right" style={{ animationDelay: '0.2s' }}>
+            <div className="glass-luxury p-10 h-full border border-white/40 dark:border-white/5 flex flex-col justify-center text-center">
+              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-8">
+                <Send className="w-10 h-10" />
               </div>
+              <h2 className="text-3xl font-bold text-dark dark:text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                {i18n.language === 'he' ? 'מוכנה לציפורניים מושלמות?' : i18n.language === 'ru' ? 'Готовы к идеальным ногтям?' : 'Ready for Perfect Nails?'}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-10 font-light leading-relaxed">
+                {i18n.language === 'he' ? 'צרי קשר עכשיו ונתאים לך את התור המושלם.' : i18n.language === 'ru' ? 'Свяжитесь с нами сейчас, и мы подберем для вас идеальное время.' : 'Contact us now and we will find the perfect time for you.'}
+              </p>
+              <motion.a 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-premium inline-flex items-center justify-center gap-4 group shimmer-gold w-full"
+              >
+                <span>{t('home.book_now')}</span>
+                <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              </motion.a>
             </div>
           </div>
         </div>

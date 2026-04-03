@@ -9,9 +9,10 @@ export default function About() {
   const lang = i18n.language;
 
   return (
-    <div className="py-24 bg-white dark:bg-[#0A0A0A] min-h-screen flex items-center transition-colors duration-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
+    <div className="bg-white dark:bg-[#0A0A0A] min-h-[calc(100vh-88px)] flex flex-col transition-colors duration-700">
+      <div className="flex-grow flex items-center py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col lg:flex-row gap-20 items-center">
           
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -89,10 +90,11 @@ export default function About() {
             </div>
           </motion.div>
         </div>
+        </div>
       </div>
 
       {/* ★ CTA Section */}
-      <div className="mt-24 py-20 bg-dark dark:bg-[#0A0A0A] text-center relative overflow-hidden">
+      <div className="py-20 bg-dark dark:bg-[#0A0A0A] text-center relative overflow-hidden mt-auto w-full">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-2xl mx-auto px-4">
           <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">

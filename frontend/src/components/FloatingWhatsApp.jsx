@@ -16,15 +16,19 @@ export default function FloatingWhatsApp() {
       href={whatsappUrl}
       target="_blank"
       rel="noreferrer"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1, type: 'spring', stiffness: 200, damping: 20 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl hover:bg-[#20bd5a] transition-colors`}
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-[20px] left-[20px] z-50 flex items-center gap-3 px-6 py-3 bg-[#25D366] text-white rounded-[50px] shadow-luxury hover:bg-[#20bd5a] transition-all duration-300 group text-decoration-none"
       aria-label="Contact us on WhatsApp"
     >
-      <MessageCircle className="w-7 h-7" />
+      <span className="text-xs font-bold uppercase tracking-widest">
+        {i18n.language === 'he' ? 'קבעי תור בוואטסאפ' : i18n.language === 'ru' ? 'Записаться в WhatsApp' : 'Book on WhatsApp'}
+      </span>
+      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-12 transition-transform">
+        <MessageCircle className="w-5 h-5 fill-current" />
+      </div>
     </motion.a>
   );
 }
