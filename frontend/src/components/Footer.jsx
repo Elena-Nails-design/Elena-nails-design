@@ -1,5 +1,5 @@
 import Logo from './Logo';
-import { MessageCircle, Share2, MapPin, Phone, Clock } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, MapPin, Phone, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -34,7 +34,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 group">
                 <Phone className="w-4 h-4 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
-                <span dir="ltr" className="tracking-widest">+972 50 123 4567</span>
+                <a href="tel:+9720534611370" dir="ltr" className="tracking-widest hover:text-primary transition-colors">{t('footer.phone')}</a>
               </li>
             </ul>
           </div>
@@ -58,11 +58,14 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-[10px] font-bold text-primary dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.social_title')}</h3>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300">
+              <a href="https://wa.me/9720534611370" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#25D366] transition-all duration-300">
                 <MessageCircle className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300">
-                <Share2 className="w-4 h-4" />
+              <a href={t('footer.instagram')} target="_blank" rel="noreferrer" aria-label="Instagram" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#E1306C] transition-all duration-300">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href={t('footer.facebook')} target="_blank" rel="noreferrer" aria-label="Facebook" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#1877F2] transition-all duration-300">
+                <Facebook className="w-4 h-4" />
               </a>
             </div>
           </div>

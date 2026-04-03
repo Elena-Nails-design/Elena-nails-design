@@ -8,7 +8,7 @@ export default function FloatingWhatsApp() {
   const isRtl = i18n.dir() === 'rtl';
   
   // Use the same phone number from Contact.jsx
-  const phoneNumber = '+972501234567';
+  const phoneNumber = '9720534611370';
   const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(t('contact.whatsapp_msg'))}`;
 
   return (
