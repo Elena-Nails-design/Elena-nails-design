@@ -31,9 +31,9 @@
     "dark_mode": "Dark Mode"
   },
   "home": {
-    "hero_title": "Luxury Nail Design - Uncompromising Precision to the Millimeter",
+    "hero_title": "ELENA EPSHTEIN - The Art of Perfect Nails in Ashdod",
     "welcome_badge": "Precision • Aesthetics • Luxury",
-    "hero_subtitle": "The most sterile and professional studio in Ashdod, giving you the confidence you deserve. Personal attention and long-lasting results.",
+    "hero_subtitle": "Your nails are your calling card. The most sterile and professional studio in Ashdod, giving you the confidence and beauty you deserve.",
     "features": {
       "title": "Why Choose Elena?"
     },
@@ -66,8 +66,8 @@
   "about": {
     "title": "Our Story",
     "subtitle": "Dedicated to the perfect detail",
-    "p1": "I am Elena Epshtein, a specialist passionate about the medical and aesthetic care of hands and feet. The 'ELENA EPSHTEIN' brand was born from a desire to provide every client with a premium experience.",
-    "p2": "I continuously train globally to bring you the safest, most innovative techniques. I approach every treatment as a unique art form—ensuring you leave feeling flawless and valued.",
+    "p1": "I am Elena Epshtein, a specialist in anatomical nail structure and aesthetic care. The 'ELENA EPSHTEIN' brand was born from a desire to provide every client with a premium experience combining international standards of quality with personal empowerment.",
+    "p2": "I continuously train globally to bring you the safest, most innovative techniques. Our sterilization meets strict medical grades, and I approach every treatment as a unique art form—ensuring you leave feeling flawless.",
     "clients": "Empowered Clients",
     "certs": "Global Certifications"
   },
@@ -104,7 +104,7 @@
   "booking": {
     "title": "Book Your Experience",
     "subtitle": "Provide your details, and we will personally confirm your appointment to ensure a flawless visit.",
-    "loc1": "📍 Herzliya, Israel",
+    "loc1": "📍 Ashdod, Israel",
     "loc2": "📱 ",
     "form_name": "Full Name",
     "form_name_ph": "e.g., Yael Cohen",
@@ -141,6 +141,6 @@
     "phone": "Direct Call",
     "instagram": "Follow on Instagram",
     "studio": "Location",
-    "studio_loc": "Herzliya Center (By appointment only)"
+    "studio_loc": "Ashdod, Israel (By appointment only)"
   }
 }

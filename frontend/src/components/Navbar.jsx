@@ -47,16 +47,25 @@ export default function Navbar() {
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
-        isOpen 
-          ? 'bg-white dark:bg-[#0A0A0A] py-4 border-black/5 dark:border-white/10'
-          : isScrolled
-            ? 'glass-luxury py-4 shadow-xl border-black/5 dark:border-white/10' 
-            : 'bg-transparent py-5 border-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+      {/* Announcement Bar */}
+      <div className="bg-dark dark:bg-primary-dark text-white dark:text-dark text-center text-[10px] md:text-xs py-2 font-bold tracking-widest border-b border-white/10 dark:border-dark/10">
+        <span className="flex items-center justify-center gap-1 md:gap-2">
+          <span className="text-[14px]">🎁</span> {i18n.language === 'he' ? '10% הנחה לטיפול ראשון במיוחד בשבילך! לקביעת תור' : i18n.language === 'ru' ? 'Скидка 10% на первую процедуру!' : '10% off your first treatment!'} 
+          <Link to="/booking" className="underline underline-offset-4 ms-1 hover:text-primary transition-colors">{i18n.language === 'he' ? 'לחצי כאן' : i18n.language === 'ru' ? 'Нажми сюда' : 'Click Here'}</Link>
+        </span>
+      </div>
+
+      <nav 
+        className={`transition-all duration-500 ease-in-out border-b ${
+          isOpen 
+            ? 'bg-white dark:bg-[#0A0A0A] py-4 border-black/5 dark:border-white/10'
+            : isScrolled
+              ? 'glass-luxury py-4 shadow-xl border-black/5 dark:border-white/10' 
+              : 'bg-transparent py-5 border-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 transition-all duration-500">
           {/* Logo */}
           <Link 
@@ -198,5 +207,6 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </nav>
+    </div>
   );
 }

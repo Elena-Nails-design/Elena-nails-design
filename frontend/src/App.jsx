@@ -59,7 +59,7 @@ function App() {
       <Router>
         <div className="min-h-screen flex flex-col transition-colors duration-500">
           <Navbar />
-          <main className="flex-grow pt-[88px]">
+          <main className="flex-grow pt-[124px]">
             <AnimatedRoutes />
           </main>
           <Footer />
