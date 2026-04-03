@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MapPin, Phone } from 'lucide-react';
 import axios from 'axios';
 
 export default function Booking() {
