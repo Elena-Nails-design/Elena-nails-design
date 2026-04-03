@@ -23,6 +23,7 @@
   },
   "home": {
     "hero_title": "Flawless Luxury for Your Hands",
+    "welcome_badge": "Premium Beauty Studio",
     "hero_subtitle": "Experience meticulous care and premium aesthetic treatments that elevate your natural beauty.",
     "book_now": "Secure Your Appointment",
     "why_us": "The Elena Experience",
@@ -43,6 +44,7 @@
   },
   "services": {
     "title": "Signature Treatments",
+    "subtitle": "Treat Yourself to Perfection",
     "desc": "Discover our curated range of luxury services. Every treatment is executed with uncompromising sterilization and profound attention to detail.",
     "book_btn": "Reserve Your Time",
     "most_popular": "Most Popular ⭐",
@@ -57,6 +59,7 @@
   },
   "gallery": {
     "title": "Our Portfolio",
+    "subtitle": "Style Showcase",
     "filter_all": "All Looks",
     "filter_gel": "Gel Mastery",
     "filter_design": "Artistry",
