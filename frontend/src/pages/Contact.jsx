@@ -10,7 +10,7 @@ const Instagram = ({ className }) => (
 );
 
 export default function Contact() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const phoneNumber = '9720534611370';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(t('contact.whatsapp_msg'))}`;
 
