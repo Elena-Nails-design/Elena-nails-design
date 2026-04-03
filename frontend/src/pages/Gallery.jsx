@@ -15,10 +15,15 @@ export default function Gallery() {
     script.async = true;
     document.body.appendChild(script);
 
-    // Hack to hide Elfsight title inside its Shadow DOM
+    // Hack to hide Elfsight title and branding inside its Shadow DOM
     const hideTitleInterval = setInterval(() => {
       const widget = document.querySelector('.elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f');
+      
+      // Force remove any elements globally just in case
+      document.querySelectorAll('a[href*="elfsight.com"], .eapps-widget-toolbar').forEach(el => el.remove());
+
       if (widget && widget.shadowRoot) {
+        // 1. Inject CSS for structural elements
         if (!widget.shadowRoot.querySelector('#hide-elfsight-title')) {
           const style = document.createElement('style');
           style.id = 'hide-elfsight-title';
@@ -27,13 +32,16 @@ export default function Gallery() {
             .es-widget-title,
             .eapps-instagram-feed-title,
             .eapps-instagram-feed-header,
-            a[href*="elfsight.com"],
-            .eapps-link {
+            .eapps-widget-toolbar {
               display: none !important;
             }
           `;
           widget.shadowRoot.appendChild(style);
         }
+
+        // 2. Force remove badges with inline !important styles
+        const badElements = widget.shadowRoot.querySelectorAll('a[href*="elfsight.com"], .eapps-widget-toolbar');
+        badElements.forEach(el => el.remove());
       }
     }, 500);
 
