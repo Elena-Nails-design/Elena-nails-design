@@ -45,13 +45,23 @@ export default function Gallery() {
         </motion.div>
 
         {/* Elfsight Instagram Widget */}
-        <div className="w-full relative flex justify-center min-h-[600px] items-center bg-[#FAF7F2] dark:bg-[#1A1A1A] rounded-3xl overflow-hidden shadow-inner p-4">
-          <div className="text-center absolute pointer-events-none opacity-50 text-sm z-0">
+        <div className="w-full relative flex justify-center min-h-[600px] items-start">
+          {/* Inject CSS to hide the Elfsight watermark */}
+          <style>
+            {`
+              a[href*="elfsight.com"], 
+              .eapps-link {
+                display: none !important;
+              }
+            `}
+          </style>
+
+          <div className="text-center absolute pointer-events-none opacity-50 text-sm z-0 top-20">
              {/* Fallback text while loading or if ID is missing */}
              {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
           </div>
           
-          <div className="elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f w-full z-10 relative bg-white dark:bg-[#0A0A0A] rounded-2xl" data-elfsight-app-lazy></div>
+          <div className="elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f w-full z-10 relative" data-elfsight-app-lazy></div>
         </div>
       </div>
 
