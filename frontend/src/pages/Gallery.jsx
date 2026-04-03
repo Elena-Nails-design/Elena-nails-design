@@ -23,7 +23,8 @@ export default function Gallery() {
           const style = document.createElement('style');
           style.id = 'hide-elfsight-title';
           style.innerHTML = `
-            .eui-widget-title, 
+            .eui-widget-title,
+            .es-widget-title
             .eapps-instagram-feed-title,
             .eapps-instagram-feed-header {
               display: none !important;
@@ -45,7 +46,7 @@ export default function Gallery() {
   return (
     <div className="py-24 bg-white dark:bg-[#0A0A0A] min-h-screen transition-colors duration-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center mb-16"
@@ -57,9 +58,9 @@ export default function Gallery() {
             {t('gallery.title')}
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg text-dark/70 dark:text-white/70 italic">
-            {i18n.language === 'he' ? 'עקבי אחרינו באינסטגרם כדי לראות את העבודות הכי חדשות שלנו' : 
-             i18n.language === 'ru' ? 'Подписывайтесь на наш Instagram, чтобы видеть наши последние работы' : 
-             'Follow us on Instagram to see our latest works'}
+            {i18n.language === 'he' ? 'עקבי אחרינו באינסטגרם כדי לראות את העבודות הכי חדשות שלנו' :
+              i18n.language === 'ru' ? 'Подписывайтесь на наш Instagram, чтобы видеть наши последние работы' :
+                'Follow us on Instagram to see our latest works'}
           </p>
         </motion.div>
 
@@ -78,10 +79,10 @@ export default function Gallery() {
           </style>
 
           <div className="text-center absolute pointer-events-none opacity-50 text-sm z-0 top-20">
-             {/* Fallback text while loading or if ID is missing */}
-             {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
+            {/* Fallback text while loading or if ID is missing */}
+            {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
           </div>
-          
+
           <div className="elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f w-full z-10 relative" data-elfsight-app-lazy></div>
         </div>
       </div>
