@@ -16,15 +16,21 @@
     "contact_title": "Get in Touch",
     "address": "Herzliya, Israel",
     "hours_title": "Studio Hours",
+    "hours_week": "Sunday - Thursday: 09:00 - 19:00",
+    "hours_weekend": "Friday: 09:00 - 14:00",
     "sun_thu": "Sun - Thu: 09:00 - 19:00",
     "fri": "Fri: 09:00 - 14:00",
     "sat": "Sat: Rest",
+    "social_title": "Follow Us",
     "rights": "All rights reserved."
   },
   "home": {
     "hero_title": "Flawless Luxury for Your Hands",
     "welcome_badge": "Premium Beauty Studio",
     "hero_subtitle": "Experience meticulous care and premium aesthetic treatments that elevate your natural beauty.",
+    "features": {
+      "title": "Why Choose Elena?"
+    },
     "book_now": "Secure Your Appointment",
     "why_us": "The Elena Experience",
     "quality_title": "Uncompromising Quality",
@@ -99,6 +105,11 @@
     "title": "Let's Connect",
     "subtitle": "Your beauty journey begins here",
     "desc": "Questions about a treatment? Ready to book? We invite you to reach out through your preferred channel below.",
+    "info_title": "Contact Details",
+    "address_title": "Our Address",
+    "phone_title": "Booking Phone",
+    "hours_title": "Studio Hours",
+    "whatsapp_msg": "Hi Elena, I would like to book an appointment!",
     "whatsapp": "Chat on WhatsApp",
     "phone": "Direct Call",
     "instagram": "Follow on Instagram",
