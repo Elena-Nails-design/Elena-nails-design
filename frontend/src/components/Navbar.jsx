@@ -5,6 +5,8 @@ import { Menu, X, Scissors } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
+import Logo from './Logo';
+
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
@@ -13,7 +15,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -35,24 +37,20 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
         isScrolled 
-          ? 'glass-luxury py-3 shadow-2xl' 
-          : 'bg-transparent py-6'
+          ? 'glass-luxury py-4 shadow-xl border-black/5 dark:border-white/10' 
+          : 'bg-transparent py-5 border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between items-center h-20 transition-all duration-500">
           {/* Logo */}
           <Link 
             to="/" 
             className="flex items-center transition-transform duration-500 hover:scale-105 shrink-0" 
           >
-            <img 
-              src={`${import.meta.env.BASE_URL}assets/logo-luxury.png`} 
-              alt="ELENA EPSHTEIN" 
-              className="h-10 md:h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-md hover:shadow-lg transition-shadow"
-            />
+            <Logo className="h-14 md:h-16 w-auto" scrolled={isScrolled} />
           </Link>
 
           {/* Desktop Menu */}

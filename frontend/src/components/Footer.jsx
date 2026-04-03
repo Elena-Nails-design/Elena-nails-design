@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Scissors, MessageCircle, Share2, MapPin, Phone, Clock } from 'lucide-react';
+import Logo from './Logo';
+import { MessageCircle, Share2, MapPin, Phone, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -15,12 +16,8 @@ export default function Footer() {
           
           {/* Logo & About */}
           <div className="lg:col-span-1 space-y-6">
-            <Link to="/" className="flex items-center transition-transform hover:scale-105 inline-block">
-              <img 
-                src={`${import.meta.env.BASE_URL}assets/logo-luxury.png`} 
-                alt="ELENA EPSHTEIN" 
-                className="h-10 md:h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-md hover:shadow-lg transition-shadow"
-              />
+            <Link to="/" className="inline-block transition-transform hover:scale-105">
+              <Logo className="h-10 md:h-12 w-auto" />
             </Link>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs font-light">
               {t('footer.subtitle')}
