@@ -21,6 +21,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const links = [
     { name: t('nav.home'), path: '/' },
     { name: t('nav.about'), path: '/about' },
@@ -129,7 +140,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-[80px] md:hidden bg-white dark:bg-[#0A0A0A] z-50"
+            className="fixed inset-0 top-[88px] md:hidden bg-white dark:bg-[#0A0A0A] z-50 overflow-y-auto"
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8 px-6 text-center">
               {links.map((link, i) => (
