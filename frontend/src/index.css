@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #F5C6D6;
+  --color-primary-dark: #D8A7B1;
+  --color-secondary: #E8D8C3;
+  --color-nude: #FAF7F2;
+  --color-nude-dark: #E8D8C3;
+  --color-gold: #C9A96E;
+  --color-gold-light: #FFD77F;
+  --color-dark: #2D2D2D;
+  --color-light: #FFFFFF;
+  --color-text-secondary: #6B6B6B;
+  --color-text-secondary-dark: #CCCCCC;
+  --color-surface-dark: #1E1E1E;
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-hebrew: 'Heebo', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-sans: 'Inter', 'Heebo', sans-serif;
+}
+
+body {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  @apply dark:bg-[#121212] dark:text-[#F5F5F5] transition-colors duration-300;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary-dark dark:bg-primary-dark dark:hover:bg-primary text-dark font-bold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105;
+}
