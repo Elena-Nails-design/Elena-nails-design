@@ -19,8 +19,16 @@ export default function Gallery() {
     const hideTitleInterval = setInterval(() => {
       const widget = document.querySelector('.elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f');
       
-      // Force remove any elements globally just in case
-      document.querySelectorAll('a[href*="elfsight.com"], .eapps-widget-toolbar').forEach(el => el.remove());
+      // Force stealth hide any elements globally just in case
+      document.querySelectorAll('a[href*="elfsight.com"], .eapps-widget-toolbar').forEach(el => {
+        el.style.setProperty('opacity', '0', 'important');
+        el.style.setProperty('pointer-events', 'none', 'important');
+        el.style.setProperty('width', '0', 'important');
+        el.style.setProperty('height', '0', 'important');
+        el.style.setProperty('position', 'absolute', 'important');
+        el.style.setProperty('z-index', '-9999', 'important');
+        el.style.setProperty('overflow', 'hidden', 'important');
+      });
 
       if (widget && widget.shadowRoot) {
         // 1. Inject CSS for structural elements
@@ -39,9 +47,17 @@ export default function Gallery() {
           widget.shadowRoot.appendChild(style);
         }
 
-        // 2. Force remove badges with inline !important styles
+        // 2. Stealth hide badges with inline !important styles (Ninja mode)
         const badElements = widget.shadowRoot.querySelectorAll('a[href*="elfsight.com"], .eapps-widget-toolbar');
-        badElements.forEach(el => el.remove());
+        badElements.forEach(el => {
+          el.style.setProperty('opacity', '0', 'important');
+          el.style.setProperty('pointer-events', 'none', 'important');
+          el.style.setProperty('width', '0', 'important');
+          el.style.setProperty('height', '0', 'important');
+          el.style.setProperty('position', 'absolute', 'important');
+          el.style.setProperty('z-index', '-9999', 'important');
+          el.style.setProperty('overflow', 'hidden', 'important');
+        });
       }
     }, 500);
 
