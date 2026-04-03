@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Scissors, Award, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export default function About() {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.dir() === 'rtl';
+  const lang = i18n.language;
 
   return (
     <div className="py-24 bg-white dark:bg-[#0A0A0A] min-h-screen flex items-center transition-colors duration-700">
@@ -85,6 +87,28 @@ export default function About() {
                 </p>
               </motion.div>
             </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ★ CTA Section */}
+      <div className="mt-24 py-20 bg-dark dark:bg-[#0A0A0A] text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08)_0%,transparent_70%)]" />
+        <div className="relative z-10 max-w-2xl mx-auto px-4">
+          <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">
+            {lang === 'he' ? 'מוכנה לחוויה?' : lang === 'ru' ? 'Готовы к опыту?' : 'Ready for the experience?'}
+          </span>
+          <p className="text-white/70 text-xl md:text-2xl font-light italic mb-10 leading-relaxed">
+            {lang === 'he' ? 'קבעי את התור שלך עוד היום' : lang === 'ru' ? 'Запишитесь на приём уже сегодня' : 'Book your appointment today'}
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+            <Link
+              to="/booking"
+              className="btn-premium inline-flex items-center gap-4 shimmer-gold"
+            >
+              <span>{t('home.book_now')}</span>
+              {isRtl ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+            </Link>
           </motion.div>
         </div>
       </div>

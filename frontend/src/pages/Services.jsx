@@ -118,6 +118,25 @@ export default function Services() {
             </Reveal>
           ))}
         </div>
+
+        {/* ★ CTA Section */}
+        <div className="mt-24 py-20 bg-dark rounded-[3rem] text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08)_0%,transparent_70%)] rounded-[3rem]" />
+          <div className="relative z-10 max-w-xl mx-auto px-4">
+            <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">
+              {t('services.book_btn')}
+            </span>
+            <p className="text-white/70 text-xl md:text-2xl font-light italic mb-10 leading-relaxed">
+              {i18n.language === 'he' ? 'מצאת את הטיפול המתאים? קבעי תור עכשיו 💅' : i18n.language === 'ru' ? 'Нашли подходящую процедуру? Записывайтесь сейчас 💅' : 'Found the right treatment? Book now 💅'}
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+              <Link to="/booking" className="btn-premium inline-flex items-center gap-4 shimmer-gold">
+                <span>{t('home.book_now')}</span>
+                <span>→</span>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

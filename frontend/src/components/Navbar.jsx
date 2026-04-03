@@ -110,7 +110,23 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            {/* Compact language switcher visible on mobile */}
+            <div className="flex gap-1">
+              {['he', 'ru', 'en'].map((lng) => (
+                <button
+                  key={lng}
+                  onClick={() => changeLanguage(lng)}
+                  className={`text-[9px] font-bold tracking-widest px-2 py-1 rounded-full border transition-all duration-300 ${
+                    i18n.language === lng
+                      ? 'bg-dark text-white border-dark dark:bg-primary-dark dark:text-dark dark:border-primary-dark'
+                      : 'text-dark/40 border-dark/10 dark:text-white/40 dark:border-white/10'
+                  }`}
+                >
+                  {lng.toUpperCase()}
+                </button>
+              ))}
+            </div>
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}

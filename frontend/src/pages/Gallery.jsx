@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
@@ -179,6 +180,25 @@ export default function Gallery() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ★ CTA Section */}
+      <div className="mt-24 py-20 bg-dark text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08)_0%,transparent_70%)]" />
+        <div className="relative z-10 max-w-2xl mx-auto px-4">
+          <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold mb-4 block">
+            {i18n.language === 'he' ? 'אהבת מה שראית?' : i18n.language === 'ru' ? 'Понравилось?' : 'Love what you see?'}
+          </span>
+          <p className="text-white/70 text-xl md:text-2xl font-light italic mb-10 leading-relaxed">
+            {i18n.language === 'he' ? 'קבעי תור ותקבלי את אותה רמה של דיוק ויופי' : i18n.language === 'ru' ? 'Запишитесь и получите тот же уровень точности и красоты' : 'Book an appointment and get that same level of precision and beauty'}
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+            <Link to="/booking" className="btn-premium inline-flex items-center gap-4 shimmer-gold">
+              <span>{t('home.book_now')}</span>
+              {isRtl ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
+            </Link>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }
