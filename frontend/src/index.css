@@ -3,13 +3,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #F5C6D6; /* Soft Blush Pink */
-  --color-primary-dark: #E2AFBF; /* Muted Blush */
-  --color-secondary: #F9F1EA; /* Champagne Nude */
-  --color-gold: #D4AF37; /* Antique Gold */
-  --color-gold-light: #F1E2A8; /* Soft Glow Gold */
-  --color-dark: #121212; /* Deep Obsidian */
-  --color-light: #FFFFFF; /* Silk White */
+  --color-primary: #F5C6D6;
+  --color-primary-dark: #E2AFBF;
+  --color-secondary: #F9F1EA;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F1E2A8;
+  --color-dark: #121212;
+  --color-light: #FFFFFF;
   --color-text-secondary: #555555;
   --color-text-secondary-dark: #BBBBBB;
   --color-surface-dark: #1A1A1A;
@@ -20,41 +20,55 @@
   --font-sans: 'Inter', 'Heebo', sans-serif;
 }
 
-body {
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  font-family: var(--font-sans);
-  @apply dark:bg-[#0A0A0A] dark:text-[#EAEAEA] transition-colors duration-500 ease-in-out;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  body {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .dark body {
+    background-color: #0A0A0A;
+    color: #EAEAEA;
+  }
 }
 
-/* Premium Typography System */
-h1, h2, h3 {
-  font-family: var(--font-heading);
-  letter-spacing: 0.05em;
-  @apply leading-tight;
-}
-
-.tracking-luxury {
+@utility tracking-luxury {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
-/* Glassmorphism 2.0 */
-.glass-luxury {
+@utility glass-luxury {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  @apply dark:bg-black/90 dark:border-white/10;
 }
 
-/* Animated Center-Expanding Underline */
-.nav-link-fancy {
+.dark .glass-luxury {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+@utility nav-link-fancy {
   position: relative;
   @apply px-1 py-1;
 }
 
+@utility btn-premium {
+  @apply relative overflow-hidden bg-dark text-white font-medium py-4 px-10 rounded-full transition-all duration-500 transform hover:scale-105 active:scale-95;
+}
+
+.dark .btn-premium {
+  @apply bg-primary-dark text-dark;
+}
+
+@utility hero-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 100%);
+}
+
+/* Custom Nav Link Logic */
 .nav-link-fancy::after {
   content: '';
   position: absolute;
@@ -69,14 +83,4 @@ h1, h2, h3 {
 
 .nav-link-fancy:hover::after, .active-link-fancy::after {
   width: 100%;
-}
-
-/* Luxury Button System */
-.btn-premium {
-  @apply relative overflow-hidden bg-dark dark:bg-primary-dark text-white dark:text-dark font-medium tracking-luxury py-4 px-10 rounded-full transition-all duration-500 transform hover:scale-105 hover:shadow-2xl active:scale-95;
-}
-
-/* Hero Cinematic Overlay */
-.hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 100%);
 }
