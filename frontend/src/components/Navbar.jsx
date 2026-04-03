@@ -46,15 +46,13 @@ export default function Navbar() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-3 transition-transform duration-500 hover:scale-105 shrink-0" 
-            style={{ fontFamily: 'var(--font-heading)' }}
+            className="flex items-center transition-transform duration-500 hover:scale-105 shrink-0" 
           >
-            <div className="w-10 h-10 bg-primary dark:bg-primary-dark rounded-full flex items-center justify-center shadow-lg transform rotate-45 group-hover:rotate-0 transition-transform duration-700">
-              <Scissors className="w-5 h-5 text-dark" />
-            </div>
-            <span className="text-xl md:text-2xl font-bold tracking-luxury text-dark dark:text-white drop-shadow-sm">
-              {t('nav.logo_text')}
-            </span>
+            <img 
+              src={`${import.meta.env.BASE_URL}assets/logo-luxury.png`} 
+              alt="ELENA EPSHTEIN" 
+              className="h-10 md:h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-md hover:shadow-lg transition-shadow"
+            />
           </Link>
 
           {/* Desktop Menu */}

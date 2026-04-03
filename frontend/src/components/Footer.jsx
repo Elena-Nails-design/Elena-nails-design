@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Scissors, MessageCircle, Share2, MapPin, Phone, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -14,12 +15,13 @@ export default function Footer() {
           
           {/* Logo & About */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="flex items-center gap-3 text-dark dark:text-white font-bold text-2xl tracking-luxury" style={{ fontFamily: 'var(--font-heading)' }}>
-              <div className="w-8 h-8 bg-primary dark:bg-primary-dark rounded-full flex items-center justify-center text-white scale-90">
-                <Scissors className="w-4 h-4" />
-              </div>
-              <span className="uppercase">{t('nav.logo_text')}</span>
-            </div>
+            <Link to="/" className="flex items-center transition-transform hover:scale-105 inline-block">
+              <img 
+                src={`${import.meta.env.BASE_URL}assets/logo-luxury.png`} 
+                alt="ELENA EPSHTEIN" 
+                className="h-10 md:h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-md hover:shadow-lg transition-shadow"
+              />
+            </Link>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs font-light">
               {t('footer.subtitle')}
             </p>
