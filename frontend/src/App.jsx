@@ -32,9 +32,9 @@ function App() {
   return (
     <ThemeProvider>
       <Router basename={import.meta.env.BASE_URL}>
-        <div className="min-h-screen flex flex-col transition-colors duration-300">
+        <div className="min-h-screen flex flex-col transition-colors duration-500">
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow pt-[88px]">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

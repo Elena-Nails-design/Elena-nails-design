@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Scissors } from 'lucide-react';
@@ -9,6 +9,15 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const links = [
     { name: t('nav.home'), path: '/' },
@@ -25,83 +34,135 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 glass dark:bg-gray-900/80 border-b border-nude dark:border-gray-800 shadow-sm transition-colors duration-300">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
+        isScrolled 
+          ? 'glass-luxury py-3 shadow-2xl' 
+          : 'bg-transparent py-6'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 text-primary-dark dark:text-gold font-bold text-2xl tracking-wide shrink-0" style={{ fontFamily: 'var(--font-heading)' }}>
-            <Scissors className="w-7 h-7" />
-            <span>{t('nav.logo_text')}</span>
+          <Link 
+            to="/" 
+            className="flex items-center gap-3 transition-transform duration-500 hover:scale-105 shrink-0" 
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            <div className="w-10 h-10 bg-primary dark:bg-primary-dark rounded-full flex items-center justify-center shadow-lg transform rotate-45 group-hover:rotate-0 transition-transform duration-700">
+              <Scissors className="w-5 h-5 text-dark" />
+            </div>
+            <span className="text-xl md:text-2xl font-bold tracking-luxury text-dark dark:text-white drop-shadow-sm">
+              {t('nav.logo_text')}
+            </span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-10">
             {links.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`transition-colors font-medium ${
+                className={`nav-link-fancy text-xs uppercase tracking-widest font-semibold transition-all duration-300 ${
                   location.pathname === link.path 
-                    ? 'text-primary-dark dark:text-gold drop-shadow-sm' 
-                    : 'text-dark dark:text-white hover:text-primary-dark dark:hover:text-gold'
+                    ? 'text-primary-dark dark:text-primary active-link-fancy' 
+                    : 'text-dark/70 dark:text-white/70 hover:text-dark dark:hover:text-white'
                 }`}
               >
                 {link.name}
               </Link>
             ))}
 
-            {/* Language Switcher & Theme */}
-            <div className="flex items-center gap-2 ms-4 border-s border-gray-300 dark:border-gray-700 ps-4">
-              <button onClick={() => changeLanguage('he')} className={i18n.language === 'he' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gold transition-colors'}>HE</button>
-              <button onClick={() => changeLanguage('ru')} className={i18n.language === 'ru' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gold transition-colors'}>RU</button>
-              <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gold transition-colors'}>EN</button>
-              <div className="ms-2 border-s border-gray-300 dark:border-gray-700 ps-2">
+            {/* Language & Theme */}
+            <div className="flex items-center gap-4 ms-4 border-s border-dark/10 dark:border-white/10 ps-8">
+              <div className="flex gap-3">
+                {['he', 'ru', 'en'].map((lng) => (
+                  <button 
+                    key={lng}
+                    onClick={() => changeLanguage(lng)} 
+                    className={`text-[10px] font-bold tracking-widest transition-all duration-300 px-3 py-1.5 rounded-full border ${
+                      i18n.language === lng 
+                        ? 'bg-dark text-white border-dark dark:bg-primary-dark dark:text-dark dark:border-primary-dark shadow-md scale-110' 
+                        : 'text-dark/40 border-dark/10 dark:text-white/40 dark:border-white/10 hover:border-dark/30 dark:hover:border-white/30'
+                    }`}
+                  >
+                    {lng.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+              <div className="ms-2 scale-90">
                 <ThemeToggle />
               </div>
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-3 md:hidden">
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark dark:text-gray-200 hover:text-primary-dark transition-colors p-2"
+              className="text-dark dark:text-white p-2"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div key="close" initial={{ rotate: -90 }} animate={{ rotate: 0 }} exit={{ rotate: 90 }}>
+                    <X className="w-7 h-7" />
+                  </motion.div>
+                ) : (
+                  <motion.div key="menu" initial={{ rotate: 90 }} animate={{ rotate: 0 }} exit={{ rotate: -90 }}>
+                    <Menu className="w-7 h-7" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-gray-900 border-b border-nude dark:border-gray-800 overflow-hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 top-[88px] md:hidden bg-white/95 dark:bg-dark/95 backdrop-blur-2xl z-40"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              {links.map((link) => (
-                <Link
+            <div className="flex flex-col items-center justify-center h-full space-y-8 px-6 text-center">
+              {links.map((link, i) => (
+                <motion.div
                   key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium text-start ${
-                    location.pathname === link.path
-                      ? 'bg-nude dark:bg-gray-800 text-primary-dark dark:text-gold'
-                      : 'text-dark dark:text-gray-200 hover:bg-nude-dark dark:hover:bg-gray-800 hover:text-primary-dark dark:hover:text-gold transition-colors'
-                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block text-2xl tracking-widest uppercase font-playfair transition-colors ${
+                      location.pathname === link.path
+                        ? 'text-primary-dark dark:text-primary scale-110'
+                        : 'text-dark/40 dark:text-white/40'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <div className="pt-4 flex gap-4 px-3 justify-start">
-                <button onClick={() => changeLanguage('he')} className={i18n.language === 'he' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400'}>HE</button>
-                <button onClick={() => changeLanguage('ru')} className={i18n.language === 'ru' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400'}>RU</button>
-                <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'font-bold text-primary-dark dark:text-gold' : 'text-gray-500 dark:text-gray-400'}>EN</button>
+              
+              <div className="pt-12 flex gap-8">
+                {['he', 'ru', 'en'].map((lng) => (
+                  <button 
+                    key={lng}
+                    onClick={() => changeLanguage(lng)} 
+                    className={`text-sm font-bold tracking-widest ${
+                      i18n.language === lng ? 'text-primary-dark dark:text-primary underline underline-offset-8' : 'text-dark/40 dark:text-white/40'
+                    }`}
+                  >
+                    {lng.toUpperCase()}
+                  </button>
+                ))}
               </div>
             </div>
           </motion.div>

@@ -3,18 +3,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #F5C6D6;
-  --color-primary-dark: #D8A7B1;
-  --color-secondary: #E8D8C3;
-  --color-nude: #FAF7F2;
-  --color-nude-dark: #E8D8C3;
-  --color-gold: #C9A96E;
-  --color-gold-light: #FFD77F;
-  --color-dark: #2D2D2D;
-  --color-light: #FFFFFF;
-  --color-text-secondary: #6B6B6B;
-  --color-text-secondary-dark: #CCCCCC;
-  --color-surface-dark: #1E1E1E;
+  --color-primary: #F5C6D6; /* Soft Blush Pink */
+  --color-primary-dark: #E2AFBF; /* Muted Blush */
+  --color-secondary: #F9F1EA; /* Champagne Nude */
+  --color-gold: #D4AF37; /* Antique Gold */
+  --color-gold-light: #F1E2A8; /* Soft Glow Gold */
+  --color-dark: #121212; /* Deep Obsidian */
+  --color-light: #FFFFFF; /* Silk White */
+  --color-text-secondary: #555555;
+  --color-text-secondary-dark: #BBBBBB;
+  --color-surface-dark: #1A1A1A;
   
   --font-heading: 'Playfair Display', serif;
   --font-hebrew: 'Heebo', sans-serif;
@@ -26,24 +24,59 @@ body {
   background-color: var(--color-light);
   color: var(--color-dark);
   font-family: var(--font-sans);
-  @apply dark:bg-[#121212] dark:text-[#F5F5F5] transition-colors duration-300;
+  @apply dark:bg-[#0A0A0A] dark:text-[#EAEAEA] transition-colors duration-500 ease-in-out;
+  -webkit-font-smoothing: antialiased;
 }
 
-.rtl {
-  direction: rtl;
+/* Premium Typography System */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  @apply leading-tight;
 }
 
-.ltr {
-  direction: ltr;
+.tracking-luxury {
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-.glass {
+/* Glassmorphism 2.0 */
+.glass-luxury {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  @apply dark:bg-black/90 dark:border-white/10;
 }
 
-.btn-primary {
-  @apply bg-primary hover:bg-primary-dark dark:bg-primary-dark dark:hover:bg-primary text-dark font-bold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105;
+/* Animated Center-Expanding Underline */
+.nav-link-fancy {
+  position: relative;
+  @apply px-1 py-1;
+}
+
+.nav-link-fancy::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1.5px;
+  bottom: 0;
+  left: 50%;
+  background-color: currentColor;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.nav-link-fancy:hover::after, .active-link-fancy::after {
+  width: 100%;
+}
+
+/* Luxury Button System */
+.btn-premium {
+  @apply relative overflow-hidden bg-dark dark:bg-primary-dark text-white dark:text-dark font-medium tracking-luxury py-4 px-10 rounded-full transition-all duration-500 transform hover:scale-105 hover:shadow-2xl active:scale-95;
+}
+
+/* Hero Cinematic Overlay */
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 100%);
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 const ASSET_FILES = [
   "556455388_18061812473616810_1155595810853411427_n.jpg",
@@ -55,188 +55,127 @@ const CATEGORIES = ["gel", "design", "french", "pedicure"];
 
 export default function Gallery() {
   const { t, i18n } = useTranslation();
-  const isRtl = i18n.dir() === 'rtl';
   const [filter, setFilter] = useState('all');
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const isRtl = i18n.dir() === 'rtl';
 
-  // Generate deterministic categories for the images
-  const galleryImages = ASSET_FILES.map((filename, i) => {
-    const category = CATEGORIES[i % CATEGORIES.length];
-    // Map the category to correct translation title dynamically
-    let titleKey = 'img_nude_gel';
-    if (category === 'design') titleKey = 'img_abstract';
-    if (category === 'french') titleKey = 'img_french';
-    if (category === 'pedicure') titleKey = 'img_spa';
-
-    return {
-      id: i,
-      category,
-      src: `${import.meta.env.BASE_URL}assets/nails_epshtein/${filename}`,
-      title: t(`gallery.${titleKey}`)
-    };
-  });
+  const galleryImages = ASSET_FILES.map((filename, i) => ({
+    id: i,
+    category: CATEGORIES[i % CATEGORIES.length],
+    src: `${import.meta.env.BASE_URL}assets/nails_epshtein/${filename}`,
+    title: t(`gallery.img_${CATEGORIES[i % CATEGORIES.length]}`) || t('gallery.img_nude_gel')
+  }));
 
   const filteredImages = filter === 'all' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === filter);
 
-  // Lightbox Navigation
-  const handlePrev = (e) => {
-    e.stopPropagation();
-    if (selectedIndex === null) return;
-    const isFirst = selectedIndex === 0;
-    const newIndex = isFirst ? filteredImages.length - 1 : selectedIndex - 1;
-    setSelectedIndex(newIndex);
-  };
-
-  const handleNext = (e) => {
-    e.stopPropagation();
-    if (selectedIndex === null) return;
-    const isLast = selectedIndex === filteredImages.length - 1;
-    const newIndex = isLast ? 0 : selectedIndex + 1;
-    setSelectedIndex(newIndex);
-  };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (selectedIndex === null) return;
-      if (e.key === 'Escape') setSelectedIndex(null);
-      if (e.key === 'ArrowLeft') isRtl ? handleNext(e) : handlePrev(e);
-      if (e.key === 'ArrowRight') isRtl ? handlePrev(e) : handleNext(e);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedIndex, isRtl, filteredImages.length]);
-
-  // Lock body scroll when modal is open
-  useEffect(() => {
-    if (selectedIndex !== null) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [selectedIndex]);
-
   return (
-    <div className="pt-10 pb-20 bg-white dark:bg-gray-900 min-h-[80vh] transition-colors duration-300">
+    <div className="py-24 bg-white dark:bg-[#0A0A0A] min-h-screen transition-colors duration-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-6 tracking-wide" style={{ fontFamily: 'var(--font-heading)' }}>{t('gallery.title')}</h1>
-          <div className="w-16 h-1 bg-gold mx-auto rounded-full mb-10"></div>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center mb-24"
+        >
+          <span className="text-primary dark:text-primary-dark tracking-widest uppercase text-xs font-bold mb-4 block">
+            {t('gallery.subtitle') || "Style Showcase"}
+          </span>
+          <h1 className="text-5xl md:text-7xl font-bold text-dark dark:text-white mb-16 tracking-luxury">
+            {t('gallery.title')}
+          </h1>
           
-          {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* High-End Filter Toggles */}
+          <div className="flex flex-wrap justify-center gap-6">
             {['all', 'gel', 'design', 'french', 'pedicure'].map((cat) => (
               <button
                 key={cat}
-                onClick={() => {
-                  setFilter(cat);
-                  setSelectedIndex(null); // Reset index on filter change
-                }}
-                className={`px-6 py-2 rounded-full font-medium transition-all focus:outline-none ${
+                onClick={() => setFilter(cat)}
+                className={`relative px-8 py-3 text-xs tracking-widest uppercase font-bold transition-all duration-500 overflow-hidden ${
                   filter === cat 
-                    ? 'bg-primary dark:bg-primary-dark text-white shadow-md transform scale-105' 
-                    : 'bg-nude dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-nude-dark dark:hover:bg-gray-700'
+                    ? 'text-white' 
+                    : 'text-dark/40 dark:text-white/40 hover:text-dark dark:hover:text-white'
                 }`}
               >
+                {filter === cat && (
+                  <motion.div 
+                    layoutId="filter-bg"
+                    className="absolute inset-0 bg-dark dark:bg-primary-dark rounded-full -z-10 shadow-xl"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
                 {t(`gallery.filter_${cat}`)}
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Gallery Grid */}
-        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-          <AnimatePresence>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
+          <AnimatePresence mode="popLayout">
             {filteredImages.map((img, idx) => (
               <motion.div
                 key={img.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
-                className="group relative cursor-pointer overflow-hidden rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow aspect-[4/5] bg-nude dark:bg-gray-800"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.8, delay: idx % 10 * 0.05 }}
+                className="group relative cursor-crosshair overflow-hidden rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-1000 aspect-[4/5] bg-[#FAF7F2] dark:bg-[#1A1A1A]"
                 onClick={() => setSelectedIndex(idx)}
               >
                 <img 
                   src={img.src} 
                   alt={img.title}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-110 group-hover:rotate-1"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
-                  <span className="text-white font-medium text-xl drop-shadow-md text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500" style={{ fontFamily: 'var(--font-heading)' }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex flex-col items-center justify-center p-8 backdrop-blur-[2px]">
+                  <Maximize2 className="w-8 h-8 text-primary mb-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 delay-100" />
+                  <span className="text-white font-playfair text-xl tracking-wide text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 delay-200">
                     {img.title}
                   </span>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Lightbox / Modal */}
+      {/* Lightbox / Modal Redesign */}
       <AnimatePresence>
         {selectedIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-3xl p-4 md:p-12"
             onClick={() => setSelectedIndex(null)}
           >
-            {/* Close Button */}
-            <button 
-              className="absolute top-6 end-6 text-white hover:text-primary transition-colors p-2 z-50"
-              onClick={() => setSelectedIndex(null)}
-              aria-label="Close"
-            >
-              <X className="w-10 h-10 drop-shadow-lg" />
+            <button className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors p-4 z-50">
+              <X className="w-10 h-10" />
             </button>
 
-            {/* Previous Button */}
-            <button 
-              className="absolute start-4 md:start-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 z-50"
-              onClick={handlePrev}
+            <motion.div 
+              className="relative max-w-6xl max-h-full aspect-auto flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
             >
-              {isRtl ? <ChevronRight className="w-12 h-12" /> : <ChevronLeft className="w-12 h-12" />}
-            </button>
-
-            {/* Next Button */}
-            <button 
-              className="absolute end-4 md:end-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 z-50"
-              onClick={handleNext}
-            >
-              {isRtl ? <ChevronLeft className="w-12 h-12" /> : <ChevronRight className="w-12 h-12" />}
-            </button>
-
-            {/* Main Modal Image Area */}
-            <div 
-              className="relative w-full h-full max-w-5xl flex items-center justify-center p-4 md:p-12 select-none"
-              onClick={(e) => e.stopPropagation()} /* Prevent closing when clicking image */
-            >
-              <AnimatePresence mode="wait">
-                <motion.img 
-                  key={selectedIndex}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  src={filteredImages[selectedIndex].src} 
-                  alt={filteredImages[selectedIndex].title}
-                  className="max-w-full max-h-full rounded-lg shadow-2xl object-contain drop-shadow-2xl"
-                />
-              </AnimatePresence>
-            </div>
-            
-            {/* Image Counter Indicator */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-medium tracking-widest text-sm">
-              {selectedIndex + 1} / {filteredImages.length}
-            </div>
+              <img 
+                src={filteredImages[selectedIndex].src} 
+                alt={filteredImages[selectedIndex].title}
+                className="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-cover border border-white/5"
+              />
+              
+              <div className="absolute -bottom-16 left-0 right-0 flex justify-between items-center text-white/50 font-bold tracking-widest text-[10px] uppercase">
+                <button onClick={(e) => { e.stopPropagation(); setSelectedIndex(prev => (prev > 0 ? prev - 1 : filteredImages.length - 1)); }} className="hover:text-primary transition-colors flex items-center gap-2">
+                  <ChevronLeft className="w-4 h-4" /> Previous
+                </button>
+                <span>{selectedIndex + 1} // {filteredImages.length}</span>
+                <button onClick={(e) => { e.stopPropagation(); setSelectedIndex(prev => (prev < filteredImages.length - 1 ? prev + 1 : 0)); }} className="hover:text-primary transition-colors flex items-center gap-2">
+                  Next <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
