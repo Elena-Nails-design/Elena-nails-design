@@ -24,9 +24,11 @@ export default function Gallery() {
           style.id = 'hide-elfsight-title';
           style.innerHTML = `
             .eui-widget-title,
-            .es-widget-title
+            .es-widget-title,
             .eapps-instagram-feed-title,
-            .eapps-instagram-feed-header {
+            .eapps-instagram-feed-header,
+            a[href*="elfsight.com"],
+            .eapps-link {
               display: none !important;
             }
           `;
