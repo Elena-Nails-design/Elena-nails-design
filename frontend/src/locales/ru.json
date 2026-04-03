@@ -14,15 +14,18 @@
   "footer": {
     "subtitle": "Ваша естественная красота в руках профессионала. Премиум качество и забота.",
     "contact_title": "Связаться с нами",
-    "address": "Герцлия, Израиль",
+    "address": "Ашдод, ул. Ха-Ацмаут 93, Израиль",
     "hours_title": "Часы работы",
     "hours_week": "Воскресенье - Четверг: 09:00 - 19:00",
     "hours_weekend": "Пятница: 09:00 - 14:00",
-    "sun_thu": "Вс - Чт: 09:00 - 19:00",
+    "sun_thu": "Вск - Чт: 09:00 - 19:00",
     "fri": "Пт: 09:00 - 14:00",
     "sat": "Сб: Выходной",
-    "social_title": "Соцсети",
-    "rights": "Все права защищены."
+    "social_title": "Мы в соцсетях",
+    "rights": "Все права защищены.",
+    "phone": "+972 053-461-1370",
+    "instagram": "https://www.instagram.com/nails_epshtein?igsh=cDR6aTF5OG1qbm1p",
+    "facebook": "https://www.facebook.com/share/18afmCSD26/?mibextid=wwXIfr"
   },
   "theme": {
     "light_mode": "Светлая тема",

@@ -14,7 +14,7 @@
   "footer": {
     "subtitle": "Elevate your aesthetic with clinical precision and luxury care.",
     "contact_title": "Get in Touch",
-    "address": "Herzliya, Israel",
+    "address": "Ashdod, 93 HaAtzmaut St, Israel",
     "hours_title": "Studio Hours",
     "hours_week": "Sunday - Thursday: 09:00 - 19:00",
     "hours_weekend": "Friday: 09:00 - 14:00",
@@ -22,7 +22,10 @@
     "fri": "Fri: 09:00 - 14:00",
     "sat": "Sat: Rest",
     "social_title": "Follow Us",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "phone": "+972 53-461-1370",
+    "instagram": "https://www.instagram.com/nails_epshtein",
+    "facebook": "https://www.facebook.com/share/18afmCSD26/"
   },
   "theme": {
     "light_mode": "Light Mode",
