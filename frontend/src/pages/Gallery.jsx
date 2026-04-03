@@ -71,7 +71,7 @@ export default function Gallery() {
     return {
       id: i,
       category,
-      src: `/assets/nails_epshtein/${filename}`,
+      src: `${import.meta.env.BASE_URL}assets/nails_epshtein/${filename}`,
       title: t(`gallery.${titleKey}`)
     };
   });

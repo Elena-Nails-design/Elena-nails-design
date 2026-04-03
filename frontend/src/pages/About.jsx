@@ -18,7 +18,7 @@ export default function About() {
           >
             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl dark:shadow-gray-900 border-4 border-white dark:border-gray-800 transition-all">
               <img 
-                src="/assets/nails_epshtein/556455388_18061812473616810_1155595810853411427_n.jpg" 
+                src={`${import.meta.env.BASE_URL}assets/nails_epshtein/556455388_18061812473616810_1155595810853411427_n.jpg`} 
                 alt="Elena in her studio / Work showcase" 
                 loading="lazy"
                 className="w-full h-[550px] object-cover hover:scale-105 transition-transform duration-700"
