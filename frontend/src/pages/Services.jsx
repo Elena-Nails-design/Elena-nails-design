@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 
 export default function Services() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // Mapping the new JSON structure (object with numbered keys) to a display array
   const serviceListData = t('services.list', { returnObjects: true }) || {};
