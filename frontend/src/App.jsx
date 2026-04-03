@@ -12,6 +12,7 @@ import Booking from './pages/Booking';
 import Contact from './pages/Contact';
 import { ThemeProvider } from './contexts/ThemeContext';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import AIChat from './components/AIChat';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -64,6 +65,7 @@ function App() {
           </main>
           <Footer />
           <FloatingWhatsApp />
+          <AIChat />
         </div>
       </Router>
     </ThemeProvider>

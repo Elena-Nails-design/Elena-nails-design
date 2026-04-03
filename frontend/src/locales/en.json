@@ -155,5 +155,15 @@
     "instagram": "Follow on Instagram",
     "studio": "Location",
     "studio_loc": "Ashdod, Israel (By appointment only)"
+  },
+  "chat": {
+    "title": "Elena's Assistant",
+    "status": "Online for advice",
+    "placeholder": "Ask me anything...",
+    "welcome": "Hi! I'm Elena's virtual assistant. I'd love to answer any questions about nail care, manicure, or pedicure. How can I help you today? ✨",
+    "thinking": "Thinking...",
+    "error": "Error connecting to AI. Try again later.",
+    "talk_direct": "Talk directly with Elena",
+    "missing_key": "Sorry, the AI API Key is not configured yet. Please contact Elena directly via WhatsApp for any questions! 👋"
   }
 }
