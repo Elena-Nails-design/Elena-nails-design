@@ -38,9 +38,11 @@ export default function Navbar() {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
-        isScrolled 
-          ? 'glass-luxury py-4 shadow-xl border-black/5 dark:border-white/10' 
-          : 'bg-transparent py-5 border-transparent'
+        isOpen 
+          ? 'bg-white dark:bg-[#0A0A0A] py-4 border-black/5 dark:border-white/10'
+          : isScrolled
+            ? 'glass-luxury py-4 shadow-xl border-black/5 dark:border-white/10' 
+            : 'bg-transparent py-5 border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -127,7 +129,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-[88px] md:hidden bg-white/95 dark:bg-dark/95 backdrop-blur-2xl z-40"
+            className="fixed inset-0 top-[80px] md:hidden bg-white dark:bg-[#0A0A0A] z-50"
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8 px-6 text-center">
               {links.map((link, i) => (
