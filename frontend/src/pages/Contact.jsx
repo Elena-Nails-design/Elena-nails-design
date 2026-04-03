@@ -57,7 +57,29 @@ export default function Contact() {
                       </div>
                       <h3 className="font-bold text-dark dark:text-white uppercase tracking-wider text-xs">{t('contact.address_title')}</h3>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 pl-14 text-sm leading-relaxed">{t('footer.address')}</p>
+                    <div className="pl-14">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">{t('footer.address')}</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a 
+                          href="https://waze.com/ul?q=העצמאות+93,+אשדוד&navigate=yes" 
+                          target="_blank" 
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[10px] font-bold text-dark dark:text-white bg-white/60 dark:bg-white/10 px-3 py-1.5 rounded-full hover:bg-primary hover:text-white transition-colors border border-black/5 dark:border-white/10 uppercase tracking-wider"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                          Waze
+                        </a>
+                        <a 
+                          href="https://www.google.com/maps/search/?api=1&query=העצמאות+93,+אשדוד" 
+                          target="_blank" 
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[10px] font-bold text-dark dark:text-white bg-white/60 dark:bg-white/10 px-3 py-1.5 rounded-full hover:bg-primary hover:text-white transition-colors border border-black/5 dark:border-white/10 uppercase tracking-wider"
+                        >
+                          <MapPin className="w-3 h-3" />
+                          Google Maps
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="group">
