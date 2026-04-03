@@ -46,11 +46,13 @@ export default function Gallery() {
 
         {/* Elfsight Instagram Widget */}
         <div className="w-full relative flex justify-center min-h-[600px] items-start">
-          {/* Inject CSS to hide the Elfsight watermark */}
+          {/* Inject CSS to hide the Elfsight watermark and title */}
           <style>
             {`
               a[href*="elfsight.com"], 
-              .eapps-link {
+              .eapps-link,
+              .eui-widget-title,
+              .eapps-instagram-feed-title {
                 display: none !important;
               }
             `}
