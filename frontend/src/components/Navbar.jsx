@@ -54,23 +54,27 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-10">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link-fancy text-xs uppercase tracking-widest font-semibold transition-all duration-300 ${
-                  location.pathname === link.path 
-                    ? 'text-primary-dark dark:text-primary active-link-fancy' 
-                    : 'text-dark/70 dark:text-white/70 hover:text-dark dark:hover:text-white'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div className={`hidden md:flex items-center ${i18n.language === 'ru' ? 'gap-4 lg:gap-8' : 'gap-6 lg:gap-10'}`}>
+            <div className="flex items-center gap-4 lg:gap-8">
+              {links.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`nav-link-fancy uppercase font-semibold transition-all duration-300 ${
+                    i18n.language === 'ru' ? 'text-[10px] tracking-tight' : 'text-[11px] lg:text-xs tracking-widest'
+                  } ${
+                    location.pathname === link.path 
+                      ? 'text-primary-dark dark:text-primary active-link-fancy' 
+                      : 'text-dark/70 dark:text-white/70 hover:text-dark dark:hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
 
             {/* Language & Theme */}
-            <div className="flex items-center gap-4 ms-4 border-s border-dark/10 dark:border-white/10 ps-8">
+            <div className={`flex items-center gap-4 border-s border-dark/10 dark:border-white/10 ${i18n.language === 'ru' ? 'ps-4' : 'ps-8'}`}>
               <div className="flex gap-3">
                 {['he', 'ru', 'en'].map((lng) => (
                   <button 
