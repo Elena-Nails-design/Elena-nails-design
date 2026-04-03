@@ -57,7 +57,7 @@ export default function Contact() {
                       </div>
                       <h3 className="font-bold text-dark dark:text-white uppercase tracking-wider text-xs">{t('contact.address_title')}</h3>
                     </div>
-                    <div className="pl-14">
+                    <div className="ps-14">
                       <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">{t('footer.address')}</p>
                       <div className="flex flex-wrap gap-2">
                         <a 
@@ -89,8 +89,8 @@ export default function Contact() {
                       </div>
                       <h3 className="font-bold text-dark dark:text-white uppercase tracking-wider text-xs">{t('contact.phone_title')}</h3>
                     </div>
-                     <p className="text-gray-600 dark:text-gray-400 pl-14 text-sm tracking-widest" dir="ltr">
-                       <a href="tel:+9720534611370" className="hover:text-primary transition-colors">053-461-1370</a>
+                     <p className="text-gray-600 dark:text-gray-400 ps-14 text-sm tracking-widest">
+                       <a href="tel:+9720534611370" className="hover:text-primary transition-colors inline-block" dir="ltr">053-461-1370</a>
                      </p>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function Contact() {
                       </div>
                       <h3 className="font-bold text-dark dark:text-white uppercase tracking-wider text-xs">{t('contact.hours_title')}</h3>
                     </div>
-                    <div className="text-gray-600 dark:text-gray-400 pl-14 text-sm space-y-1">
+                    <div className="text-gray-600 dark:text-gray-400 ps-14 text-sm space-y-1">
                       <p>{t('footer.hours_week')}</p>
                       <p>{t('footer.hours_weekend')}</p>
                       <p>{t('footer.sat')}</p>
