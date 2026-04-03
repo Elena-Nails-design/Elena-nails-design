@@ -11,7 +11,6 @@ import Gallery from './pages/Gallery';
 import Booking from './pages/Booking';
 import Contact from './pages/Contact';
 import { ThemeProvider } from './contexts/ThemeContext';
-import AdminDashboard from './pages/admin/AdminDashboard';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 function AnimatedRoutes() {
@@ -33,7 +32,6 @@ function AnimatedRoutes() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

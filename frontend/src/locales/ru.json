@@ -8,8 +8,7 @@
     "contact": "Контакты",
     "logo_text": "ELENA EPSHTEIN",
     "light_mode": "Светлая тема",
-    "dark_mode": "Темная тема",
-    "admin": "Админ"
+    "dark_mode": "Темная тема"
   },
   "footer": {
     "subtitle": "Ваша естественная красота в руках профессионала. Премиум качество и забота.",
@@ -156,24 +155,5 @@
     "instagram": "Наш Instagram",
     "studio": "Локация",
     "studio_loc": "Герцлия, Центр (прием строго по записи)"
-  },
-  "admin": {
-    "login_title": "Доступ администратора",
-    "password_ph": "Пароль...",
-    "login_btn": "Войти",
-    "wrong_pass": "Доступ запрещен",
-    "title": "Управление записями",
-    "refresh": "Обновить",
-    "loading": "Загрузка...",
-    "th_client": "Клиент",
-    "th_phone": "Связь",
-    "th_service": "Услуга",
-    "th_date": "Дата",
-    "th_status": "Статус",
-    "th_actions": "Действия",
-    "status_confirmed": "Одобрено",
-    "status_pending": "Ожидает",
-    "action_approve": "Подтвердить",
-    "no_bookings": "Активных записей нет."
   }
 }

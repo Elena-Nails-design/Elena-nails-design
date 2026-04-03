@@ -125,24 +125,5 @@
     "instagram": "עקבי אחרינו באינסטגרם",
     "studio": "מיקום הסטודיו",
     "studio_loc": "מרכז הרצליה (כניסה בתיאום מראש בלבד)"
-  },
-  "admin": {
-    "login_title": "כניסת הנהלה",
-    "password_ph": "הזנת סיסמה...",
-    "login_btn": "כניסה למערכת",
-    "wrong_pass": "פרטי גישה שגויים",
-    "title": "ניהול יומן תורים",
-    "refresh": "סנכרון נתונים",
-    "loading": "טוען מידע...",
-    "th_client": "לקוחה",
-    "th_phone": "טלפון",
-    "th_service": "טיפול",
-    "th_date": "תאריך",
-    "th_status": "סטטוס",
-    "th_actions": "פעולות",
-    "status_confirmed": "מאושר",
-    "status_pending": "ממתין",
-    "action_approve": "אשר תור",
-    "no_bookings": "אין תורים פעילים כרגע."
   }
 }

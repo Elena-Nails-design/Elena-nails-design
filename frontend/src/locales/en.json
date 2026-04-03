@@ -8,8 +8,7 @@
     "contact": "Connect",
     "logo_text": "ELENA EPSHTEIN",
     "light_mode": "Light",
-    "dark_mode": "Dark",
-    "admin": "Admin"
+    "dark_mode": "Dark"
   },
   "footer": {
     "subtitle": "Elevate your aesthetic with clinical precision and luxury care.",
@@ -126,24 +125,5 @@
     "instagram": "Follow on Instagram",
     "studio": "Location",
     "studio_loc": "Herzliya Center (By appointment only)"
-  },
-  "admin": {
-    "login_title": "Secure Access",
-    "password_ph": "Enter credentials...",
-    "login_btn": "Authenticate",
-    "wrong_pass": "Access Denied",
-    "title": "Reservations Overview",
-    "refresh": "Sync Data",
-    "loading": "Retrieving...",
-    "th_client": "Client",
-    "th_phone": "Contact",
-    "th_service": "Treatment",
-    "th_date": "Date",
-    "th_status": "Status",
-    "th_actions": "Actions",
-    "status_confirmed": "Secured",
-    "status_pending": "Awaiting",
-    "action_approve": "Confirm",
-    "no_bookings": "No active reservations."
   }
 }
