@@ -78,13 +78,10 @@ export default function Services() {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="flex items-center justify-between">
-                      <span className="text-primary-light dark:text-primary text-2xl font-bold tracking-tighter shadow-sm">{service.price}</span>
-                      <div className="flex items-center gap-2 text-white/70 text-xs tracking-widest uppercase">
-                        <Clock className="w-3 h-3" />
-                        {service.duration}
-                      </div>
+                  <div className="absolute bottom-8 left-8 right-8 text-right">
+                    <div className="inline-flex items-center gap-2 text-white/90 text-sm font-medium tracking-widest uppercase bg-black/30 backdrop-blur-md px-4 py-2 rounded-full">
+                      <Clock className="w-4 h-4 text-primary" />
+                      {service.duration}
                     </div>
                   </div>
                 </div>

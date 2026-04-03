@@ -78,12 +78,12 @@
     "book_btn": "Reserve Your Refined Time",
     "most_popular": "Client's Choice ⭐",
     "list": {
-      "1": { "title": "Precision Sculpted Gel", "price": "220 ILS", "duration": "1h 15m", "desc": "Meticulous combined technique, flawless anatomic leveling, and deep under-cuticle color application for incredible longevity." },
-      "2": { "title": "Essential Care Refresh", "price": "120 ILS", "duration": "45m", "desc": "A perfect refresh. Deep cuticle care and tailored shaping, finished with nourishing oils and a light hydration massage." },
-      "3": { "title": "Restorative Medical Pedicure", "price": "300 ILS", "duration": "2h", "desc": "Ultimate foot rejuvenation. Expert dry skin removal and therapeutic restoration, finished with premium gel polish." },
-      "4": { "title": "Structural Nail Repair", "price": "30 ILS", "duration": "10m", "desc": "Seamless, strong repair using advanced polygel techniques to perfectly match your natural nail shape." },
-      "5": { "title": "Safe Gel Removal", "price": "70 ILS", "duration": "15m", "desc": "Gentle, non-destructive removal of external gel polish, preserving the integrity and health of your natural nail bed." },
-      "6": { "title": "Bespoke Artistry", "price": "From 50 ILS", "duration": "Varies", "desc": "Elevate your look with custom, hand-painted nail art. Pricing reflects the complexity of your vision." }
+      "1": { "title": "Precision Sculpted Gel", "duration": "1h 15m", "desc": "Meticulous combined technique, flawless anatomic leveling, and deep under-cuticle color application for incredible longevity." },
+      "2": { "title": "Essential Care Refresh", "duration": "45m", "desc": "A perfect refresh. Deep cuticle care and tailored shaping, finished with nourishing oils and a light hydration massage." },
+      "3": { "title": "Restorative Medical Pedicure", "duration": "2h", "desc": "Ultimate foot rejuvenation. Expert dry skin removal and therapeutic restoration, finished with premium gel polish." },
+      "4": { "title": "Structural Nail Repair", "duration": "10m", "desc": "Seamless, strong repair using advanced polygel techniques to perfectly match your natural nail shape." },
+      "5": { "title": "Safe Gel Removal", "duration": "15m", "desc": "Gentle, non-destructive removal of external gel polish, preserving the integrity and health of your natural nail bed." },
+      "6": { "title": "Bespoke Artistry", "duration": "Varies", "desc": "Elevate your look with custom, hand-painted nail art. Pricing reflects the complexity of your vision." }
     },
     "menu": {
       "title": "Price List",
