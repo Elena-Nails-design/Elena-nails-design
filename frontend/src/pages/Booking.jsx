@@ -78,15 +78,18 @@ export default function Booking() {
     const isRu = i18n.language === 'ru';
     if (isHe) return (
       `שלום אלנה! 💅\nרוצה לקבוע תור:\n\n` +
-      `👤 שם: ${formData.name}\n📞 טלפון: ${formData.phone}\n💄 טיפול: ${formData.service}\n📅 תאריך: ${formData.date}\n⏰ שעה: ${formData.time}\n\nמחכה לאישורך 🙏`
+      `👤 שם: ${formData.name}\n📞 טלפון: ${formData.phone}\n💄 טיפול: ${formData.service}\n📅 תאריך: ${formData.date}\n⏰ שעה: ${formData.time}\n\n` +
+      `🎁 מגיע לי 10% הנחה על הטיפול הראשון (מהאתר)!\n\nמחכה לאישורך 🙏`
     );
     if (isRu) return (
       `Привет, Елена! 💅\nХочу записаться на приём:\n\n` +
-      `👤 Имя: ${formData.name}\n📞 Телефон: ${formData.phone}\n💄 Услуга: ${formData.service}\n📅 Дата: ${formData.date}\n⏰ Время: ${formData.time}\n\nЖду подтверждения 🙏`
+      `👤 Имя: ${formData.name}\n📞 Телефон: ${formData.phone}\n💄 Услуга: ${formData.service}\n📅 Дата: ${formData.date}\n⏰ Время: ${formData.time}\n\n` +
+      `🎁 Мне полагается скидка 10% на первую процедуру (с сайта)!\n\nЖду подтверждения 🙏`
     );
     return (
       `Hello Elena! 💅\nI'd like to book an appointment:\n\n` +
-      `👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n💄 Service: ${formData.service}\n📅 Date: ${formData.date}\n⏰ Time: ${formData.time}\n\nAwaiting your confirmation 🙏`
+      `👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n💄 Service: ${formData.service}\n📅 Date: ${formData.date}\n⏰ Time: ${formData.time}\n\n` +
+      `🎁 I'm eligible for a 10% discount on my first treatment (from the website)!\n\nAwaiting your confirmation 🙏`
     );
   };
 
