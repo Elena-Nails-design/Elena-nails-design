@@ -169,5 +169,15 @@
     "error": "Error connecting to AI. Try again later.",
     "talk_direct": "Talk directly with Elena",
     "missing_key": "Sorry, the AI API Key is not configured yet. Please contact Elena directly via WhatsApp for any questions! 👋"
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "highContrast": "High Contrast",
+    "largeText": "Large Text",
+    "underlineLinks": "Underline Links",
+    "stopAnimations": "Stop Animations",
+    "reset": "Reset Settings",
+    "open": "Open Accessibility Menu",
+    "close": "Close Accessibility Menu"
   }
 }
