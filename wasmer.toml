@@ -1,0 +1,10 @@
+[package]
+name = "elena-nails-design"
+version = "0.1.0"
+description = "Elena Nails Design Studio Website"
+
+[[app]]
+name = "elena-nails-design"
+
+[[app.static]]
+path = "/frontend/dist"
