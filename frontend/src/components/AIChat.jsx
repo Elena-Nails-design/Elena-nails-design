@@ -31,9 +31,9 @@ export default function AIChat() {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  // Initial welcome message
+  // Initial welcome message - updates when language changes if it's the only message
   useEffect(() => {
-    if (messages.length === 0) {
+    if (messages.length <= 1) {
       setMessages([
         { 
           role: 'assistant', 
@@ -41,7 +41,7 @@ export default function AIChat() {
         }
       ]);
     }
-  }, [i18n.language, messages.length, t]);
+  }, [i18n.language, t]); // Removed messages.length to allow update on lang change
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -92,7 +92,17 @@ export default function AIChat() {
       setMessages(prev => [...prev, { role: 'assistant', content: text }]);
     } catch (err) {
       console.error('Chat Error:', err);
-      setError(t('chat.error'));
+      // Detailed error reporting for debugging
+      const errorMessage = err.message || '';
+      if (errorMessage.includes('403') || errorMessage.includes('PERMISSION_DENIED')) {
+        setError(i18n.language === 'he' 
+          ? `שגיאת הרשאה (403): וודאי שהמפתח מוגבל נכון לדומיין. שגיאה: ${errorMessage}` 
+          : `Auth Error (403): Check domain restriction. Detail: ${errorMessage}`);
+      } else if (errorMessage.includes('API_KEY_INVALID')) {
+        setError(i18n.language === 'he' ? 'המפתח שהוזן אינו תקין.' : 'Invalid API Key.');
+      } else {
+        setError(`${t('chat.error')} (${errorMessage.substring(0, 50)}...)`);
+      }
     } finally {
       setIsLoading(false);
     }
