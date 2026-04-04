@@ -98,16 +98,14 @@ export default function AIChat() {
       setMessages(prev => [...prev, { role: 'assistant', content: text }]);
     } catch (err) {
       console.error('Chat Error:', err);
-      // Detailed error reporting for debugging
+      // Clean error reporting for production
       const errorMessage = err.message || '';
       if (errorMessage.includes('403') || errorMessage.includes('PERMISSION_DENIED')) {
         setError(i18n.language === 'he' 
-          ? `שגיאת הרשאה (403): וודאי שהמפתח מוגבל נכון לדומיין. שגיאה: ${errorMessage}` 
-          : `Auth Error (403): Check domain restriction. Detail: ${errorMessage}`);
-      } else if (errorMessage.includes('API_KEY_INVALID')) {
-        setError(i18n.language === 'he' ? 'המפתח שהוזן אינו תקין.' : 'Invalid API Key.');
+          ? 'שגיאת הרשאה: וודאי שהמפתח מוגדר נכון לדומיין בהגדרות Google Cloud.' 
+          : 'Authorization Error: Ensure your API Key is restricted correctly in Google Cloud.');
       } else {
-        setError(`${t('chat.error')} (${errorMessage.substring(0, 50)}...)`);
+        setError(t('chat.error'));
       }
     } finally {
       setIsLoading(false);
