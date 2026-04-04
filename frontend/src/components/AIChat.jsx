@@ -64,9 +64,7 @@ export default function AIChat() {
     }
 
     try {
-      const model = genAI.getGenerativeModel({ 
-        model: "gemini-1.5-flash",
-        systemInstruction: `You are the personal AI assistant for Elena Epshtein's premium nail studio "Elena Nails Design" in Ashdod, Israel.
+      const SYSTEM_PROMPT = `You are the personal AI assistant for Elena Epshtein's premium nail studio "Elena Nails Design" in Ashdod, Israel.
           - Your personality: Professional, elegant, welcoming, and expert in nail care.
           - Knowledge areas: Manicure (classic, hardware, combined), Anatomic structure, Gel polish, Medical Pedicure, Nail hygiene, recovery, and trends.
           - Core Rule: Always be helpful but emphasize that for any complex issue or for the best aesthetic results, the user should book an appointment with Elena.
@@ -75,8 +73,7 @@ export default function AIChat() {
           - Call to Action: Frequently suggest booking a consultation or a treatment directly through the "Book Now" page or WhatsApp.
           - Contact Info: Studio Phone: 053-461-1370. Location: Ashdod.
           - If asked about prices, refer them to the "Services" page on the website.
-          - Keep responses concise but "luxury" in feel. Use emojis appropriately (💅, ✨, 💎).`
-      });
+          - Keep responses concise but "luxury" in feel. Use emojis appropriately (💅, ✨, 💎).`;
 
       const history = messages.map(m => ({
         role: m.role === 'user' ? 'user' : 'model',
@@ -84,28 +81,48 @@ export default function AIChat() {
       }));
 
       // Gemini requires the first message in history to be from 'user'.
-      // If our first message is the 'assistant' welcome message, we skip it for the API.
       if (history.length > 0 && history[0].role === 'model') {
         history.shift();
       }
 
-      const chat = model.startChat({ history });
+      const MODEL_NAME = "gemini-1.5-flash";
+      const FALLBACK_MODEL = "gemini-1.5-flash-latest";
 
-      const result = await chat.sendMessage(userMsg);
+      let result;
+      try {
+        const model = genAI.getGenerativeModel({ 
+          model: MODEL_NAME, 
+          systemInstruction: { role: "system", parts: [{ text: SYSTEM_PROMPT }] } 
+        });
+        result = await model.generateContent({ contents: history });
+      } catch (firstErr) {
+        if (firstErr.message?.includes("404") || firstErr.message?.includes("not found")) {
+          const fallbackModel = genAI.getGenerativeModel({ 
+            model: FALLBACK_MODEL, 
+            systemInstruction: { role: "system", parts: [{ text: SYSTEM_PROMPT }] } 
+          });
+          result = await fallbackModel.generateContent({ contents: history });
+        } else {
+          throw firstErr;
+        }
+      }
+
       const response = await result.response;
       const text = response.text();
-
       setMessages(prev => [...prev, { role: 'assistant', content: text }]);
     } catch (err) {
       console.error('Chat Error:', err);
-      // Clean error reporting for production
       const errorMessage = err.message || '';
       if (errorMessage.includes('403') || errorMessage.includes('PERMISSION_DENIED')) {
         setError(i18n.language === 'he' 
           ? 'שגיאת הרשאה: וודאי שהמפתח מוגדר נכון לדומיין בהגדרות Google Cloud.' 
           : 'Authorization Error: Ensure your API Key is restricted correctly in Google Cloud.');
+      } else if (errorMessage.includes('404')) {
+        setError(i18n.language === 'he'
+          ? `המודל לא נמצא (404). וודאי ש-'Generative Language API' מופעל בפרויקט הנכון.`
+          : `Model not found (404). Ensure 'Generative Language API' is enabled in the correct project.`);
       } else {
-        setError(t('chat.error'));
+        setError(`${t('chat.error')} (Detail: ${errorMessage.substring(0, 50)})`);
       }
     } finally {
       setIsLoading(false);
