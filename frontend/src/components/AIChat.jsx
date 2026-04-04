@@ -31,6 +31,15 @@ export default function AIChat() {
     scrollToBottom();
   }, [messages, isLoading]);
 
+  // Accessibility: Handle Escape key to close chat
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
+
   // Initial welcome message - updates when language changes if it's the only message
   useEffect(() => {
     if (messages.length <= 1) {
@@ -128,6 +137,8 @@ export default function AIChat() {
       {/* Floating Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "סגור צ'אט" : "פתח צ'אט עם העוזרת הוירטואלית"}
+        aria-expanded={isOpen}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
@@ -192,6 +203,7 @@ export default function AIChat() {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
+                aria-label="סגור חלון צ'אט"
                 className="w-10 h-10 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-all group"
               >
                 <X size={20} className="text-white/80 group-hover:text-white group-hover:scale-110" />
@@ -264,6 +276,7 @@ export default function AIChat() {
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isLoading}
+                  aria-label="שלח הודעה"
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary hover:bg-primary-dark rounded-xl flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg active:scale-95"
                 >
                   <Send size={18} />

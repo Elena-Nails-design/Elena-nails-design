@@ -21,7 +21,7 @@ export default function FloatingWhatsApp() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       className="fixed bottom-8 left-8 z-50 flex items-center gap-3 px-6 h-16 bg-[#25D366] text-white rounded-full shadow-luxury hover:bg-[#20bd5a] transition-all duration-300 group text-decoration-none"
-      aria-label="Contact us on WhatsApp"
+      aria-label={i18n.language === 'he' ? 'צרי קשר בוואטסאפ עם אלנה' : 'Contact Elena on WhatsApp'}
     >
       <span className="text-xs font-bold uppercase tracking-widest">
         {i18n.language === 'he' ? 'קבעי תור בוואטסאפ' : i18n.language === 'ru' ? 'Записаться в WhatsApp' : 'Book on WhatsApp'}

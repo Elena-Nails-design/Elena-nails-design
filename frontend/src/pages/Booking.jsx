@@ -160,10 +160,10 @@ export default function Booking() {
                   <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}>
                     <CheckCircle2 className="w-14 h-14 text-primary dark:text-primary-dark" strokeWidth={1.5} />
                   </motion.div>
-                  <h3 className="text-2xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                  <h3 className="text-2xl font-bold" style={{ fontFamily: 'var(--font-heading)' }} id="success-header">
                     {t('booking.success_title')}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs" role="status">
                     {t('booking.success_subtitle')}
                   </p>
 
@@ -227,18 +227,22 @@ export default function Booking() {
                   {/* Name + Phone */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="group">
-                      <label className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_name')}</label>
+                      <label htmlFor="name" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_name')}</label>
                       <input
+                        id="name"
                         type="text" name="name" required
+                        aria-required="true"
                         value={formData.name} onChange={handleChange}
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700"
                         placeholder={t('booking.form_name_ph')}
                       />
                     </div>
                     <div className="group">
-                      <label className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_phone')}</label>
+                      <label htmlFor="phone" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_phone')}</label>
                       <input
+                        id="phone"
                         type="tel" name="phone" required
+                        aria-required="true"
                         value={formData.phone} onChange={handleChange}
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white font-mono tracking-widest"
                         placeholder={t('booking.form_phone_ph')} dir="ltr"
@@ -248,9 +252,11 @@ export default function Booking() {
 
                   {/* Service */}
                   <div className="group">
-                    <label className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_service')}</label>
+                    <label htmlFor="service" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_service')}</label>
                     <select
+                      id="service"
                       name="service" required
+                      aria-required="true"
                       value={formData.service} onChange={handleChange}
                       className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white appearance-none cursor-pointer"
                     >
@@ -266,23 +272,29 @@ export default function Booking() {
                   {/* Date + Time */}
                   <div className="grid grid-cols-2 gap-8">
                     <div className="group">
-                      <label className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_date')}</label>
+                      <label htmlFor="date" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_date')}</label>
                       <input
+                        id="date"
                         type="date" name="date" required
+                        aria-required="true"
+                        aria-invalid={!!dateError}
+                        aria-describedby={dateError ? "date-error" : undefined}
                         min={today}
                         value={formData.date}
                         onChange={handleDateChange}
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white cursor-pointer"
                       />
                       {dateError && (
-                        <p className="text-[10px] text-red-500 mt-1 font-bold">{dateError}</p>
+                        <p id="date-error" className="text-[10px] text-red-500 mt-1 font-bold" role="alert">{dateError}</p>
                       )}
                     </div>
 
                     <div className="group">
-                      <label className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_time')}</label>
+                      <label htmlFor="time" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_time')}</label>
                       <select
+                        id="time"
                         name="time" required
+                        aria-required="true"
                         value={formData.time} onChange={handleChange}
                         disabled={timeSlots.length === 0}
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white appearance-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"

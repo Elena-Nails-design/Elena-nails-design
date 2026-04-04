@@ -58,13 +58,13 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-[10px] font-bold text-primary dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.social_title')}</h3>
             <div className="flex gap-4">
-              <a href="https://wa.me/9720534611370" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#25D366] transition-all duration-300">
+              <a href="https://wa.me/9720534611370" target="_blank" rel="noreferrer" aria-label="שלחי הודעה בוואטסאפ" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#25D366] transition-all duration-300">
                 <MessageCircle className="w-4 h-4" />
               </a>
-              <a href={t('footer.instagram')} target="_blank" rel="noreferrer" aria-label="Instagram" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#E1306C] transition-all duration-300">
+              <a href={t('footer.instagram')} target="_blank" rel="noreferrer" aria-label="עקבי אחרינו באינסטגרם" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#E1306C] transition-all duration-300">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href={t('footer.facebook')} target="_blank" rel="noreferrer" aria-label="Facebook" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#1877F2] transition-all duration-300">
+              <a href={t('footer.facebook')} target="_blank" rel="noreferrer" aria-label="עקבי אחרינו בפייסבוק" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#1877F2] transition-all duration-300">
                 <Facebook className="w-4 h-4" />
               </a>
             </div>
@@ -74,7 +74,12 @@ export default function Footer() {
         
         {/* Copyright */}
         <div className="pt-10 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-600 font-bold">
-          <p>© {new Date().getFullYear()} {t('nav.logo_text')}</p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <p>© {new Date().getFullYear()} {t('nav.logo_text')}</p>
+            <Link to="/accessibility" className="hover:text-primary transition-colors decoration-primary/30 underline-offset-4 underline">
+              הצהרת נגישות
+            </Link>
+          </div>
           <p className="hover:text-primary transition-colors cursor-default">{t('footer.rights')}</p>
         </div>
       </div>

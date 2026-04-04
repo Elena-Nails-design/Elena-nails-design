@@ -6,7 +6,7 @@
   --color-primary: #F5C6D6;
   --color-primary-dark: #E2AFBF;
   --color-secondary: #F9F1EA;
-  --color-gold: #D4AF37;
+  --color-gold: #B8860B; /* Darker Gold for Accessibility (4.5:1 contrast) */
   --color-gold-light: #F1E2A8;
   --color-dark: #121212;
   --color-light: #FFFFFF;
@@ -56,6 +56,46 @@
   .dark body {
     background-color: #0A0A0A;
     color: #EAEAEA;
+  }
+
+  /* Accessibility: Visible Focus Ring for Keyboard Navigation */
+  :focus-visible {
+    outline: 2px solid var(--color-gold) !important;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* Accessibility settings from menu */
+  .high-contrast {
+    filter: contrast(1.5) brightness(0.9);
+  }
+  .high-contrast body {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+  .high-contrast .glass-luxury {
+    background: #000 !important;
+    border: 2px solid white !important;
+  }
+
+  .large-text {
+    font-size: 115%;
+  }
+  .large-text h1 { font-size: 1.25em; }
+  .large-text p { font-size: 1.1em; }
+
+  .underline-links a {
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+  }
+
+  .stop-animations *,
+  .stop-animations *::before,
+  .stop-animations *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

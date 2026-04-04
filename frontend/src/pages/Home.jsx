@@ -217,7 +217,7 @@ export default function Home() {
                 >
                   <img 
                     src={`${import.meta.env.BASE_URL}assets/nails_epshtein/${img}`} 
-                    alt="Latest Work" 
+                    alt={t(`gallery.img_insta_${i + 1}`)} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                   />

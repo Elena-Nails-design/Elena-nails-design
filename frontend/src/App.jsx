@@ -13,6 +13,8 @@ import Contact from './pages/Contact';
 import { ThemeProvider } from './contexts/ThemeContext';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import AIChat from './components/AIChat';
+import Accessibility from './pages/Accessibility';
+import AccessibilityMenu from './components/AccessibilityMenu';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -33,6 +35,7 @@ function AnimatedRoutes() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/accessibility" element={<Accessibility />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
@@ -66,6 +69,7 @@ function App() {
           <Footer />
           <FloatingWhatsApp />
           <AIChat />
+          <AccessibilityMenu />
         </div>
       </Router>
     </ThemeProvider>
