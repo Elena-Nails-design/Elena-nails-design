@@ -47,8 +47,10 @@ export default function AIChat() {
     if (!input.trim() || isLoading) return;
 
     const userMsg = input.trim();
+    const newMessages = [...messages, { role: 'user', content: userMsg }];
+    
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+    setMessages(newMessages);
     setIsLoading(true);
     setError(null);
 
@@ -80,12 +82,10 @@ export default function AIChat() {
       // Combine instructions with the FIRST user message in history
       // 1. Filter out any leading assistant messages from history
       // Gemini requires the conversation to start with a 'user' role.
-      const conversationMessages = [...messages];
+      const conversationMessages = [...newMessages];
       while (conversationMessages.length > 0 && conversationMessages[0].role === 'assistant') {
         conversationMessages.shift();
       }
-
-      if (conversationMessages.length === 0) return;
 
       // 2. Map exactly as required by the @google/generative-ai SDK
       const geminiHistory = conversationMessages.map(m => ({
