@@ -107,12 +107,16 @@
     "filter_design": "Artistry",
     "filter_french": "Classic French",
     "filter_pedicure": "Pristine Pedicures",
-    "img_nude_gel": "Elegant Nude",
-    "img_abstract": "Modern Abstract",
-    "img_french": "Timeless French",
-    "img_red": "Signature Red",
-    "img_glitter": "Luminous Details",
-    "img_spa": "Rejuvenated Pedicure"
+    "img_nude_gel": "Nude gel manicure with a clean and natural look",
+    "img_abstract": "High-end abstract nail art design",
+    "img_french": "Classic and timeless French manicure",
+    "img_red": "Bold and elegant red gel manicure",
+    "img_glitter": "Gel manicure with luminous glitter accents",
+    "img_spa": "Rejuvenated and well-groomed spa pedicure",
+    "img_insta_1": "Classic red gel manicure on short neat nails",
+    "img_insta_2": "Shimmering lilac purple gel manicure",
+    "img_insta_3": "Artistic combination of nude and silver gel",
+    "img_insta_4": "Shiny and clean red gel pedicure"
   },
   "booking": {
     "title": "Book Your Experience",
