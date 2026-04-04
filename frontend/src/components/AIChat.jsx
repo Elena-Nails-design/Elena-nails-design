@@ -100,16 +100,19 @@ export default function AIChat() {
       }
 
       const MODELS_TO_TRY = [
-        "gemini-1.5-flash",
-        "gemini-1.5-flash-latest",
-        "gemini-1.5-pro",
+        "gemini-2.0-flash",
+        "gemini-2.0-flash-001",
+        "gemini-2.5-flash",
+        "gemini-2.0-flash-lite",
         "gemini-pro"
       ];
 
       let lastErr = null;
       let text = null;
+      let lastAttemptedModel = "gemini-2.0-flash";
 
       for (const modelName of MODELS_TO_TRY) {
+        lastAttemptedModel = modelName;
         try {
           console.debug(`Trying model: ${modelName}...`);
           const model = genAI.getGenerativeModel({ model: modelName });
@@ -124,7 +127,6 @@ export default function AIChat() {
         } catch (err) {
           console.warn(`Model ${modelName} failed:`, err.message);
           lastErr = err;
-          // Continue to next model if it's a 404 or 400
         }
       }
 
@@ -136,16 +138,20 @@ export default function AIChat() {
     } catch (err) {
       console.error('Chat Error:', err);
       const errorMessage = err.message || '';
+      const isHebrew = i18n.language === 'he';
+
       if (errorMessage.includes('403') || errorMessage.includes('PERMISSION_DENIED')) {
-        setError(i18n.language === 'he' 
+        setError(isHebrew 
           ? 'שגיאת הרשאה: וודאי שהמפתח מוגדר נכון לדומיין בהגדרות Google Cloud.' 
           : 'Authorization Error: Ensure your API Key is restricted correctly in Google Cloud.');
       } else if (errorMessage.includes('404')) {
-        setError(i18n.language === 'he'
-          ? `המודל לא נמצא (404). וודאי שהמפתח משויך לפרויקט ${MODEL_NAME} ב-API Studio.`
-          : `Model not found (404). Ensure Key is tied to ${MODEL_NAME} in AI Studio.`);
+        setError(isHebrew 
+          ? `דגם ה-AI (${lastAttemptedModel}) לא נמצא. נסי שוב מאוחר יותר.` 
+          : `AI Model (${lastAttemptedModel}) not found. Please try again later.`);
       } else {
-        setError(`${t('chat.error')} (Detail: ${errorMessage.substring(0, 80)})`);
+        setError(isHebrew 
+          ? `חלה שגיאה בחיבור ל-AI. נסי שוב מאוחר יותר. (Detail: ${errorMessage.substring(0, 50)})` 
+          : `Failed to connect to AI. Please try again later. (Detail: ${errorMessage.substring(0, 50)})`);
       }
     } finally {
       setIsLoading(false);
