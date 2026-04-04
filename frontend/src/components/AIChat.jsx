@@ -78,12 +78,18 @@ export default function AIChat() {
           - Keep responses concise but "luxury" in feel. Use emojis appropriately (💅, ✨, 💎).`
       });
 
-      const chat = model.startChat({
-        history: messages.map(m => ({
-          role: m.role === 'user' ? 'user' : 'model',
-          parts: [{ text: m.content }],
-        })),
-      });
+      const history = messages.map(m => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        parts: [{ text: m.content }],
+      }));
+
+      // Gemini requires the first message in history to be from 'user'.
+      // If our first message is the 'assistant' welcome message, we skip it for the API.
+      if (history.length > 0 && history[0].role === 'model') {
+        history.shift();
+      }
+
+      const chat = model.startChat({ history });
 
       const result = await chat.sendMessage(userMsg);
       const response = await result.response;
