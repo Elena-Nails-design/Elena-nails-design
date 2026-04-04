@@ -69,14 +69,18 @@ export default function AccessibilityMenu() {
   ];
 
   return (
-    <div className="fixed bottom-32 right-8 z-[9998]">
+    <div className="fixed top-1/2 -translate-y-1/2 right-0 z-[9998] flex items-center">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "סגור תפריט נגישות" : "פתח תפריט נגישות"}
         aria-expanded={isOpen}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="w-14 h-14 rounded-2xl bg-gold text-white shadow-luxury flex items-center justify-center hover:bg-gold/90 transition-colors"
+        initial={false}
+        animate={{ 
+          x: isOpen ? -10 : 20, // Slide out a bit more when closed
+          scale: 1 
+        }}
+        whileHover={{ x: 0 }}
+        className="w-14 h-14 rounded-l-2xl bg-gold text-white shadow-luxury flex items-center justify-center hover:bg-gold/90 transition-colors pr-2"
       >
         {isOpen ? <X size={24} /> : <Accessibility size={24} />}
       </motion.button>
@@ -84,10 +88,10 @@ export default function AccessibilityMenu() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20, transformOrigin: 'bottom right' }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-16 right-0 w-72 bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-black/5 dark:border-white/5 p-6 space-y-4 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9, x: 20, transformOrigin: 'right center' }}
+            animate={{ opacity: 1, scale: 1, x: -64 }} // Move away from the button
+            exit={{ opacity: 0, scale: 0.9, x: 20 }}
+            className="absolute right-0 w-72 bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-black/5 dark:border-white/5 p-6 space-y-4 overflow-hidden"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-bold text-sm tracking-widest uppercase text-dark dark:text-white">
