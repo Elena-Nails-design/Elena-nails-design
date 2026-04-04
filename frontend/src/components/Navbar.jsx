@@ -100,7 +100,7 @@ export default function Navbar() {
 
             {/* Language & Theme */}
             <div className={`flex items-center gap-4 border-s border-dark/10 dark:border-white/10 ${i18n.language === 'ru' ? 'ps-4' : 'ps-8'}`}>
-              <div className="flex gap-3">
+              <div className="flex gap-3" dir="ltr">
                 {['he', 'ru', 'en'].map((lng) => (
                   <button 
                     key={lng}
@@ -124,7 +124,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="flex items-center gap-2 md:hidden">
             {/* Compact language switcher visible on mobile */}
-            <div className="flex gap-1">
+            <div className="flex gap-1" dir="ltr">
               {['he', 'ru', 'en'].map((lng) => (
                 <button
                   key={lng}
