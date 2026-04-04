@@ -86,22 +86,28 @@ export default function AIChat() {
       }
 
       const MODEL_NAME = "gemini-1.5-flash";
-      const FALLBACK_1 = "gemini-1.5-pro"; // Try 1.5-pro explicitly
+      const FALLBACK_1 = "gemini-1.5-pro"; 
       const FALLBACK_2 = "gemini-pro";
+
+      const fullHistory = [
+        { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+        { role: 'model', parts: [{ text: "Understood. I am your premium nail studio assistant at Elena Nails Design. I will provide helpful, professional, and elegant advice to your clients as requested." }] },
+        ...history
+      ];
 
       let result;
       const tryModel = async (name) => {
         const model = genAI.getGenerativeModel(
-          { model: name, systemInstruction: SYSTEM_PROMPT },
-          { apiVersion: "v1" } // Force stable API instead of v1beta
+          { model: name }, // Removed systemInstruction
+          { apiVersion: "v1" } 
         );
-        return await model.generateContent({ contents: history });
+        return await model.generateContent({ contents: fullHistory });
       };
 
       try {
         result = await tryModel(MODEL_NAME);
       } catch (firstErr) {
-        if (firstErr.message?.includes("404") || firstErr.message?.includes("not found")) {
+        if (firstErr.message?.includes("404") || firstErr.message?.includes("not found") || firstErr.message?.includes("400")) {
           try {
             console.warn(`Fallback to ${FALLBACK_1}...`);
             result = await tryModel(FALLBACK_1);
@@ -110,7 +116,7 @@ export default function AIChat() {
               console.warn(`Fallback to ${FALLBACK_2}...`);
               result = await tryModel(FALLBACK_2);
             } catch (thirdErr) {
-              console.error("All models failed 404. Last error:", thirdErr);
+              console.error("All models failed. Last error:", thirdErr);
               throw thirdErr;
             }
           }
