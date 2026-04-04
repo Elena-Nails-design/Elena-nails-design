@@ -99,11 +99,39 @@ export default function AIChat() {
         geminiHistory[0].parts[0].text = `Persona/Instructions: ${SYSTEM_PROMPT}\n\nClient Message: ${geminiHistory[0].parts[0].text}`;
       }
 
-      const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-      
-      const result = await model.generateContent({ contents: geminiHistory });
-      const response = await result.response;
-      const text = response.text();
+      const MODELS_TO_TRY = [
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-latest",
+        "gemini-1.5-pro",
+        "gemini-pro"
+      ];
+
+      let lastErr = null;
+      let text = null;
+
+      for (const modelName of MODELS_TO_TRY) {
+        try {
+          console.debug(`Trying model: ${modelName}...`);
+          const model = genAI.getGenerativeModel({ model: modelName });
+          const result = await model.generateContent({ contents: geminiHistory });
+          const response = await result.response;
+          const candidateText = response.text();
+          if (candidateText) {
+            text = candidateText;
+            console.debug(`Successfully used model: ${modelName}`);
+            break; 
+          }
+        } catch (err) {
+          console.warn(`Model ${modelName} failed:`, err.message);
+          lastErr = err;
+          // Continue to next model if it's a 404 or 400
+        }
+      }
+
+      if (!text && lastErr) {
+        throw lastErr;
+      }
+
       setMessages(prev => [...prev, { role: 'assistant', content: text }]);
     } catch (err) {
       console.error('Chat Error:', err);
