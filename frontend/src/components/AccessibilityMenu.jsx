@@ -45,26 +45,22 @@ export default function AccessibilityMenu() {
     { 
       key: 'highContrast', 
       icon: <Contrast size={20} />, 
-      labelHe: 'ניגודיות גבוהה', 
-      labelEn: 'High Contrast' 
+      label: t('accessibility.highContrast') 
     },
     { 
       key: 'largeText', 
       icon: <Type size={20} />, 
-      labelHe: 'הגדלת טקסט', 
-      labelEn: 'Large Text' 
+      label: t('accessibility.largeText') 
     },
     { 
       key: 'underlineLinks', 
       icon: <MousePointer2 size={20} />, 
-      labelHe: 'הדגשת קישורים', 
-      labelEn: 'Underline Links' 
+      label: t('accessibility.underlineLinks') 
     },
     { 
       key: 'stopAnimations', 
       icon: <ZapOff size={20} />, 
-      labelHe: 'עצירת אנימציות', 
-      labelEn: 'Stop Animations' 
+      label: t('accessibility.stopAnimations') 
     }
   ];
 
@@ -72,7 +68,7 @@ export default function AccessibilityMenu() {
     <div className="fixed top-1/2 -translate-y-1/2 right-0 z-[9998] flex items-center">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "סגור תפריט נגישות" : "פתח תפריט נגישות"}
+        aria-label={isOpen ? t('accessibility.close') : t('accessibility.open')}
         aria-expanded={isOpen}
         initial={false}
         animate={{ 
@@ -95,7 +91,7 @@ export default function AccessibilityMenu() {
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-bold text-sm tracking-widest uppercase text-dark dark:text-white">
-                {i18n.language === 'he' ? 'נגישות' : 'Accessibility'}
+                {t('accessibility.title')}
               </h3>
               <Accessibility size={16} className="text-gold" />
             </div>
@@ -114,7 +110,7 @@ export default function AccessibilityMenu() {
                   <div className="flex items-center gap-3">
                     {opt.icon}
                     <span className="text-xs font-bold uppercase tracking-wider">
-                      {i18n.language === 'he' ? opt.labelHe : opt.labelEn}
+                      {opt.label}
                     </span>
                   </div>
                   {settings[opt.key] && <Check size={16} />}
@@ -131,7 +127,7 @@ export default function AccessibilityMenu() {
               })}
               className="w-full py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-dark dark:hover:text-white transition-colors border-t border-black/5 dark:border-white/5 pt-4"
             >
-              {i18n.language === 'he' ? 'איפוס הגדרות' : 'Reset Settings'}
+              {t('accessibility.reset')}
             </button>
           </motion.div>
         )}
