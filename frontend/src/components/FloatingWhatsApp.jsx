@@ -20,7 +20,7 @@ export default function FloatingWhatsApp() {
       animate={{ x: 0, opacity: 1 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-[20px] left-[20px] z-50 flex items-center gap-3 px-6 py-3 bg-[#25D366] text-white rounded-[50px] shadow-luxury hover:bg-[#20bd5a] transition-all duration-300 group text-decoration-none"
+      className="fixed bottom-8 left-8 z-50 flex items-center gap-3 px-6 h-16 bg-[#25D366] text-white rounded-full shadow-luxury hover:bg-[#20bd5a] transition-all duration-300 group text-decoration-none"
       aria-label="Contact us on WhatsApp"
     >
       <span className="text-xs font-bold uppercase tracking-widest">

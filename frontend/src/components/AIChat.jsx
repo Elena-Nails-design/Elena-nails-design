@@ -172,54 +172,59 @@ export default function AIChat() {
             initial={{ opacity: 0, y: 50, scale: 0.9, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-28 right-4 md:right-8 z-[100] w-[calc(100%-2rem)] md:w-[400px] h-[550px] md:h-[600px] glass-luxury dark:bg-black/60 rounded-[2.5rem] shadow-luxury-hover border border-white/40 dark:border-white/5 overflow-hidden flex flex-col"
+            className="fixed bottom-28 right-4 md:right-8 z-[100] w-[calc(100%-2rem)] md:w-[420px] h-[600px] md:h-[700px] bg-white/98 dark:bg-stone-900/98 backdrop-blur-3xl rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-white/40 dark:border-white/5 overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="bg-primary dark:bg-primary-dark p-6 flex items-center justify-between shadow-lg">
+            <div className="bg-gradient-to-r from-primary via-primary-dark to-primary p-7 flex items-center justify-between shadow-soft">
               <div className="flex items-center gap-4 text-white">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
-                  <Sparkles size={20} className="text-white" />
+                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center backdrop-blur-md shadow-inner">
+                  <Sparkles size={24} className="text-white drop-shadow-md" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm tracking-widest uppercase">
+                  <h3 className="font-bold text-base tracking-[0.2em] uppercase">
                     {t('chat.title')}
                   </h3>
-                  <span className="text-[10px] opacity-70 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-[11px] font-medium opacity-90 flex items-center gap-1.5">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.5)]" />
                     {t('chat.status')}
                   </span>
                 </div>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="text-white/60 hover:text-white transition-colors"
+                className="w-10 h-10 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-all group"
               >
-                <X size={20} />
+                <X size={20} className="text-white/80 group-hover:text-white group-hover:scale-110" />
               </button>
             </div>
 
             {/* Messages Area */}
             <div 
               ref={scrollRef}
-              className="flex-grow overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-primary/20"
+              className="flex-grow overflow-y-auto p-6 space-y-8 scrollbar-thin scrollbar-thumb-primary/10 bg-stone-50/30 dark:bg-transparent"
             >
               {messages.map((msg, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: msg.role === 'user' ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`shadow-sm flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === 'user' ? 'bg-primary' : 'bg-gray-100 dark:bg-gray-800'}`}>
-                      {msg.role === 'user' ? <User size={14} className="text-white" /> : <Bot size={14} className="text-primary dark:text-primary-dark" />}
-                    </div>
-                    <div className={`p-4 rounded-3xl text-sm leading-relaxed ${
-                      msg.role === 'user' 
-                        ? 'bg-primary/10 text-dark dark:text-white rounded-tr-none' 
-                        : 'bg-white dark:bg-white/5 text-dark dark:text-white rounded-tl-none border border-black/5 dark:border-white/5'
+                  <div className={`flex gap-3 max-w-[88%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <div className={`shrink-0 w-8 h-8 rounded-xl flex items-center justify-center shadow-sm ${
+                      msg.role === 'user' ? 'bg-primary-dark' : 'bg-white dark:bg-stone-800'
                     }`}>
-                      <ReactMarkdown className="markdown-chat">
+                      {msg.role === 'user' 
+                        ? <User size={14} className="text-white" /> 
+                        : <Sparkles size={14} className="text-primary-dark" />
+                      }
+                    </div>
+                    <div className={`p-4 rounded-2xl text-[14px] leading-relaxed shadow-soft ${
+                      msg.role === 'user' 
+                        ? 'bg-primary text-white rounded-tr-none' 
+                        : 'bg-white dark:bg-stone-800 text-dark dark:text-white rounded-tl-none border border-black/5 dark:border-white/5'
+                    }`}>
+                      <ReactMarkdown className="markdown-chat whitespace-pre-wrap">
                         {msg.content}
                       </ReactMarkdown>
                     </div>
@@ -228,21 +233,25 @@ export default function AIChat() {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white dark:bg-white/5 p-4 rounded-3xl rounded-tl-none flex items-center gap-2 border border-black/5">
-                    <Loader2 size={16} className="animate-spin text-primary" />
-                    <span className="text-xs text-gray-400">{t('chat.thinking')}</span>
+                  <div className="bg-white dark:bg-stone-800 p-4 rounded-2xl rounded-tl-none flex items-center gap-3 border border-black/5 shadow-soft">
+                    <div className="flex gap-1.5">
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
+                    </div>
+                    <span className="text-[11px] font-bold tracking-wider text-primary-dark uppercase">{t('chat.thinking')}</span>
                   </div>
                 </div>
               )}
               {error && (
-                <div className="text-center text-[10px] text-red-500 font-bold bg-red-50 dark:bg-red-950/20 py-2 rounded-xl border border-red-100 dark:border-red-900/50">
+                <div className="text-center text-[11px] text-red-500 font-bold bg-red-50 dark:bg-red-950/20 py-3 px-4 rounded-2xl border border-red-100 dark:border-red-900/50">
                   {error}
                 </div>
               )}
             </div>
 
             {/* Input Area */}
-            <div className="p-6 bg-white/50 dark:bg-black/40 backdrop-blur-md border-t border-black/5 dark:border-white/5">
+            <div className="p-7 bg-white dark:bg-stone-900 border-t border-black/5 dark:border-white/5">
               <div className="relative group">
                 <input
                   type="text"
@@ -250,23 +259,26 @@ export default function AIChat() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                   placeholder={t('chat.placeholder')}
-                  className="w-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full py-3 pl-6 pr-12 text-sm focus:outline-none focus:border-primary transition-all dark:text-white"
+                  className="w-full bg-stone-50 dark:bg-stone-800/50 border border-black/5 dark:border-white/5 rounded-2xl py-4 pl-6 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all dark:text-white"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary hover:bg-primary-dark rounded-xl flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg active:scale-95"
                 >
-                  <Send size={14} />
+                  <Send size={18} />
                 </button>
               </div>
-              <div className="mt-4 flex justify-between items-center px-2">
-                <p className="text-[9px] text-gray-400 font-medium tracking-tight">AI Assistance • Powered by Gemini</p>
+              <div className="mt-5 flex justify-between items-center px-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-tight">AI • Premium Concierge</p>
+                </div>
                 <a 
                   href={`https://wa.me/${WHATSAPP_PHONE}`}
-                  className="flex items-center gap-1.5 text-[10px] font-bold text-primary hover:text-primary-dark transition-colors"
+                  className="flex items-center gap-2 text-[11px] font-bold text-primary-dark hover:text-primary transition-colors underline-offset-4 hover:underline"
                 >
-                  <Phone size={10} />
+                  <Phone size={12} />
                   {t('chat.talk_direct')}
                 </a>
               </div>
