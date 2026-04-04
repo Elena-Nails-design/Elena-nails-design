@@ -59,20 +59,23 @@ export default function Navbar() {
       <nav 
         className={`transition-all duration-500 ease-in-out border-b ${
           isOpen 
-            ? 'bg-white dark:bg-[#0A0A0A] py-4 border-black/5 dark:border-white/10'
+            ? 'bg-dark dark:bg-[#0A0A0A] py-4 border-white/10'
             : isScrolled
               ? 'glass-luxury py-4 shadow-xl border-black/5 dark:border-white/10' 
               : 'bg-transparent py-5 border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 transition-all duration-500">
-          {/* Logo */}
+        <div className="flex justify-between items-center h-16 md:h-20 transition-all duration-500">
+          {/* Logo - Force white when menu is open */}
           <Link 
             to="/" 
             className="flex items-center transition-transform duration-500 hover:scale-105 shrink-0" 
+            onClick={() => setIsOpen(false)}
           >
-            <Logo className="h-14 md:h-16 w-auto" scrolled={isScrolled} />
+            <div className={isOpen ? 'dark' : ''}>
+              <Logo className="h-12 md:h-16 w-auto" scrolled={isScrolled} />
+            </div>
           </Link>
 
           {/* Desktop Menu */}
@@ -128,27 +131,32 @@ export default function Navbar() {
                   onClick={() => changeLanguage(lng)}
                   className={`text-[9px] font-bold tracking-widest px-2 py-1 rounded-full border transition-all duration-300 ${
                     i18n.language === lng
-                      ? 'bg-dark text-white border-dark dark:bg-primary-dark dark:text-dark dark:border-primary-dark'
-                      : 'text-dark/40 border-dark/10 dark:text-white/40 dark:border-white/10'
+                      ? 'bg-primary-dark text-dark border-primary-dark'
+                      : isOpen 
+                        ? 'text-white/40 border-white/10' 
+                        : 'text-dark/40 border-dark/10 dark:text-white/40 dark:border-white/10'
                   }`}
                 >
                   {lng.toUpperCase()}
                 </button>
               ))}
             </div>
-            <ThemeToggle />
+            <div className={isOpen ? 'text-white' : ''}>
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark dark:text-white p-2"
+              className={`p-2 transition-colors ${isOpen ? 'text-white' : 'text-dark dark:text-white'}`}
+              aria-label={isOpen ? "סגור תפריט" : "פתח תפריט"}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
-                  <motion.div key="close" initial={{ rotate: -90 }} animate={{ rotate: 0 }} exit={{ rotate: 90 }}>
-                    <X className="w-7 h-7" />
+                  <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+                    <X className="w-8 h-8" />
                   </motion.div>
                 ) : (
-                  <motion.div key="menu" initial={{ rotate: 90 }} animate={{ rotate: 0 }} exit={{ rotate: -90 }}>
-                    <Menu className="w-7 h-7" />
+                  <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+                    <Menu className="w-8 h-8" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -161,47 +169,33 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-[88px] md:hidden bg-white dark:bg-[#0A0A0A] z-50 overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 top-[112px] md:hidden bg-dark dark:bg-[#0A0A0A] z-[40] overflow-y-auto"
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-8 px-6 text-center">
+            <div className="flex flex-col items-center pt-20 pb-32 space-y-10 px-6 text-center h-full">
               {links.map((link, i) => (
                 <motion.div
                   key={link.path}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="w-full"
                 >
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-2xl tracking-widest uppercase font-playfair transition-colors ${
+                    className={`block text-3xl tracking-widest uppercase font-playfair transition-all duration-300 ${
                       location.pathname === link.path
-                        ? 'text-primary-dark dark:text-primary scale-110'
-                        : 'text-dark/40 dark:text-white/40'
+                        ? 'text-primary-dark scale-110 font-bold'
+                        : 'text-white/60 hover:text-white'
                     }`}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-              
-              <div className="pt-12 flex gap-8">
-                {['he', 'ru', 'en'].map((lng) => (
-                  <button 
-                    key={lng}
-                    onClick={() => changeLanguage(lng)} 
-                    className={`text-sm font-bold tracking-widest ${
-                      i18n.language === lng ? 'text-primary-dark dark:text-primary underline underline-offset-8' : 'text-dark/40 dark:text-white/40'
-                    }`}
-                  >
-                    {lng.toUpperCase()}
-                  </button>
-                ))}
-              </div>
             </div>
           </motion.div>
         )}
