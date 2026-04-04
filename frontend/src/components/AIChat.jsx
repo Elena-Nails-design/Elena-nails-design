@@ -86,22 +86,29 @@ export default function AIChat() {
       }
 
       const MODEL_NAME = "gemini-1.5-flash";
-      const FALLBACK_MODEL = "gemini-1.5-flash-latest";
+      const FALLBACK_1 = "gemini-1.5-flash-latest";
+      const FALLBACK_2 = "gemini-pro";
 
       let result;
-      try {
+      const tryModel = async (name) => {
         const model = genAI.getGenerativeModel({ 
-          model: MODEL_NAME, 
-          systemInstruction: { role: "system", parts: [{ text: SYSTEM_PROMPT }] } 
+          model: name, 
+          systemInstruction: SYSTEM_PROMPT 
         });
-        result = await model.generateContent({ contents: history });
+        return await model.generateContent({ contents: history });
+      };
+
+      try {
+        result = await tryModel(MODEL_NAME);
       } catch (firstErr) {
         if (firstErr.message?.includes("404") || firstErr.message?.includes("not found")) {
-          const fallbackModel = genAI.getGenerativeModel({ 
-            model: FALLBACK_MODEL, 
-            systemInstruction: { role: "system", parts: [{ text: SYSTEM_PROMPT }] } 
-          });
-          result = await fallbackModel.generateContent({ contents: history });
+          try {
+            console.warn(`Fallback to ${FALLBACK_1}...`);
+            result = await tryModel(FALLBACK_1);
+          } catch (secondErr) {
+            console.warn(`Fallback to ${FALLBACK_2}...`);
+            result = await tryModel(FALLBACK_2);
+          }
         } else {
           throw firstErr;
         }
@@ -119,10 +126,10 @@ export default function AIChat() {
           : 'Authorization Error: Ensure your API Key is restricted correctly in Google Cloud.');
       } else if (errorMessage.includes('404')) {
         setError(i18n.language === 'he'
-          ? `המודל לא נמצא (404). וודאי ש-'Generative Language API' מופעל בפרויקט הנכון.`
-          : `Model not found (404). Ensure 'Generative Language API' is enabled in the correct project.`);
+          ? `המודל לא נמצא (404). וודאי שהמפתח משויך לפרויקט ${MODEL_NAME} ב-API Studio.`
+          : `Model not found (404). Ensure Key is tied to ${MODEL_NAME} in AI Studio.`);
       } else {
-        setError(`${t('chat.error')} (Detail: ${errorMessage.substring(0, 50)})`);
+        setError(`${t('chat.error')} (Detail: ${errorMessage.substring(0, 80)})`);
       }
     } finally {
       setIsLoading(false);
