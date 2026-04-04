@@ -86,15 +86,15 @@ export default function AIChat() {
       }
 
       const MODEL_NAME = "gemini-1.5-flash";
-      const FALLBACK_1 = "gemini-1.5-flash-latest";
+      const FALLBACK_1 = "gemini-1.5-pro"; // Try 1.5-pro explicitly
       const FALLBACK_2 = "gemini-pro";
 
       let result;
       const tryModel = async (name) => {
-        const model = genAI.getGenerativeModel({ 
-          model: name, 
-          systemInstruction: SYSTEM_PROMPT 
-        });
+        const model = genAI.getGenerativeModel(
+          { model: name, systemInstruction: SYSTEM_PROMPT },
+          { apiVersion: "v1" } // Force stable API instead of v1beta
+        );
         return await model.generateContent({ contents: history });
       };
 
@@ -106,8 +106,13 @@ export default function AIChat() {
             console.warn(`Fallback to ${FALLBACK_1}...`);
             result = await tryModel(FALLBACK_1);
           } catch (secondErr) {
-            console.warn(`Fallback to ${FALLBACK_2}...`);
-            result = await tryModel(FALLBACK_2);
+            try {
+              console.warn(`Fallback to ${FALLBACK_2}...`);
+              result = await tryModel(FALLBACK_2);
+            } catch (thirdErr) {
+              console.error("All models failed 404. Last error:", thirdErr);
+              throw thirdErr;
+            }
           }
         } else {
           throw firstErr;
