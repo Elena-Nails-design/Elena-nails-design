@@ -78,28 +78,30 @@ export default function AIChat() {
       const MODEL_NAME = "gemini-1.5-flash";
 
       // Combine instructions with the FIRST user message in history
-      const promptHistory = messages.map((m, index) => {
-        if (index === 0 && m.role === 'user') {
-          return {
-            role: 'user',
-            parts: [{ text: `Instructions: ${SYSTEM_PROMPT}\n\nUser Message: ${m.content}` }]
-          };
-        }
-        return {
-          role: m.role === 'user' ? 'user' : 'model',
-          parts: [{ text: m.content }]
-        };
-      });
+      // 1. Filter out any leading assistant messages from history
+      // Gemini requires the conversation to start with a 'user' role.
+      const conversationMessages = [...messages];
+      while (conversationMessages.length > 0 && conversationMessages[0].role === 'assistant') {
+        conversationMessages.shift();
+      }
 
-      // Gemini requires starting with 'user'
-      if (promptHistory.length > 0 && promptHistory[0].role === 'model') {
-        promptHistory.shift();
+      if (conversationMessages.length === 0) return;
+
+      // 2. Map exactly as required by the @google/generative-ai SDK
+      const geminiHistory = conversationMessages.map(m => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        parts: [{ text: m.content }]
+      }));
+
+      // 3. Inject instructions to the FIRST user message
+      // This is the most reliable way to enforce persona without v1beta fields.
+      if (geminiHistory.length > 0 && geminiHistory[0].role === 'user') {
+        geminiHistory[0].parts[0].text = `Persona/Instructions: ${SYSTEM_PROMPT}\n\nClient Message: ${geminiHistory[0].parts[0].text}`;
       }
 
       const model = genAI.getGenerativeModel({ model: MODEL_NAME });
       
-      const result = await model.generateContent({ contents: promptHistory });
-
+      const result = await model.generateContent({ contents: geminiHistory });
       const response = await result.response;
       const text = response.text();
       setMessages(prev => [...prev, { role: 'assistant', content: text }]);
