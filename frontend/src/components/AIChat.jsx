@@ -75,55 +75,30 @@ export default function AIChat() {
           - If asked about prices, refer them to the "Services" page on the website.
           - Keep responses concise but "luxury" in feel. Use emojis appropriately (💅, ✨, 💎).`;
 
-      const history = messages.map(m => ({
-        role: m.role === 'user' ? 'user' : 'model',
-        parts: [{ text: m.content }],
-      }));
-
-      // Gemini requires the first message in history to be from 'user'.
-      if (history.length > 0 && history[0].role === 'model') {
-        history.shift();
-      }
-
       const MODEL_NAME = "gemini-1.5-flash";
-      const FALLBACK_1 = "gemini-1.5-pro"; 
-      const FALLBACK_2 = "gemini-pro";
 
-      const fullHistory = [
-        { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-        { role: 'model', parts: [{ text: "Understood. I am your premium nail studio assistant at Elena Nails Design. I will provide helpful, professional, and elegant advice to your clients as requested." }] },
-        ...history
-      ];
-
-      let result;
-      const tryModel = async (name) => {
-        const model = genAI.getGenerativeModel(
-          { model: name }, // Removed systemInstruction
-          { apiVersion: "v1" } 
-        );
-        return await model.generateContent({ contents: fullHistory });
-      };
-
-      try {
-        result = await tryModel(MODEL_NAME);
-      } catch (firstErr) {
-        if (firstErr.message?.includes("404") || firstErr.message?.includes("not found") || firstErr.message?.includes("400")) {
-          try {
-            console.warn(`Fallback to ${FALLBACK_1}...`);
-            result = await tryModel(FALLBACK_1);
-          } catch (secondErr) {
-            try {
-              console.warn(`Fallback to ${FALLBACK_2}...`);
-              result = await tryModel(FALLBACK_2);
-            } catch (thirdErr) {
-              console.error("All models failed. Last error:", thirdErr);
-              throw thirdErr;
-            }
-          }
-        } else {
-          throw firstErr;
+      // Combine instructions with the FIRST user message in history
+      const promptHistory = messages.map((m, index) => {
+        if (index === 0 && m.role === 'user') {
+          return {
+            role: 'user',
+            parts: [{ text: `Instructions: ${SYSTEM_PROMPT}\n\nUser Message: ${m.content}` }]
+          };
         }
+        return {
+          role: m.role === 'user' ? 'user' : 'model',
+          parts: [{ text: m.content }]
+        };
+      });
+
+      // Gemini requires starting with 'user'
+      if (promptHistory.length > 0 && promptHistory[0].role === 'model') {
+        promptHistory.shift();
       }
+
+      const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+      
+      const result = await model.generateContent({ contents: promptHistory });
 
       const response = await result.response;
       const text = response.text();
