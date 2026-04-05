@@ -6,6 +6,7 @@
     "gallery": "Portfolio",
     "booking": "Reserve",
     "contact": "Connect",
+    "blog": "Beauty Secrets",
     "logo_text": "ELENA EPSHTEIN",
     "light_mode": "Light",
     "dark_mode": "Dark"
@@ -179,5 +180,97 @@
     "reset": "Reset Settings",
     "open": "Open Accessibility Menu",
     "close": "Close Accessibility Menu"
+  },
+  "blog": {
+    "title": "Beauty Secrets",
+    "hero_title": "Professional Articles & Tips",
+    "hero_subtitle": "Expert knowledge for your nail care journey",
+    "read_more": "Read More",
+    "back": "Back to Articles",
+    "meta_title": "Beauty Secrets | Professional Articles - Elena Nails Design",
+    "meta_description": "Discover the secrets to a perfect manicure, nail care, and 2026 trends in Elena Epshtein's professional blog.",
+    "articles": {
+      "healthy": {
+        "title": "How to Keep Your Nails Healthy",
+        "excerpt": "The secret to strong nails starts with the right routine. Discover common mistakes and how to avoid them.",
+        "content_p1": "Healthy nails are the foundation of any perfect manicure. Many of us tend to neglect the natural nail, assuming that polish will hide everything, but the reality is that a strong and healthy nail ensures higher gel durability and an aesthetic look for longer.",
+        "content_p2": "The most common mistake is using nails as tools (for opening cans or scraping). Additionally, it's recommended to use a nourishing cuticle oil at least once a day to maintain nail flexibility and prevent cracks. Avoid cutting the skin around the nail yourself – leave it to the professional to prevent infections and damage to the nail root.",
+        "meta_title": "How to Keep Your Nails Healthy | Elena Epshtein",
+        "meta_description": "Professional tips for maintaining natural nail health and preventing breaks and cracks."
+      },
+      "gel_pros_cons": {
+        "title": "Gel Polish – Pros & Cons",
+        "excerpt": "When should you choose gel polish and who is it best for? Everything you wanted to know about this popular solution.",
+        "content_p1": "Gel polish has become the standard in the beauty world thanks to its shiny look and durability. The greatest advantage is peace of mind – knowing that your manicure will look perfect for 3-4 weeks without chipping.",
+        "content_p2": "However, it's important to remember that improper use or aggressive removal at home can damage nail layers. Gel polish suits almost everyone, but for women with very weak nails, it's recommended to combine it with a strengthening 'anatomical structure' to provide an extra protective layer. The key to success is professional removal only.",
+        "meta_title": "Gel Polish: Pros & Cons | Professional Guide",
+        "meta_description": "Is gel polish right for your nails? Discover all the advantages and disadvantages of modern manicures."
+      },
+      "manicure_duration": {
+        "title": "How Long Does a Manicure Last?",
+        "excerpt": "What affects the longevity of the application and how you can extend your manicure time at home.",
+        "content_p1": "The most common question is 'Why does it last a month for my friend but only two weeks for me?'. The answer is a combination of physiology (nail oiliness) and lifestyle. Working with cleaning agents without gloves is the number one enemy of a manicure.",
+        "content_p2": "To extend the life of your manicure, be sure to use gloves in the kitchen, avoid prolonged exposure to very hot water in the first days after treatment, and never try to peel off the gel if it starts to lift. Applying cuticle oil keeps the polish flexible and prevents it from 'snapping' off the nail.",
+        "meta_title": "How Long Does a Gel Manicure Last? | Elena Epshtein",
+        "meta_description": "Manicure longevity secrets: how to keep your polish perfect for long weeks."
+      },
+      "trends_2026": {
+        "title": "Nail Design Trends for 2026",
+        "excerpt": "From luxury pastel tones to the chrome effect – discover what's waiting for us this year in the studio.",
+        "content_p1": "The year 2026 brings a return to quiet elegance combined with impressive technology. The strongest trend is 'Micro-French' – a thin and refined French that gives a clean and sophisticated look.",
+        "content_p2": "In the color palette, we see a return to 'Sand' and 'Cream' shades paired with soft pearl effects. For drama lovers, delicate 3D effects and the use of chrome powders in Rose Gold shades will continue to lead throughout the year.",
+        "meta_title": "Nail Trends 2026 | Beauty Magazine",
+        "meta_description": "The colors, shapes, and designs that will lead 2026 in the manicure world."
+      },
+      "choose_salon": {
+        "title": "How to Choose a Professional Nail Salon?",
+        "excerpt": "Hygiene is not a recommendation; it's a requirement. Here's how to identify a place that cares for your health.",
+        "content_p1": "Choosing a manicurist is a matter of trust. The first thing you should check is the sterilization level. A professional salon is obligated to use an 'Autoclave' – a medical sterilization device that guarantees the destruction of 100% of bacteria and viruses.",
+        "content_p2": "Beyond cleanliness, pay attention to the quality of materials. Cheap materials can cause allergies and irreversible damage to the nail. A good manicurist will provide you with personal advice and know how to adjust the treatment to your nail condition, not just apply color and send you home.",
+        "meta_title": "How to Choose a Manicurist in Ashdod? | Guide",
+        "meta_description": "5 signs of a professional and safe nail salon using medical-grade sterilization."
+      },
+      "foot_care": {
+        "title": "At-Home Foot Care",
+        "excerpt": "Correct care routine for keeping your feet soft and healthy between pedicure treatments.",
+        "content_p1": "Our feet carry us all day, but they are often the last part of the body to receive attention. The secret to soft feet is consistency. There's no need for aggressive treatments at home, just simple actions that prevent dry skin accumulation.",
+        "content_p2": "The most important tip: applying a rich foot cream before bed and wearing cotton socks. Once a week, it's recommended to take a gentle salt bath. Avoid using blades or overly harsh files at home – these can cause the skin to grow back thicker and harder. Let a professional handle the hard skin safely.",
+        "meta_title": "At-Home Foot Care | Pedicure Guide",
+        "meta_description": "How to keep your feet soft and healthy with a simple home routine."
+      }
+    }
+  },
+  "equipment": {
+    "title": "Professional Equipment & Products",
+    "subtitle": "Quality, safety, and perfect results start with the right tools",
+    "items": {
+      "vacuum": {
+        "name": "4BLANC PRO Professional Vacuum",
+        "description": "The ultimate in clean technology for the manicure station. Uncompromising power combined with whisper-quiet performance.",
+        "benefits": [
+          "Sterile, dust-free work environment",
+          "Full respiratory protection for client and technician",
+          "Advanced centrifugal purification technology"
+        ]
+      },
+      "lamp": {
+        "name": "SUNX PRO Smart AI Lamp",
+        "description": "Next-generation curing lamp with intelligent AI sensors that adapt to every material type.",
+        "benefits": [
+          "Fast, uniform, and safe polymerisation",
+          "Low Heat Mode to prevent burning sensations",
+          "Smart sensors for peak curing precision"
+        ]
+      },
+      "luxio": {
+        "name": "Luxio Premium Collection",
+        "description": "The elite Canadian brand providing a professional look, exceptional durability, and maximum nail health.",
+        "benefits": [
+          "Uncompromising premium material quality",
+          "Glass-like shine that lasts for weeks",
+          "Nail-friendly formula to preserve natural strength"
+        ]
+      }
+    }
   }
 }

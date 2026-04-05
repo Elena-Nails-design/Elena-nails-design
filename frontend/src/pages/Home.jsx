@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Sparkles, ShieldCheck, Waves, Star, MessageCircle, Instagram, ChevronDown } from 'lucide-react';
 import Reveal from '../components/Reveal';
+import ProfessionalEquipment from '../components/ProfessionalEquipment';
 
 const STUDIO_PHONE = '9720534611370';
 
@@ -176,6 +177,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Professional Equipment Section */}
+      <ProfessionalEquipment />
 
       {/* ★ INSTAGRAM SECTION (Recent Works) */}
       <section className="py-32 bg-white dark:bg-[#050505] transition-colors duration-700 relative">
