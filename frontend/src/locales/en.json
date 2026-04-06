@@ -79,24 +79,76 @@
     "book_btn": "Reserve Your Refined Time",
     "most_popular": "Client's Choice ⭐",
     "list": {
-      "1": { "title": "Precision Sculpted Gel", "duration": "1h 15m", "desc": "Meticulous combined technique, flawless anatomic leveling, and deep under-cuticle color application for incredible longevity." },
-      "2": { "title": "Essential Care Refresh", "duration": "45m", "desc": "A perfect refresh. Deep cuticle care and tailored shaping, finished with nourishing oils and a light hydration massage." },
-      "3": { "title": "Restorative Medical Pedicure", "duration": "2h", "desc": "Ultimate foot rejuvenation. Expert dry skin removal and therapeutic restoration, finished with premium gel polish." },
-      "4": { "title": "Structural Nail Repair", "duration": "10m", "desc": "Seamless, strong repair using advanced polygel techniques to perfectly match your natural nail shape." },
-      "5": { "title": "Safe Gel Removal", "duration": "15m", "desc": "Gentle, non-destructive removal of external gel polish, preserving the integrity and health of your natural nail bed." },
-      "6": { "title": "Bespoke Artistry", "duration": "Varies", "desc": "Elevate your look with custom, hand-painted nail art. Pricing reflects the complexity of your vision." }
+      "1": {
+        "title": "Precision Sculpted Gel",
+        "duration": "1h 15m",
+        "desc": "Meticulous combined technique, flawless anatomic leveling, and deep under-cuticle color application for incredible longevity."
+      },
+      "2": {
+        "title": "Essential Care Refresh",
+        "duration": "45m",
+        "desc": "A perfect refresh. Deep cuticle care and tailored shaping, finished with nourishing oils and a light hydration massage."
+      },
+      "3": {
+        "title": "Restorative Medical Pedicure",
+        "duration": "2h",
+        "desc": "Ultimate foot rejuvenation. Expert dry skin removal and therapeutic restoration, finished with premium gel polish."
+      },
+      "4": {
+        "title": "Structural Nail Repair",
+        "duration": "10m",
+        "desc": "Seamless, strong repair using advanced polygel techniques to perfectly match your natural nail shape."
+      },
+      "5": {
+        "title": "Safe Gel Removal",
+        "duration": "15m",
+        "desc": "Gentle, non-destructive removal of external gel polish, preserving the integrity and health of your natural nail bed."
+      },
+      "6": {
+        "title": "Bespoke Artistry",
+        "duration": "Varies",
+        "desc": "Elevate your look with custom, hand-painted nail art. Pricing reflects the complexity of your vision."
+      }
     },
     "menu": {
       "title": "Price List",
       "subtitle": "Full transparency. Uncompromising quality.",
       "items": {
-        "1": { "name": "Gel Manicure + Anatomical Structure", "price": "220 ILS", "desc": "Includes precise e-file manicure and nail strengthening" },
-        "2": { "name": "Medical Restorative Pedicure", "price": "300 ILS", "desc": "Deep treatment for skin and nail issues" },
-        "3": { "name": "Cosmetic Pedicure", "price": "200 ILS", "desc": "Pampering maintenance and refresh" },
-        "4": { "name": "Nail Extensions (Polygel)", "price": "350 ILS", "desc": "Full set with a completely natural finish" },
-        "5": { "name": "Nail Art & French Design", "price": "+50-100 ILS", "desc": "Addition for custom art, french, or decorations" },
-        "6": { "name": "Single Nail Repair", "price": "30 ILS", "desc": "Quick fix for a broken nail" },
-        "7": { "name": "Safe Gel Removal", "price": "70 ILS", "desc": "Professional removal without damaging the natural nail" }
+        "1": {
+          "name": "Gel Manicure + Anatomical Structure",
+          "price": " ILS",
+          "desc": "Includes precise e-file manicure and nail strengthening"
+        },
+        "2": {
+          "name": "Medical Restorative Pedicure",
+          "price": " ILS",
+          "desc": "Deep treatment for skin and nail issues"
+        },
+        "3": {
+          "name": "Cosmetic Pedicure",
+          "price": " ILS",
+          "desc": "Pampering maintenance and refresh"
+        },
+        "4": {
+          "name": "Nail Extensions (Polygel)",
+          "price": " ILS",
+          "desc": "Full set with a completely natural finish"
+        },
+        "5": {
+          "name": "Nail Art & French Design",
+          "price": " ILS",
+          "desc": "Addition for custom art, french, or decorations"
+        },
+        "6": {
+          "name": "Single Nail Repair",
+          "price": " ILS",
+          "desc": "Quick fix for a broken nail"
+        },
+        "7": {
+          "name": "Safe Gel Removal",
+          "price": " ILS",
+          "desc": "Professional removal without damaging the natural nail"
+        }
       }
     }
   },
