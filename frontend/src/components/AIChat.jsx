@@ -105,7 +105,7 @@ export default function AIChat() {
         geminiHistory[0].parts[0].text = `Persona/Instructions: ${SYSTEM_PROMPT}\n\nClient Message: ${geminiHistory[0].parts[0].text}`;
       }
 
-      const MODEL_NAME = "gemini-2.5-flash";
+      const MODEL_NAME = "gemini-3-flash-preview";
 
       const model = genAI.getGenerativeModel({ model: MODEL_NAME });
       const result = await model.generateContent({ contents: geminiHistory });
