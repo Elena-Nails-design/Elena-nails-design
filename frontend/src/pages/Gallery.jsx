@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Gallery() {
   const { t, i18n } = useTranslation();
@@ -71,6 +72,10 @@ export default function Gallery() {
 
   return (
     <div className="py-24 bg-white dark:bg-[#0A0A0A] min-h-screen transition-colors duration-700">
+      <SEO 
+        title={t('nav.gallery')} 
+        description={t('gallery.subtitle')} 
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

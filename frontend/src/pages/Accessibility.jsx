@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ShieldCheck, Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 export default function Accessibility() {
   const { t, i18n } = useTranslation();
@@ -9,6 +10,10 @@ export default function Accessibility() {
 
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-stone-900 pt-32 pb-20 px-6">
+      <SEO 
+        title="הצהרת נגישות" 
+        description="סטודיו אלנה ניילס דיזיין מחויב למתן שירות נגיש ושוויוני לכלל הלקוחות." 
+      />
       <div className="max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

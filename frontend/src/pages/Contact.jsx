@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { MapPin, Phone, MessageCircle, Send, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const Instagram = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -17,6 +18,10 @@ export default function Contact() {
 
   return (
     <div className="pt-32 pb-20 bg-[#FAF9F6] dark:bg-[#050505] min-h-screen transition-colors duration-700 overflow-hidden relative">
+      <SEO 
+        title={t('nav.contact')} 
+        description={t('contact.desc')} 
+      />
       {/* Abstract Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full animate-float"></div>

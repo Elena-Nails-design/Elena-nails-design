@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Phone, CheckCircle2, MessageCircle, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const STUDIO_PHONE = '9720534611370';
 const INSTAGRAM_URL = 'https://www.instagram.com/nails_epshtein';
@@ -113,6 +114,10 @@ export default function Booking() {
 
   return (
     <div className="pt-24 pb-20 bg-nude dark:bg-gray-900 min-h-screen transition-colors duration-500 overflow-hidden relative flex items-center">
+      <SEO 
+        title={t('nav.booking')} 
+        description={t('booking.subtitle')} 
+      />
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-primary/20 blur-[100px] rounded-full animate-float"></div>

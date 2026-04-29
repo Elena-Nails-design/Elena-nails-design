@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function About() {
   const { t, i18n } = useTranslation();
@@ -10,6 +11,10 @@ export default function About() {
 
   return (
     <div className="bg-white dark:bg-[#0A0A0A] min-h-[calc(100vh-88px)] flex flex-col transition-colors duration-700">
+      <SEO 
+        title={t('nav.about')} 
+        description={t('about.subtitle')} 
+      />
       <div className="flex-grow flex items-center py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row gap-20 items-center">
