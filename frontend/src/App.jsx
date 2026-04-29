@@ -65,7 +65,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col transition-colors duration-500">
+        <div className="min-h-screen flex flex-col transition-colors duration-500 overflow-x-hidden">
           <Navbar />
           <main className="flex-grow pt-[124px]">
             <AnimatedRoutes />
