@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Clock, Star, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
+import SEO from '../components/SEO';
 
 export default function Services() {
   const { t, i18n } = useTranslation();
@@ -29,6 +30,10 @@ export default function Services() {
 
   return (
     <div className="pt-32 pb-20 bg-light dark:bg-[#050505] min-h-screen transition-colors duration-700">
+      <SEO 
+        title={t('services.title')} 
+        description={t('services.desc')} 
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-24">
           <Reveal delay={0.1}>

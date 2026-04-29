@@ -5,8 +5,49 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Sparkles, ShieldCheck, Waves, Star, MessageCircle, Instagram, ChevronDown } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import ProfessionalEquipment from '../components/ProfessionalEquipment';
+import SEO from '../components/SEO';
 
 const STUDIO_PHONE = '9720534611370';
+
+const SCHEMA_DATA = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ELENA EPSHTEIN - סטודיו לציפורניים יוקרתי",
+  "image": "https://elenanails.beauty/assets/logo.png",
+  "@id": "https://elenanails.beauty",
+  "url": "https://elenanails.beauty",
+  "telephone": "+972534611370",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "העצמאות 93",
+    "addressLocality": "אשדוד",
+    "postalCode": "77452",
+    "addressCountry": "IL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 31.8044,
+    "longitude": 34.6553
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/nails_epshtein",
+    "https://www.facebook.com/share/18afmCSD26/"
+  ]
+};
 
 const TESTIMONIALS = [
   { nameHe: 'יעל כ.', nameRu: 'Яэль К.', nameEn: 'Yael K.', textHe: 'אלנה פשוט מדהימה! כבר שנה שאני מגיעה אליה ותמיד יוצאת עם ציפורניים מושלמות. המקצועיות והיחס האישי לא מצויים בשום מקום אחר.', textRu: 'Елена просто невероятная! Уже год хожу к ней — всегда выхожу с идеальными ногтями. Профессионализм и личный подход несравнимы.', textEn: "Elena is simply amazing! I've been coming to her for a year and always leave with perfect nails. The professionalism and personal touch are unmatched." },
@@ -41,6 +82,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col overflow-hidden">
+      <SEO />
+      <script type="application/ld+json">
+        {JSON.stringify(SCHEMA_DATA)}
+      </script>
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-screen flex items-center justify-center bg-dark overflow-hidden">
         {/* Cinematic Video Background with Parallax */}
