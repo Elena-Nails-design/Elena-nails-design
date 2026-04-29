@@ -16,6 +16,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import AIChat from './components/AIChat';
 import Accessibility from './pages/Accessibility';
 import AccessibilityMenu from './components/AccessibilityMenu';
+import ScrollToTop from './components/ScrollToTop';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col transition-colors duration-500">
           <Navbar />
           <main className="flex-grow pt-[124px]">
