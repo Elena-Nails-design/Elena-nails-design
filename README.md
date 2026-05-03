@@ -1,49 +1,44 @@
-# Elena Nails Design - Premium Studio Website
+# 💅 Elena Nails - Nail Art Studio Website
 
-A luxury, high-conversion studio website for Elena Epshtein, featuring a bespoke AI Assistant, medical-grade hygiene standards (Autoclave), and a seamless multilingual experience.
+Welcome to the official repository of **Elena Nails**, a professional web application built for a premier nail art studio. 
+This project showcases a modern frontend architecture, AI-driven engagement, and a high-performance CI/CD pipeline.
+
+🚀 **Live Site:** [https://elenanails.beauty/](https://elenanails.beauty/)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** [React.js](https://reactjs.org/) + [Vite](https://vitejs.dev/) for high-speed performance and optimized builds.
+- **Styling:** Responsive CSS3 (Mobile-First approach).
+- **AI Integration:** Personalized AI Chatbot for 24/7 automated customer support.
+- **Hosting & Infrastructure:** [Vercel](https://vercel.com/) for edge-optimized delivery and seamless deployments.
+
+---
+
+## 🏗️ DevOps & Automation (CI/CD)
+
+The project implements a professional **GitOps** workflow, ensuring high availability and continuous delivery.
+
+### Deployment Pipeline
+The automation is handled through the integration between **GitHub** and **Vercel**:
+- **Continuous Deployment:** Every `push` to the `main` branch triggers an automated production build and deployment on Vercel's edge network.
+- **Preview Environments:** Automatically generates unique preview URLs for pull requests, allowing for testing before merging to production.
+- **Automated SSL & Optimization:** Vercel handles SSL certificates, image optimization, and global CDN distribution out-of-the-box.
+
+---
 
 ## ✨ Key Features
-- **AI Assistant**: Personalized nail care advice powered by Gemini 1.5 Flash.
-- **Precision Booking**: WhatsApp-integrated booking with automatic 10% website discount.
-- **Studio Portfolio**: High-fidelity gallery of signature treatments.
-- **Multi-lingual**: Fully localized in Hebrew, Russian, and English.
+
+- **Responsive Design:** Optimized for Mobile, Tablet, and Desktop users.
+- **AI Assistant:** Intelligent chatbot to handle client inquiries and improve conversion.
+- **Performance:** Sub-second load times via Vite bundling and Vercel Edge Network.
+- **Clean Architecture:** Modular React components for scalability.
 
 ---
 
-## 🔒 Security & Deployment (CRITICAL)
+## 🚀 Local Development
 
-Because this is a frontend-only (Vite) application, environment variables starting with `VITE_` are bundled into the production code. **To prevent unauthorized use of your API key, you MUST set up restrictions.**
-
-### 1. Restrict API Key (Prevention of Theft)
-1. Go to [Google AI Studio](https://aistudio.google.com/) or the [Google Cloud Console](https://console.cloud.google.com/).
-2. Locate your **Gemini API Key**.
-3. Go to **API Restrictions** -> **Website Restrictions** (HTTP Referrers).
-4. Add the following hosts to the allowed list:
-   - `https://elena-nails-design.github.io/*`
-   - `http://localhost:5173/*` (for your local development)
-5. Save. This ensures that even if someone finds the key in your code, it will **only** work on your official website.
-
-### 2. Local Environment (`.env`)
-Create a `.env` file in the `frontend` folder:
-```bash
-VITE_GEMINI_API_KEY=your_key_here
-```
-**Note**: The `.env` file is ignored by Git and will never be pushed to your repository.
-
-### 3. GitHub Pages Deployment (Production)
-If you use GitHub Actions to deploy:
-1. Go to your GitHub repository -> **Settings** -> **Secrets and variables** -> **Actions**.
-2. Click **New repository secret**.
-3. Name: `VITE_GEMINI_API_KEY`
-4. Value: Paste your actual Gemini API Key.
-5. Your deployment workflow is already configured to read this secret.
-
----
-
-## 🚀 Tech Stack
-- React 19 + Vite
-- Tailwind CSS (Premium Styling)
-- Framer Motion (Animations)
-- i18next (Localization)
-- Lucide React (Icons)
-- Google Gemini 1.5 Flash (AI)
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/Elena-Nails-design/Elena-nails-design.git](https://github.com/Elena-Nails-design/Elena-nails-design.git)
