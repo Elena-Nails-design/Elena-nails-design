@@ -100,18 +100,34 @@ export default function Booking() {
     setSubmitted(true);
   }, []);
 
+  const copyToClipboard = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(buildMessage());
+      const msg = i18n.language === 'he' ? 'הפרטים הועתקו! הדביקי אותם בהודעה אליי.' : 
+                  i18n.language === 'ru' ? 'Данные скопированы! Вставьте их в сообщение ко мне.' : 
+                  'Details copied! Paste them in your message to me.';
+      alert(msg);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [buildMessage, i18n.language]);
+
   const sendViaWhatsApp = useCallback(() => {
     const url = `https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(buildMessage())}`;
     window.open(url, '_blank');
   }, [buildMessage]);
 
   const sendViaInstagram = useCallback(() => {
-    window.open(INSTAGRAM_URL, '_blank');
-  }, []);
+    copyToClipboard().then(() => {
+      window.open(INSTAGRAM_URL, '_blank');
+    });
+  }, [copyToClipboard]);
 
   const sendViaFacebook = useCallback(() => {
-    window.open(FACEBOOK_URL, '_blank');
-  }, []);
+    copyToClipboard().then(() => {
+      window.open(FACEBOOK_URL, '_blank');
+    });
+  }, [copyToClipboard]);
 
   return (
     <div className="pt-24 pb-20 bg-nude dark:bg-gray-900 min-h-screen transition-colors duration-500 overflow-hidden relative flex items-center">
