@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Scissors, Sparkles } from 'lucide-react';
@@ -17,7 +17,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -32,7 +32,7 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const links = [
+  const links = useMemo(() => [
     { name: t('nav.home'), path: '/' },
     { name: t('nav.about'), path: '/about' },
     { name: t('nav.services'), path: '/services' },
@@ -40,12 +40,12 @@ export default function Navbar() {
     { name: t('nav.blog'), path: '/blog' },
     { name: t('nav.booking'), path: '/booking' },
     { name: t('nav.contact'), path: '/contact' },
-  ];
+  ], [t]);
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = useCallback((lng) => {
     i18n.changeLanguage(lng);
     setIsOpen(false);
-  };
+  }, [i18n]);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">

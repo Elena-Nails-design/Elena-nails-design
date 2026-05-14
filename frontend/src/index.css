@@ -20,21 +20,28 @@
   --font-sans: 'Inter', 'Heebo', sans-serif;
 }
 
-/* Shimmer Effect for Buttons */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* GPU-Accelerated Shimmer Effect for Buttons */
+@keyframes shimmer-gpu {
+  0% { transform: translateX(0) skewX(-20deg); }
+  100% { transform: translateX(400%) skewX(-20deg); }
 }
 
 .shimmer-gold {
-  background: linear-gradient(
-    90deg, 
-    rgba(212, 175, 55, 1) 0%, 
-    rgba(255, 255, 255, 0.4) 50%, 
-    rgba(212, 175, 55, 1) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite linear;
+  background: var(--color-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-gold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer-gpu 3s infinite;
 }
 
 @utility shadow-luxury {
@@ -61,8 +68,8 @@ body {
 }
   
   .dark body {
-    background-color: #0A0A0A;
-    color: #EAEAEA;
+    background-color: #110e0f;
+    color: var(--color-secondary);
   }
 
   /* Accessibility: Visible Focus Ring for Keyboard Navigation */
@@ -119,8 +126,8 @@ body {
 }
 
 .dark .glass-luxury {
-  background: rgba(0, 0, 0, 0.9);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(17, 14, 15, 0.7);
+  border-color: rgba(245, 198, 214, 0.1);
 }
 
 @utility nav-link-fancy {

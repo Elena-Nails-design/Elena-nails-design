@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Phone, CheckCircle2, MessageCircle, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -57,24 +57,25 @@ export default function Booking() {
     return generateTimeSlots(hours.start, hours.end);
   }, [formData.date]);
 
-  const handleDateChange = (e) => {
+  const handleDateChange = useCallback((e) => {
     const val = e.target.value;
-    if (!val) { setFormData({ ...formData, date: '', time: '' }); setDateError(''); return; }
+    if (!val) { setFormData(prev => ({ ...prev, date: '', time: '' })); setDateError(''); return; }
     const dayOfWeek = new Date(val + 'T12:00:00').getDay();
     if (dayOfWeek === 6) {
       setDateError(i18n.language === 'he' ? 'שבת — הסטודיו סגור. בחרי יום אחר.' : i18n.language === 'ru' ? 'Суббота — студия закрыта. Выберите другой день.' : 'Saturday — Studio is closed. Please choose another day.');
-      setFormData({ ...formData, date: '', time: '' });
+      setFormData(prev => ({ ...prev, date: '', time: '' }));
       return;
     }
     setDateError('');
-    setFormData({ ...formData, date: val, time: '' });
-  };
+    setFormData(prev => ({ ...prev, date: val, time: '' }));
+  }, [i18n.language]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  }, []);
 
-  const buildMessage = () => {
+  const buildMessage = useCallback(() => {
     const isHe = i18n.language === 'he';
     const isRu = i18n.language === 'ru';
     if (isHe) return (
@@ -92,25 +93,25 @@ export default function Booking() {
       `👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n💄 Service: ${formData.service}\n📅 Date: ${formData.date}\n⏰ Time: ${formData.time}\n\n` +
       `🎁 I'm eligible for a 10% discount on my first treatment (from the website)!\n\nAwaiting your confirmation 🙏`
     );
-  };
+  }, [i18n.language, formData]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     setSubmitted(true);
-  };
+  }, []);
 
-  const sendViaWhatsApp = () => {
+  const sendViaWhatsApp = useCallback(() => {
     const url = `https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(buildMessage())}`;
     window.open(url, '_blank');
-  };
+  }, [buildMessage]);
 
-  const sendViaInstagram = () => {
+  const sendViaInstagram = useCallback(() => {
     window.open(INSTAGRAM_URL, '_blank');
-  };
+  }, []);
 
-  const sendViaFacebook = () => {
+  const sendViaFacebook = useCallback(() => {
     window.open(FACEBOOK_URL, '_blank');
-  };
+  }, []);
 
   return (
     <div className="pt-24 pb-20 bg-nude dark:bg-gray-900 min-h-screen transition-colors duration-500 overflow-hidden relative flex items-center">

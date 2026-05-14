@@ -236,9 +236,11 @@ export default function AIChat() {
                         ? 'bg-primary text-white rounded-tr-none' 
                         : 'bg-white dark:bg-stone-800 text-dark dark:text-white rounded-tl-none border border-black/5 dark:border-white/5'
                     }`}>
-                      <ReactMarkdown className="markdown-chat whitespace-pre-wrap">
-                        {msg.content}
-                      </ReactMarkdown>
+                      <div className="markdown-chat whitespace-pre-wrap">
+                        <ReactMarkdown>
+                          {msg.content}
+                        </ReactMarkdown>
+                      </div>
                     </div>
                   </div>
                 </motion.div>

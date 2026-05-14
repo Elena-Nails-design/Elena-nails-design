@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -71,27 +71,25 @@ export default function Home() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const getTestimonialName = (t) => lang === 'ru' ? t.nameRu : lang === 'en' ? t.nameEn : t.nameHe;
-  const getTestimonialText = (t) => lang === 'ru' ? t.textRu : lang === 'en' ? t.textEn : t.textHe;
+  const getTestimonialName = useCallback((t) => lang === 'ru' ? t.nameRu : lang === 'en' ? t.nameEn : t.nameHe, [lang]);
+  const getTestimonialText = useCallback((t) => lang === 'ru' ? t.textRu : lang === 'en' ? t.textEn : t.textHe, [lang]);
 
-  const whatsappUrl = `https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(
+  const whatsappUrl = useMemo(() => `https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(
     lang === 'he' ? 'שלום אלנה! 💅 אשמח לשמוע פרטים ולקבוע תור' :
     lang === 'ru' ? 'Привет, Елена! 💅 Хочу узнать подробности и записаться' :
     'Hi Elena! 💅 I\'d love to find out more and book an appointment'
-  )}`;
+  )}`, [lang]);
 
   return (
     <div className="flex flex-col overflow-hidden">
-      <SEO />
-      <script type="application/ld+json">
-        {JSON.stringify(SCHEMA_DATA)}
-      </script>
+      <SEO schemaData={SCHEMA_DATA} />
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-screen flex items-center justify-center bg-dark overflow-hidden">
         {/* Cinematic Video Background with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <video 
             src={`${import.meta.env.BASE_URL}assets/nails_epshtein/AQP9V0mme-uDwapBpUMH2MIlzpyh1jxvH8zBBR6UZq38ewW_hxFeDh1Ce_CDyCc5rnMxAhAz3fIDl2RdLuEaMLdmB7u1KqmaTJNWJ1w.mp4`} 
+            poster={`${import.meta.env.BASE_URL}assets/nails_epshtein/video-placeholder.jpg`}
             autoPlay
             loop
             muted
@@ -267,8 +265,11 @@ export default function Home() {
                   <img 
                     src={`${import.meta.env.BASE_URL}assets/nails_epshtein/${img}`} 
                     alt={t(`gallery.img_insta_${i + 1}`)} 
+                    width="400"
+                    height="400"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-dark/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <Instagram className="text-white w-8 h-8 opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-500" />

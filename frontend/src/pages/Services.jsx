@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Clock, Star, Sparkles } from 'lucide-react';
@@ -11,22 +12,26 @@ export default function Services() {
   // Mapping the new JSON structure (object with numbered keys) to a display array
   const serviceListData = t('services.list', { returnObjects: true }) || {};
   const menuData = t('services.menu', { returnObjects: true }) || {};
-  const menuItems = menuData?.items ? Object.keys(menuData.items).map(k => menuData.items[k]) : [];
+  const menuItems = useMemo(() => {
+    return menuData?.items ? Object.keys(menuData.items).map(k => menuData.items[k]) : [];
+  }, [menuData]);
   
-  const serviceImages = {
-    "1": `${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`,
-    "2": `${import.meta.env.BASE_URL}assets/nails_epshtein/624361448_18075893492616810_7424546104696132483_n.jpg`,
-    "3": `${import.meta.env.BASE_URL}assets/nails_epshtein/556455388_18061812473616810_1155595810853411427_n.jpg`,
-    "4": `${import.meta.env.BASE_URL}assets/nails_epshtein/560055750_18062046065616810_932821717540010631_n.jpg`,
-    "5": `${import.meta.env.BASE_URL}assets/nails_epshtein/587303262_18069986417616810_3260988139436728763_n.jpg`,
-    "6": `${import.meta.env.BASE_URL}assets/nails_epshtein/586685411_18070598063616810_1738139733143951263_n.jpg`,
-  };
+  const services = useMemo(() => {
+    const serviceImages = {
+      "1": `${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`,
+      "2": `${import.meta.env.BASE_URL}assets/nails_epshtein/624361448_18075893492616810_7424546104696132483_n.jpg`,
+      "3": `${import.meta.env.BASE_URL}assets/nails_epshtein/556455388_18061812473616810_1155595810853411427_n.jpg`,
+      "4": `${import.meta.env.BASE_URL}assets/nails_epshtein/560055750_18062046065616810_932821717540010631_n.jpg`,
+      "5": `${import.meta.env.BASE_URL}assets/nails_epshtein/587303262_18069986417616810_3260988139436728763_n.jpg`,
+      "6": `${import.meta.env.BASE_URL}assets/nails_epshtein/586685411_18070598063616810_1738139733143951263_n.jpg`,
+    };
 
-  const services = Object.keys(serviceListData).map(key => ({
-    ...serviceListData[key],
-    id: key,
-    image: serviceImages[key] || serviceImages["1"]
-  }));
+    return Object.keys(serviceListData).map(key => ({
+      ...serviceListData[key],
+      id: key,
+      image: serviceImages[key] || serviceImages["1"]
+    }));
+  }, [serviceListData]);
 
   return (
     <div className="pt-32 pb-20 bg-light dark:bg-[#050505] min-h-screen transition-colors duration-700">
@@ -80,6 +85,7 @@ export default function Services() {
                     src={service.image} 
                     alt={service.title}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accessibility, X, Type, Contrast, MousePointer2, ZapOff, Check } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -13,9 +13,9 @@ export default function AccessibilityMenu() {
     stopAnimations: false
   });
 
-  const toggleSetting = (key) => {
+  const toggleSetting = useCallback((key) => {
     setSettings(prev => ({ ...prev, [key]: !prev[key] }));
-  };
+  }, []);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -41,7 +41,7 @@ export default function AccessibilityMenu() {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
-  const menuOptions = [
+  const menuOptions = useMemo(() => [
     { 
       key: 'highContrast', 
       icon: <Contrast size={20} />, 
@@ -62,7 +62,7 @@ export default function AccessibilityMenu() {
       icon: <ZapOff size={20} />, 
       label: t('accessibility.stopAnimations') 
     }
-  ];
+  ], [t]);
 
   return (
     <div className="fixed top-1/2 -translate-y-1/2 right-0 z-[9998] flex items-center">
