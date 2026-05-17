@@ -6,7 +6,8 @@
     <script>
       // GitHub Pages SPA redirect trick
       // Redirects sub-paths to index.html while preserving the path in sessionStorage
-      var segmentCount = 1; // number of path segments in the base URL (e.g. /Elena-nails-design/)
+      // Dynamically detect segment count to prevent redirect loops on custom domains
+      var segmentCount = window.location.pathname.startsWith('/Elena-nails-design') ? 1 : 0;
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
