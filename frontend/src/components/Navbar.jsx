@@ -159,7 +159,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 transition-colors ${isOpen ? 'text-white' : 'text-dark dark:text-white'}`}
-              aria-label={isOpen ? "סגור תפריט" : "פתח תפריט"}
+              aria-label={isOpen ? t('accessibility.close_menu', 'Close Menu') : t('accessibility.open_menu', 'Open Menu')}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (

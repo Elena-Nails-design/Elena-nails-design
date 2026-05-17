@@ -75,8 +75,14 @@ function App() {
       <Router basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <div className="min-h-screen flex flex-col transition-colors duration-500 overflow-x-hidden">
+          <a 
+            href="#main-content" 
+            className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:p-4 focus:bg-white focus:text-dark focus:top-0 focus:left-0 focus:font-bold focus:border-2 focus:border-gold"
+          >
+            {t('accessibility.skip_to_main', 'Skip to main content')}
+          </a>
           <Navbar />
-          <main className="flex-grow pt-[124px]">
+          <main id="main-content" className="flex-grow pt-[124px] outline-none" tabIndex="-1">
             <AnimatedRoutes />
           </main>
           <Footer />
