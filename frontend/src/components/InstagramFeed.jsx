@@ -68,32 +68,49 @@ export default function InstagramFeed({ limitToFour = false }) {
                 .es-load-more-button {
                   display: none !important;
                 }
-                /* Reset Elfsight item widths to allow CSS Grid gaps */
+                
+                /* Reset Elfsight item absolute positioning and widths to allow modern CSS Grid */
                 .eapps-instagram-feed-posts-item {
+                  position: relative !important;
+                  left: auto !important;
+                  top: auto !important;
                   width: auto !important;
                   max-width: none !important;
                   min-width: 0 !important;
                   flex: none !important;
                   padding: 0 !important;
                   margin: 0 !important;
+                  transform: none !important;
+                  float: none !important;
                 }
-                /* Custom responsive grid layout */
+
+                /* Reset wrapper layouts to standard CSS grids */
                 .eapps-instagram-feed-posts-inner,
-                .eapps-instagram-feed-posts-grid-inner {
+                .eapps-instagram-feed-posts-grid-inner,
+                .eapps-instagram-feed-posts-view {
                   display: grid !important;
                   grid-template-columns: repeat(2, 1fr) !important;
                   gap: 16px !important;
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  height: auto !important;
+                  min-height: 0 !important;
+                  margin: 0 auto !important;
+                  float: none !important;
                 }
                 @media (min-width: 768px) {
                   .eapps-instagram-feed-posts-inner,
-                  .eapps-instagram-feed-posts-grid-inner {
+                  .eapps-instagram-feed-posts-grid-inner,
+                  .eapps-instagram-feed-posts-view {
                     grid-template-columns: repeat(4, 1fr) !important;
                     gap: 24px !important;
                   }
                 }
+                
                 /* Premium cards design with rounded corners and shadows */
                 a.eapps-instagram-feed-posts-item-link,
                 .eapps-instagram-feed-posts-item-link {
+                  display: block !important;
                   border-radius: 16px !important;
                   overflow: hidden !important;
                   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
@@ -141,7 +158,7 @@ export default function InstagramFeed({ limitToFour = false }) {
   }, [limitToFour]);
 
   return (
-    <div className={`w-full relative flex justify-center min-h-[300px] items-start ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
+    <div className={`w-full relative flex justify-center min-h-[300px] items-center ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
       {/* Inject CSS to hide the Elfsight watermark, title, and optionally limit posts in Light DOM */}
       <style>
         {`
@@ -161,32 +178,49 @@ export default function InstagramFeed({ limitToFour = false }) {
           .instagram-feed-homepage-limited .es-load-more-button {
             display: none !important;
           }
-          /* Reset Elfsight item widths to allow CSS Grid gaps in Light DOM */
+          
+          /* Reset Elfsight item absolute positioning and widths in Light DOM */
           body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
             width: auto !important;
             max-width: none !important;
             min-width: 0 !important;
             flex: none !important;
             padding: 0 !important;
             margin: 0 !important;
+            transform: none !important;
+            float: none !important;
           }
-          /* Custom responsive grid layout in Light DOM */
+
+          /* Reset wrapper layouts to standard CSS grids in Light DOM */
           body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-inner,
-          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-view {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 16px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 auto !important;
+            float: none !important;
           }
           @media (min-width: 768px) {
             body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-inner,
-            body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
+            body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner,
+            body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-view {
               grid-template-columns: repeat(4, 1fr) !important;
               gap: 24px !important;
             }
           }
+
           /* Premium cards design with rounded corners and shadows in Light DOM */
           body .instagram-feed-homepage-limited a.eapps-instagram-feed-posts-item-link,
           body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link {
+            display: block !important;
             border-radius: 16px !important;
             overflow: hidden !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
@@ -209,8 +243,11 @@ export default function InstagramFeed({ limitToFour = false }) {
       </style>
 
       {isLoading && (
-        <div className="text-center absolute pointer-events-none opacity-50 text-sm z-0 top-20">
-          {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
+        <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 z-20 pointer-events-none transition-opacity duration-500 min-h-[300px]">
+          <div className="w-10 h-10 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+          <span className="text-primary text-sm font-bold tracking-widest uppercase">
+            {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
+          </span>
         </div>
       )}
 
