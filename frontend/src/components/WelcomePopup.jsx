@@ -103,15 +103,15 @@ export default function WelcomePopup() {
               {activeContent.title}
             </h3>
             
-            <p className="text-primary dark:text-primary-dark text-xs uppercase tracking-widest font-bold mb-4">
+            <p className="text-[#b55874] dark:text-primary-dark text-xs uppercase tracking-widest font-bold mb-4">
               {activeContent.subtitle}
             </p>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 font-light">
+            <p className="text-dark/70 dark:text-gray-300 text-sm leading-relaxed mb-6 font-light">
               {activeContent.desc}
             </p>
 
-            <div className="inline-block bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-full px-5 py-2 mb-8 text-xs font-bold text-primary tracking-widest uppercase">
+            <div className="inline-block bg-primary/20 dark:bg-primary/10 border border-primary/40 dark:border-primary/20 rounded-full px-5 py-2 mb-8 text-xs font-bold text-[#b55874] dark:text-primary-dark tracking-widest uppercase">
               {activeContent.code}
             </div>
 

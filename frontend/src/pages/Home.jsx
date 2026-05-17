@@ -105,6 +105,13 @@ export default function Home() {
       <section ref={targetRef} className="relative h-screen flex items-center justify-center bg-dark overflow-hidden">
         {/* Cinematic Video Background with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0 z-0">
+          {/* Fallback elegant poster image for mobile / slow load / low power mode */}
+          <img 
+            src={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`}
+            alt="Elena Nails Design Premium Manicure"
+            className="absolute inset-0 w-full h-full object-cover opacity-60 scale-110"
+            style={{ zIndex: -1 }}
+          />
           <video 
             src={`${import.meta.env.BASE_URL}assets/nails_epshtein/AQP9V0mme-uDwapBpUMH2MIlzpyh1jxvH8zBBR6UZq38ewW_hxFeDh1Ce_CDyCc5rnMxAhAz3fIDl2RdLuEaMLdmB7u1KqmaTJNWJ1w.mp4`} 
             poster={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`}
