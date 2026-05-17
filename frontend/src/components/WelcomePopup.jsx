@@ -8,7 +8,7 @@ const STUDIO_PHONE = '9720534611370';
 export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(false);
   const { i18n } = useTranslation();
-  const lang = i18n.language;
+  const currentLang = (i18n.language || 'he').split('-')[0].split('_')[0].toLowerCase();
   const isRtl = i18n.dir() === 'rtl';
 
   useEffect(() => {
@@ -29,8 +29,8 @@ export default function WelcomePopup() {
 
   const getWhatsAppUrl = () => {
     const text = 
-      lang === 'he' ? 'היי אלנה! 💅 ראיתי את ההטבה באתר ואשמח לקבל 10% הנחה לטיפול ראשון ולקבוע תור!' :
-      lang === 'ru' ? 'Привет, Елена! 💅 Увидела скидку 10% на первый визит и хочу записаться!' :
+      currentLang === 'he' ? 'היי אלנה! 💅 ראיתי את ההטבה באתר ואשמח לקבל 10% הנחה לטיפול ראשון ולקבוע תור!' :
+      currentLang === 'ru' ? 'Привет, Елена! 💅 Увидела скидку 10% на первый визит и хочу записаться!' :
       'Hi Elena! 💅 I saw the 10% first-time discount on your website and would love to book my appointment!';
     return `https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(text)}`;
   };
@@ -62,7 +62,7 @@ export default function WelcomePopup() {
     }
   };
 
-  const activeContent = content[lang] || content.he;
+  const activeContent = content[currentLang] || content.he;
 
   return (
     <AnimatePresence>
