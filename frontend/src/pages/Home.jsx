@@ -106,7 +106,7 @@ export default function Home() {
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <video 
             src={`${import.meta.env.BASE_URL}assets/nails_epshtein/AQP9V0mme-uDwapBpUMH2MIlzpyh1jxvH8zBBR6UZq38ewW_hxFeDh1Ce_CDyCc5rnMxAhAz3fIDl2RdLuEaMLdmB7u1KqmaTJNWJ1w.mp4`} 
-            poster={`${import.meta.env.BASE_URL}assets/nails_epshtein/video-placeholder.jpg`}
+            poster={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`}
             autoPlay
             loop
             muted
