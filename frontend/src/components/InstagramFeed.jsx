@@ -63,6 +63,21 @@ export default function InstagramFeed({ limitToFour = false }) {
                   display: none !important;
                 }
                 
+                /* Force all parent elements inside shadow root to be 100% wide */
+                :host,
+                .eapps-instagram-feed,
+                .eapps-instagram-feed-container,
+                .eapps-instagram-feed-posts-container,
+                .eapps-instagram-feed-posts-grid,
+                .eapps-instagram-feed-posts-inner,
+                .eapps-instagram-feed-posts-grid-inner,
+                .eapps-instagram-feed-posts-view {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  min-width: 100% !important;
+                  margin: 0 auto !important;
+                }
+
                 /* Reset Elfsight item absolute positioning and widths to allow modern CSS Grid */
                 .eapps-instagram-feed-posts-item {
                   position: relative !important;
@@ -186,6 +201,23 @@ export default function InstagramFeed({ limitToFour = false }) {
           .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-load-more,
           .instagram-feed-homepage-limited .es-load-more-button {
             display: none !important;
+          }
+
+          /* Force the widget wrapper and all parent elements to be 100% wide in Light DOM */
+          body .instagram-feed-homepage-limited,
+          body .instagram-feed-homepage-limited .elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f,
+          body .instagram-feed-homepage-limited [class*="elfsight-app"],
+          body .instagram-feed-homepage-limited .eapps-instagram-feed,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-container,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-container,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-inner,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-view {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+            margin: 0 auto !important;
           }
           
           /* Reset Elfsight item absolute positioning and widths in Light DOM */
