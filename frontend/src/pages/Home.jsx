@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Sparkles, ShieldCheck, Waves, Star, MessageCircl
 import Reveal from '../components/Reveal';
 import ProfessionalEquipment from '../components/ProfessionalEquipment';
 import SEO from '../components/SEO';
+import BeforeAfter from '../components/BeforeAfter';
 
 const STUDIO_PHONE = '9720534611370';
 
@@ -241,6 +242,70 @@ export default function Home() {
       {/* Professional Equipment Section */}
       <ProfessionalEquipment />
 
+      {/* Sterilization Trust & Hygiene Section */}
+      <section className="py-32 bg-[#050505] text-white relative overflow-hidden border-t border-b border-primary/10">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <Reveal delay={0.2} width="100%">
+              <div className="space-y-8">
+                <span className="text-primary uppercase tracking-[0.4em] text-xs font-bold block">
+                  {lang === 'he' ? 'בטיחות וחיטוי' : lang === 'ru' ? 'Стерилизация и Безопасность' : 'Hygiene & Safety'}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                  {lang === 'he' ? 'סטריליזציה ברמה רפואית: הבריאות שלך במקום הראשון 🛡️' :
+                   lang === 'ru' ? 'Стерилизация медицинского уровня: ваше здоровье на первом месте 🛡️' :
+                   'Medical-Grade Sterilization: Your Health Comes First 🛡️'}
+                </h2>
+                <p className="text-gray-400 font-light text-lg leading-relaxed">
+                  {lang === 'he' ? 'בסטודיו של אלנה, היגיינה היא לא רק המלצה – היא חוק ברזל. אנחנו מחויבים לשמירה מקסימלית על הבריאות שלך על ידי שימוש בטכנולוגיות העיקור המחמירות ביותר של עולם הרפואה.' :
+                   lang === 'ru' ? 'В студии Елены гигиена — это железное правило. Мы обеспечиваем максимальную безопасность вашего здоровья с помощью самых строгих медицинских технологий.' :
+                   'At Elena\'s studio, hygiene is an absolute law. We ensure the maximum safety of your health by using the most rigorous medical-grade sterilization technologies.'}
+                </p>
+
+                <div className="space-y-6 pt-4">
+                  {[
+                    {
+                      title: lang === 'he' ? 'עיקור באוטוקלאב קליני (Class B)' : lang === 'ru' ? 'Стерилизация в автоклаве (Класс B)' : 'Clinical Autoclave Sterilization',
+                      desc: lang === 'he' ? 'כל כלי המתכת עוברים תהליך שטיפה, חיטוי כימי ועיקור בחום ולחץ גבוה באוטוקלאב רפואי המחסל 100% מהווירוסים והחיידקים.' : lang === 'ru' ? 'Все металлические инструменты проходят химическую дезинфекцию и температурную обработку в медицинском автоклаве.' : 'All metal instruments undergo washing, chemical disinfection, and high heat/pressure sterilization in a clinical autoclave.'
+                    },
+                    {
+                      title: lang === 'he' ? 'פתיחת שקית סטרילית אישית' : lang === 'ru' ? 'Вскрытие индивидуального крафт-пакета' : 'Personal Sterile Bag Opening',
+                      desc: lang === 'he' ? 'הכלים המעוקרים נשמרים בשקיות איטום מיוחדות ונפתחים לראשונה אך ורק מול עינייך בתחילת הטיפול.' : lang === 'ru' ? 'Стерильные инструменты хранятся в запечатанных пакетах и вскрываются исключительно при вас.' : 'Sterile tools are sealed in special indicator bags and opened for the first time strictly in front of you.'
+                    },
+                    {
+                      title: lang === 'he' ? 'ציוד חד-פעמי לכל לקוחה' : lang === 'ru' ? 'Одноразовые пилочки и бафы' : 'Disposable Tools Only',
+                      desc: lang === 'he' ? 'פצירות, בלוק שיוף ומפרידי אצבעות הם חד-פעמיים לחלוטין ונזרקים ישירות לפח בתום הטיפול שלך.' : lang === 'ru' ? 'Пилочки, бафы и разделители пальцев одноразовые и выбрасываются сразу после вашего сеанса.' : 'Nail files, buffers, and toe separators are strictly single-use and disposed of immediately after your treatment.'
+                    }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">✓</div>
+                      <div>
+                        <h4 className="font-bold text-white tracking-wide">{item.title}</h4>
+                        <p className="text-sm text-gray-400 font-light mt-1">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.4} width="100%">
+              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 group">
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`} 
+                  alt="Clinical sterilization autoclave and tools" 
+                  className="w-full h-[500px] object-cover transition-transform duration-1000 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-40" />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ★ INSTAGRAM SECTION (Recent Works) */}
       <section className="py-32 bg-white dark:bg-[#050505] transition-colors duration-700 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,6 +362,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ★ BEFORE AND AFTER SECTION */}
+      <BeforeAfter />
 
       {/* ★ TESTIMONIALS SECTION */}
       <section className="py-32 bg-nude dark:bg-[#080808] transition-colors duration-700 relative overflow-hidden">

@@ -165,6 +165,24 @@ export default function Contact() {
             </div>
           </div>
         </div>
+
+        {/* Interactive Google Map Section */}
+        <div className="mt-16 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="glass-luxury p-4 rounded-[2.5rem] shadow-luxury border border-black/5 dark:border-white/5 bg-white/60 dark:bg-black/40 backdrop-blur-xl overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.3859740590483!2d34.6528766761596!3d31.804369973874315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502a39b252ee36d%3A0x6b7727146524314c!2z1de91dec1d7d1dd11de21defIDkzLCDXkdeb1ded1deV1deT!5e0!3m2!1si1!2sil!4v1715000000000!5m2!1si1!2sil"
+              width="100%"
+              height="450"
+              style={{ border: 0, borderRadius: '2rem' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Elena Nails Design Location Map"
+              className="grayscale-[20%] dark:grayscale-[80%] dark:invert-[90%] dark:contrast-[120%] transition-all duration-700"
+            />
+          </div>
+        </div>
+
       </div>
     </div>
   );

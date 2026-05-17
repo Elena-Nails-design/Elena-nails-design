@@ -9,6 +9,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import AIChat from './components/AIChat';
 import AccessibilityMenu from './components/AccessibilityMenu';
 import ScrollToTop from './components/ScrollToTop';
+import WelcomePopup from './components/WelcomePopup';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -89,6 +90,7 @@ function App() {
           <FloatingWhatsApp />
           <AIChat />
           <AccessibilityMenu />
+          <WelcomePopup />
         </div>
       </Router>
     </ThemeProvider>
