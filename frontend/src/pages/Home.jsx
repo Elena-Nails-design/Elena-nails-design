@@ -7,6 +7,7 @@ import Reveal from '../components/Reveal';
 import ProfessionalEquipment from '../components/ProfessionalEquipment';
 import SEO from '../components/SEO';
 import BeforeAfter from '../components/BeforeAfter';
+import InstagramFeed from '../components/InstagramFeed';
 
 const STUDIO_PHONE = '9720534611370';
 
@@ -332,34 +333,7 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[
-              "558698237_18061812464616810_6222784228286618641_n.jpg",
-              "586709405_18068153549616810_774998090838186494_n.jpg",
-              "587284153_18068201762616810_7162009895631000978_n.jpg",
-              "625551669_18076320683616810_2664619712328729322_n.jpg"
-            ].map((img, i) => (
-              <Reveal key={i} delay={0.1 * i} width="100%">
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="aspect-square rounded-3xl overflow-hidden relative group cursor-pointer"
-                >
-                  <img 
-                    src={`${import.meta.env.BASE_URL}assets/nails_epshtein/${img}`} 
-                    alt={t(`gallery.img_insta_${i + 1}`)} 
-                    width="400"
-                    height="400"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-dark/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Instagram className="text-white w-8 h-8 opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-500" />
-                  </div>
-                </motion.div>
-              </Reveal>
-            ))}
-          </div>
+          <InstagramFeed limitToFour={true} />
         </div>
       </section>
 
