@@ -55,7 +55,7 @@ function AnimatedRoutes() {
 }
 
 function App() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     // Set direction and language on body
