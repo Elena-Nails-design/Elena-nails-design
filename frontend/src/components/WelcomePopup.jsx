@@ -67,7 +67,7 @@ export default function WelcomePopup() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
           {/* Overlay click to close */}
           <div className="absolute inset-0" onClick={handleClose} />
 
@@ -76,42 +76,42 @@ export default function WelcomePopup() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="relative w-full max-w-lg overflow-hidden glass-luxury rounded-[2.5rem] p-8 md:p-12 border border-white/20 dark:border-white/5 text-center shadow-2xl bg-white/90 dark:bg-black/90"
+            className="relative w-full max-w-lg overflow-hidden rounded-[2.5rem] p-8 md:p-12 border border-white/10 text-center shadow-2xl bg-[#0d0d0d] text-white"
             dir={isRtl ? 'rtl' : 'ltr'}
           >
             {/* Background elements */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gold/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#D4AF37]/5 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#D4AF37]/5 rounded-full blur-2xl pointer-events-none" />
 
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-6 right-6 p-2 rounded-full text-dark/60 dark:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors z-10"
+              className="absolute top-6 right-6 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all z-10"
               aria-label="Close popup"
             >
               <X size={20} />
             </button>
 
             {/* Floating Sparkles Icon */}
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-6 relative">
+            <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-full flex items-center justify-center text-[#D4AF37] mx-auto mb-6 relative">
               <Sparkles className="w-8 h-8 animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-gold rounded-full animate-ping" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#D4AF37] rounded-full animate-ping" />
             </div>
 
             {/* Content */}
-            <h3 className="text-3xl font-bold text-dark dark:text-white mb-2 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+            <h3 className="text-3xl font-bold text-white mb-2 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
               {activeContent.title}
             </h3>
             
-            <p className="text-[#b55874] dark:text-primary-dark text-xs uppercase tracking-widest font-bold mb-4">
+            <p className="text-[#D4AF37] text-xs uppercase tracking-widest font-bold mb-4">
               {activeContent.subtitle}
             </p>
 
-            <p className="text-dark/70 dark:text-gray-300 text-sm leading-relaxed mb-6 font-light">
+            <p className="text-white/80 text-sm leading-relaxed mb-6 font-light">
               {activeContent.desc}
             </p>
 
-            <div className="inline-block bg-primary/20 dark:bg-primary/10 border border-primary/40 dark:border-primary/20 rounded-full px-5 py-2 mb-8 text-xs font-bold text-[#b55874] dark:text-primary-dark tracking-widest uppercase">
+            <div className="inline-block bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8 text-xs font-bold text-[#D4AF37] tracking-widest uppercase">
               {activeContent.code}
             </div>
 
@@ -122,7 +122,7 @@ export default function WelcomePopup() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleClose}
-                className="btn-premium w-full inline-flex items-center justify-center gap-3 py-4 shimmer-gold font-bold text-sm tracking-wide"
+                className="btn-premium w-full inline-flex items-center justify-center gap-3 py-4 shimmer-gold font-bold text-sm tracking-wide bg-[#D4AF37] text-dark hover:bg-white transition-all"
               >
                 <span>{activeContent.cta}</span>
                 <MessageCircle size={18} />
@@ -130,7 +130,7 @@ export default function WelcomePopup() {
 
               <button
                 onClick={handleClose}
-                className="text-xs text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors py-2 block mx-auto underline underline-offset-4"
+                className="text-xs text-white/40 hover:text-white transition-colors py-2 block mx-auto underline underline-offset-4"
               >
                 {activeContent.dismiss}
               </button>
