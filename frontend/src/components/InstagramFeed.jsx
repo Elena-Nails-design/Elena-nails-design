@@ -87,15 +87,28 @@ export default function InstagramFeed({ limitToFour = false }) {
   }, [limitToFour]);
 
   return (
-    <div className="w-full relative flex justify-center min-h-[300px] items-start">
-      {/* Inject CSS to hide the Elfsight watermark and title */}
+    <div className={`w-full relative flex justify-center min-h-[300px] items-start ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
+      {/* Inject CSS to hide the Elfsight watermark, title, and optionally limit posts in Light DOM */}
       <style>
         {`
           a[href*="elfsight.com"], 
           .eapps-link,
           .eui-widget-title,
-          .eapps-instagram-feed-title {
+          .eapps-instagram-feed-title,
+          .eapps-instagram-feed-header {
             display: none !important;
+          }
+          
+          /* If widget renders in Light DOM on homepage, apply limits */
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item:nth-child(n+5) {
+            display: none !important;
+          }
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-load-more,
+          .instagram-feed-homepage-limited .es-load-more-button {
+            display: none !important;
+          }
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid {
+            padding-bottom: 0 !important;
           }
         `}
       </style>
