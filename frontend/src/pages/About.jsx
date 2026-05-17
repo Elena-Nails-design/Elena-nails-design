@@ -31,12 +31,18 @@ export default function About() {
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-primary/30 rounded-br-[3rem] pointer-events-none" />
             
             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-1000 group">
-              <video 
+              {/* Temporarily hidden video of wife per request */}
+              {/* <video 
                 src={`${import.meta.env.BASE_URL}assets/about_me.mp4`} 
                 autoPlay
                 loop
                 muted
                 playsInline
+                className="w-full h-[650px] object-cover transition-transform duration-[2.5s] group-hover:scale-110"
+              /> */}
+              <img 
+                src={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`} 
+                alt="Premium Nail Studio Aesthetics"
                 className="w-full h-[650px] object-cover transition-transform duration-[2.5s] group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent opacity-60" />
