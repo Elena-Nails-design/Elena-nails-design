@@ -33,11 +33,33 @@ export default function Services() {
     }));
   }, [serviceListData]);
 
+  const schemaData = useMemo(() => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": services.map((service, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Service",
+          "name": service.title,
+          "description": service.desc,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Elena Epshtein",
+            "image": "https://elenanails.beauty/assets/logo.png"
+          }
+        }
+      }))
+    };
+  }, [services]);
+
   return (
     <div className="pt-32 pb-20 bg-light dark:bg-[#050505] min-h-screen transition-colors duration-700">
       <SEO 
         title={t('services.title')} 
         description={t('services.desc')} 
+        schemaData={schemaData}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-24">
@@ -103,9 +125,9 @@ export default function Services() {
                     <Sparkles className="w-3 h-3 text-primary opacity-50" />
                   </div>
                   
-                  <h3 className="text-3xl font-bold text-dark dark:text-white mb-6 tracking-tight group-hover:text-primary transition-colors duration-300">
+                  <h2 className="text-3xl font-bold text-dark dark:text-white mb-6 tracking-tight group-hover:text-primary transition-colors duration-300">
                     {service.title}
-                  </h3>
+                  </h2>
                   
                   <p className="text-text-secondary dark:text-text-secondary-dark mb-10 leading-relaxed font-light italic opacity-90 flex-grow">
                     {service.desc}
@@ -155,9 +177,9 @@ export default function Services() {
                   {menuItems.map((item, idx) => (
                     <div key={idx} className="group">
                       <div className="flex justify-between items-baseline mb-2 gap-4">
-                        <h4 className="text-lg md:text-2xl font-bold text-dark dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                        <h3 className="text-lg md:text-2xl font-bold text-dark dark:text-white tracking-tight group-hover:text-primary transition-colors">
                           {item.name}
-                        </h4>
+                        </h3>
                         <div className="flex-grow border-b border-dotted border-gray-300 dark:border-gray-700 mx-2 md:mx-4 opacity-50 relative top-[-6px]" />
                         <span className="text-lg md:text-2xl font-bold text-primary whitespace-nowrap">
                           {item.price}

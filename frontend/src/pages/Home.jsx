@@ -80,9 +80,26 @@ export default function Home() {
     'Hi Elena! 💅 I\'d love to find out more and book an appointment'
   )}`, [lang]);
 
+  const faqSchemaData = useMemo(() => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [1, 2, 3, 4].map(i => ({
+        "@type": "Question",
+        "name": t(`home.faq.q${i}`),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t(`home.faq.a${i}`)
+        }
+      }))
+    };
+  }, [t]);
+
+  const combinedSchema = useMemo(() => [SCHEMA_DATA, faqSchemaData], [faqSchemaData]);
+
   return (
     <div className="flex flex-col overflow-hidden">
-      <SEO schemaData={SCHEMA_DATA} />
+      <SEO schemaData={combinedSchema} />
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-screen flex items-center justify-center bg-dark overflow-hidden">
         {/* Cinematic Video Background with Parallax */}

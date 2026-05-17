@@ -74,9 +74,9 @@ export default function About() {
                 whileHover={{ y: -5 }}
                 className="space-y-2"
               >
-                <h3 className="text-5xl font-bold text-primary dark:text-primary-dark tracking-tighter" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h2 className="text-5xl font-bold text-primary dark:text-primary-dark tracking-tighter" style={{ fontFamily: 'var(--font-heading)' }}>
                   +500
-                </h3>
+                </h2>
                 <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-dark/40 dark:text-white/40">
                   {t('about.clients')}
                 </p>
@@ -85,9 +85,9 @@ export default function About() {
                 whileHover={{ y: -5 }}
                 className="space-y-2"
               >
-                <h3 className="text-5xl font-bold text-primary dark:text-primary-dark tracking-tighter" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h2 className="text-5xl font-bold text-primary dark:text-primary-dark tracking-tighter" style={{ fontFamily: 'var(--font-heading)' }}>
                   15
-                </h3>
+                </h2>
                 <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-dark/40 dark:text-white/40">
                   {t('about.certs')}
                 </p>

@@ -114,9 +114,9 @@ const ArticleCard = ({ id, article, image, onClick }) => {
       </div>
 
       <div className="p-8 flex flex-col flex-grow">
-        <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 group-hover:text-gold transition-colors duration-300">
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 group-hover:text-gold transition-colors duration-300">
           {article.title}
-        </h3>
+        </h2>
         <p className="text-zinc-600 dark:text-zinc-400 mb-6 line-clamp-3 leading-relaxed">
           {article.excerpt}
         </p>
