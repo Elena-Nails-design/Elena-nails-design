@@ -55,32 +55,46 @@ export default function InstagramFeed({ limitToFour = false }) {
               .es-load-more-button {
                 display: none !important;
               }
-              /* Enforce custom responsive grid layout */
+              /* Reset Elfsight item widths to allow CSS Grid gaps */
+              .eapps-instagram-feed-posts-item {
+                width: auto !important;
+                max-width: none !important;
+                min-width: 0 !important;
+                flex: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+              /* Custom responsive grid layout */
+              .eapps-instagram-feed-posts-inner,
               .eapps-instagram-feed-posts-grid-inner {
                 display: grid !important;
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
+                gap: 16px !important;
               }
               @media (min-width: 768px) {
+                .eapps-instagram-feed-posts-inner,
                 .eapps-instagram-feed-posts-grid-inner {
                   grid-template-columns: repeat(4, 1fr) !important;
-                  gap: 1.5rem !important;
+                  gap: 24px !important;
                 }
               }
-              /* Luxury card styles with rounded corners and shadows */
-              .eapps-instagram-feed-posts-item {
-                border-radius: 1.5rem !important;
-                overflow: hidden !important;
-                box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3) !important;
-                transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-              }
-              .eapps-instagram-feed-posts-item:hover {
-                transform: translateY(-8px) scale(1.02) !important;
-                box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.25) !important;
-              }
+              /* Premium cards design with rounded corners and shadows */
+              a.eapps-instagram-feed-posts-item-link,
               .eapps-instagram-feed-posts-item-link {
-                border-radius: 1.5rem !important;
+                border-radius: 16px !important;
                 overflow: hidden !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+              }
+              a.eapps-instagram-feed-posts-item-link:hover,
+              .eapps-instagram-feed-posts-item-link:hover {
+                transform: translateY(-8px) !important;
+                box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25) !important;
+              }
+              /* Hide post type icons ('boarding') to keep the layout clean */
+              .eapps-instagram-feed-posts-item-type,
+              .es-post-type-icon {
+                display: none !important;
               }
               .eapps-instagram-feed-posts-grid {
                 padding-bottom: 0 !important;
@@ -133,32 +147,48 @@ export default function InstagramFeed({ limitToFour = false }) {
           .instagram-feed-homepage-limited .es-load-more-button {
             display: none !important;
           }
-          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
+          /* Reset Elfsight item widths to allow CSS Grid gaps in Light DOM */
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item {
+            width: auto !important;
+            max-width: none !important;
+            min-width: 0 !important;
+            flex: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          /* Custom responsive grid layout in Light DOM */
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-inner,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 1rem !important;
+            gap: 16px !important;
           }
           @media (min-width: 768px) {
-            .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
+            body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-inner,
+            body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
               grid-template-columns: repeat(4, 1fr) !important;
-              gap: 1.5rem !important;
+              gap: 24px !important;
             }
           }
-          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item {
-            border-radius: 1.5rem !important;
+          /* Premium cards design with rounded corners and shadows in Light DOM */
+          body .instagram-feed-homepage-limited a.eapps-instagram-feed-posts-item-link,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link {
+            border-radius: 16px !important;
             overflow: hidden !important;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3) !important;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
           }
-          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item:hover {
-            transform: translateY(-8px) scale(1.02) !important;
-            box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.25) !important;
+          body .instagram-feed-homepage-limited a.eapps-instagram-feed-posts-item-link:hover,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25) !important;
           }
-          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link {
-            border-radius: 1.5rem !important;
-            overflow: hidden !important;
+          /* Hide post type icons ('boarding') in Light DOM */
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-type,
+          body .instagram-feed-homepage-limited .es-post-type-icon {
+            display: none !important;
           }
-          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid {
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid {
             padding-bottom: 0 !important;
           }
         `}
