@@ -68,7 +68,7 @@ export default function InstagramFeed({ limitToFour = false }) {
                   position: relative !important;
                   left: auto !important;
                   top: auto !important;
-                  width: auto !important;
+                  width: 100% !important; /* Stretch card to fill grid column cell! */
                   max-width: none !important;
                   min-width: 0 !important;
                   flex: none !important;
@@ -76,6 +76,9 @@ export default function InstagramFeed({ limitToFour = false }) {
                   margin: 0 !important;
                   transform: none !important;
                   float: none !important;
+                  aspect-ratio: 1 / 1 !important; /* Perfect square shape! */
+                  background: transparent !important; /* Eradicate white corners */
+                  background-color: transparent !important;
                 }
 
                 /* Reset wrapper layouts to standard CSS grids */
@@ -105,15 +108,30 @@ export default function InstagramFeed({ limitToFour = false }) {
                 a.eapps-instagram-feed-posts-item-link,
                 .eapps-instagram-feed-posts-item-link {
                   display: block !important;
+                  width: 100% !important;
+                  height: 100% !important;
                   border-radius: 16px !important;
                   overflow: hidden !important;
+                  -webkit-mask-image: -webkit-radial-gradient(white, black);
                   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
                   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+                  background: transparent !important;
+                  background-color: transparent !important;
                 }
                 a.eapps-instagram-feed-posts-item-link:hover,
                 .eapps-instagram-feed-posts-item-link:hover {
                   transform: translateY(-8px) !important;
                   box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25) !important;
+                }
+                /* Size inner image to fill its card beautifully */
+                .eapps-instagram-feed-posts-item-image,
+                .eapps-instagram-feed-posts-item-image-wrapper {
+                  width: 100% !important;
+                  height: 100% !important;
+                  border-radius: 16px !important;
+                  background-size: cover !important;
+                  background-position: center !important;
+                  background-color: transparent !important;
                 }
                 /* Hide post type icons ('boarding') to keep the layout clean */
                 .eapps-instagram-feed-posts-item-type,
@@ -175,7 +193,7 @@ export default function InstagramFeed({ limitToFour = false }) {
             position: relative !important;
             left: auto !important;
             top: auto !important;
-            width: auto !important;
+            width: 100% !important; /* Stretch card to fill grid column cell! */
             max-width: none !important;
             min-width: 0 !important;
             flex: none !important;
@@ -183,6 +201,9 @@ export default function InstagramFeed({ limitToFour = false }) {
             margin: 0 !important;
             transform: none !important;
             float: none !important;
+            aspect-ratio: 1 / 1 !important; /* Perfect square shape! */
+            background: transparent !important; /* Eradicate white corners */
+            background-color: transparent !important;
           }
 
           /* Reset wrapper layouts to standard CSS grids in Light DOM */
@@ -212,15 +233,30 @@ export default function InstagramFeed({ limitToFour = false }) {
           body .instagram-feed-homepage-limited a.eapps-instagram-feed-posts-item-link,
           body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link {
             display: block !important;
+            width: 100% !important;
+            height: 100% !important;
             border-radius: 16px !important;
             overflow: hidden !important;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+            background: transparent !important;
+            background-color: transparent !important;
           }
           body .instagram-feed-homepage-limited a.eapps-instagram-feed-posts-item-link:hover,
           body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link:hover {
             transform: translateY(-8px) !important;
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25) !important;
+          }
+          /* Size inner image to fill its card beautifully in Light DOM */
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-image,
+          body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-image-wrapper {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 16px !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-color: transparent !important;
           }
           /* Hide post type icons ('boarding') in Light DOM */
           body .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-type,
