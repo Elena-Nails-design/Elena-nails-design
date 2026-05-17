@@ -6,12 +6,6 @@ export default function InstagramFeed({ limitToFour = false }) {
   const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
-    // Load Elfsight Platform Script
-    const script = document.createElement('script');
-    script.src = "https://elfsightcdn.com/platform.js";
-    script.async = true;
-    document.body.appendChild(script);
-
     // Hack to hide Elfsight title, branding, and limit posts inside its Shadow DOM
     const hideTitleInterval = setInterval(() => {
       const widget = document.querySelector('.elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f');
@@ -151,9 +145,6 @@ export default function InstagramFeed({ limitToFour = false }) {
 
     return () => {
       clearInterval(hideTitleInterval);
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
     };
   }, [limitToFour]);
 
