@@ -55,7 +55,33 @@ export default function InstagramFeed({ limitToFour = false }) {
               .es-load-more-button {
                 display: none !important;
               }
-              /* Adjust gap and layout padding for 1 row of 4 columns */
+              /* Enforce custom responsive grid layout */
+              .eapps-instagram-feed-posts-grid-inner {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+              }
+              @media (min-width: 768px) {
+                .eapps-instagram-feed-posts-grid-inner {
+                  grid-template-columns: repeat(4, 1fr) !important;
+                  gap: 1.5rem !important;
+                }
+              }
+              /* Luxury card styles with rounded corners and shadows */
+              .eapps-instagram-feed-posts-item {
+                border-radius: 1.5rem !important;
+                overflow: hidden !important;
+                box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3) !important;
+                transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+              }
+              .eapps-instagram-feed-posts-item:hover {
+                transform: translateY(-8px) scale(1.02) !important;
+                box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.25) !important;
+              }
+              .eapps-instagram-feed-posts-item-link {
+                border-radius: 1.5rem !important;
+                overflow: hidden !important;
+              }
               .eapps-instagram-feed-posts-grid {
                 padding-bottom: 0 !important;
               }
@@ -99,13 +125,38 @@ export default function InstagramFeed({ limitToFour = false }) {
             display: none !important;
           }
           
-          /* If widget renders in Light DOM on homepage, apply limits */
+          /* If widget renders in Light DOM on homepage, apply limits and luxury layout spacing */
           .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item:nth-child(n+5) {
             display: none !important;
           }
           .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-load-more,
           .instagram-feed-homepage-limited .es-load-more-button {
             display: none !important;
+          }
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1rem !important;
+          }
+          @media (min-width: 768px) {
+            .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid-inner {
+              grid-template-columns: repeat(4, 1fr) !important;
+              gap: 1.5rem !important;
+            }
+          }
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item {
+            border-radius: 1.5rem !important;
+            overflow: hidden !important;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3) !important;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+          }
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.25) !important;
+          }
+          .instagram-feed-homepage-limited .eapps-instagram-feed-posts-item-link {
+            border-radius: 1.5rem !important;
+            overflow: hidden !important;
           }
           .instagram-feed-homepage-limited .eapps-instagram-feed-posts-grid {
             padding-bottom: 0 !important;
