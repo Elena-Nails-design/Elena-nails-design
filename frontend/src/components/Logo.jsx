@@ -35,3 +35,5 @@ export default function Logo({ className = "h-12 w-auto", scrolled = false }) {
     </div>
   );
 }
+
+// Trigger fresh Vercel build to restore original logo and Instagram feed
