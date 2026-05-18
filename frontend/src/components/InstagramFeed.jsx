@@ -112,7 +112,7 @@ export default function InstagramFeed({ limitToFour = false }) {
   }, [limitToFour, isLoaded]);
 
   return (
-    <div ref={containerRef} className={`w-full relative flex justify-center min-h-[300px] items-start ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
+    <div ref={containerRef} className={`w-full relative flex justify-center min-h-[600px] md:min-h-[650px] items-start ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
       {/* Inject CSS to hide the Elfsight watermark, title, and optionally limit posts in Light DOM */}
       <style>
         {`
@@ -138,8 +138,8 @@ export default function InstagramFeed({ limitToFour = false }) {
         `}
       </style>
 
-      <div className="text-center absolute pointer-events-none opacity-50 text-sm z-0 top-20">
-        {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
+      <div className="text-center absolute pointer-events-none text-dark/70 dark:text-white/70 text-sm font-medium z-0 top-24">
+        {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : i18n.language === 'ru' ? 'Загрузка Instagram...' : 'Loading Instagram Gallery...'}
       </div>
 
       <div className="elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f w-full z-10 relative" data-elfsight-app-lazy></div>
