@@ -60,6 +60,11 @@ export default function Services() {
         title={t('services.title')} 
         description={t('services.desc')} 
         schemaData={schemaData}
+        keywords={
+          i18n.language === 'he' ? 'מניקור מכשירי אשדוד, לק ג\'ל אשדוד, פדיקור רפואי אשדוד, בניית ציפורניים אשדוד, עיצוב ציפורניים, מחירון לק ג\'ל אשדוד, לק ג\'ל באשדוד מחירון, מניקור אשקלון, לק ג\'ל גן יבנה, פדיקור רפואי אשקלון' :
+          i18n.language === 'ru' ? 'услуги маникюра Ашдод, цены гель лак Ашдод, медицинский педикюр Ашдод, наращивание ногтей Ашдод, дизайн ногтей цены, маникюр Ашкелон, гель лак Ган Явне' :
+          'manicure prices Ashdod, gel polish Ashdod cost, medical pedicure Ashdod services, nail extension price Ashdod, nail art Ashdod, manicure Ashkelon, pedicure Gan Yavne'
+        }
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-24">

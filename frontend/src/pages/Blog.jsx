@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const blogImages = {
   healthy: '/assets/blog/healthy_nails.png',
@@ -152,10 +152,15 @@ const Blog = () => {
 
   return (
     <section className={`pt-24 pb-20 ${isRtl ? 'rtl' : 'ltr'}`} dir={isRtl ? 'rtl' : 'ltr'}>
-      <Helmet>
-        <title>{selectedArticle ? `${selectedArticle.title} | Elena Nails Design` : t('blog.meta_title')}</title>
-        <meta name="description" content={selectedArticle ? selectedArticle.meta_description : t('blog.meta_description')} />
-      </Helmet>
+      <SEO 
+        title={selectedArticle ? `${selectedArticle.title}` : t('blog.meta_title')} 
+        description={selectedArticle ? selectedArticle.meta_description : t('blog.meta_description')}
+        keywords={
+          i18n.language === 'he' ? 'בלוג ציפורניים, טיפים למניקור, בריאות הציפורן אשדוד, מגמות לק גל, סטודיו מניקור אשדוד, לק גל אשקלון, מניקור גן יבנה' :
+          i18n.language === 'ru' ? 'блог о ногтях, советы маникюр, уход за ногтями Ашдод, тренды гель лак, салон красоты Ашдод, маникюр Ашкелон' :
+          'nail blog, manicure tips, nail health Ashdod, gel polish trends, manicure salon Ashdod, manicure Ashkelon, pedicure Gan Yavne'
+        }
+      />
 
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden mb-16">

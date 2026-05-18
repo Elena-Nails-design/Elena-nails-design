@@ -16,6 +16,11 @@ export default function Gallery() {
       <SEO 
         title={t('nav.gallery')} 
         description={t('gallery.subtitle')} 
+        keywords={
+          i18n.language === 'he' ? 'גלריית ציפורניים אשדוד, גלריית מניקור אשדוד, עבודות לק ג\'ל אשדוד, עיצובי ציפורניים אשדוד, מניקור רוסי אשדוד עבודות, אלנה אפשטיין עבודות, לק ג\'ל מובחר, לק גל אשקלון, לק גל גן יבנה' :
+          i18n.language === 'ru' ? 'галерея ногтей Ашдод, примеры маникюра Ашдод, работы гель лак Ашдод, дизайн ногтей фото Ашдод, Елена Эпштейн работы, маникюр Ашкелон' :
+          'nail gallery Ashdod, manicure gallery Ashdod, gel polish portfolio Ashdod, nail art photos Ashdod, Elena Epshtein works, manicure Ashkelon, pedicure Gan Yavne'
+        }
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

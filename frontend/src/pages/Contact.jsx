@@ -21,6 +21,11 @@ export default function Contact() {
       <SEO 
         title={t('nav.contact')} 
         description={t('contact.desc')} 
+        keywords={
+          i18n.language === 'he' ? 'יצירת קשר אלנה אפשטיין, טלפון אלנה אפשטיין, מניקור אשדוד טלפון, סטודיו ציפורניים אשדוד כתובת, פדיקור אשדוד העצמאות, לק ג\'ל אשדוד העצמאות, לק ג\'ל אשקלון יצירת קשר, מניקור גן יבנה טלפון' :
+          i18n.language === 'ru' ? 'контакты Елена Эпштейн, телефон маникюр Ашдод, студия ногтей Ашдод адрес, педикюр Ашдод Хаацмаут, записаться на маникюр Ашдод' :
+          'contact Elena Epshtein, phone number nail salon Ashdod, address Elena Nails Ashdod, book nail appointment Ashdod'
+        }
       />
       {/* Abstract Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">

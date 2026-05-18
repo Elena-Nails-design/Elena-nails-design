@@ -14,6 +14,11 @@ export default function About() {
       <SEO 
         title={t('nav.about')} 
         description={t('about.subtitle')} 
+        keywords={
+          lang === 'he' ? 'מי היא אלנה אפשטיין, ילנה אפשטיין, סטודיו מניקור אשדוד, פדיקור רפואי אשדוד, מעצבת ציפורניים אשדוד, הטיפוח המקצועי באשדוד, לק גל אשקלון, לק גל גן יבנה' :
+          lang === 'ru' ? 'кто такая Елена Эпштейн, Епштейн ногти, салон красоты Ашдод, аппаратный маникюр Ашдод, медицинский педикюр Ашдод, профессиональный уход, маникюр Ашкелон' :
+          'about Elena Epshtein, Ephtein nails, hardware manicure Ashdod, medical pedicure Ashdod, luxury nail studio Ashdod, manicure Ashkelon, pedicure Gan Yavne'
+        }
       />
       <div className="flex-grow flex items-center py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

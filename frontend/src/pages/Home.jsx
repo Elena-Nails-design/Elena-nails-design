@@ -11,45 +11,6 @@ import InstagramFeed from '../components/InstagramFeed';
 
 const STUDIO_PHONE = '9720534611370';
 
-const SCHEMA_DATA = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "ELENA EPSHTEIN - סטודיו לציפורניים יוקרתי",
-  "image": "https://elenanails.beauty/assets/logo.png",
-  "@id": "https://elenanails.beauty",
-  "url": "https://elenanails.beauty",
-  "telephone": "+972534611370",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "העצמאות 93",
-    "addressLocality": "אשדוד",
-    "postalCode": "77452",
-    "addressCountry": "IL"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 31.8044,
-    "longitude": 34.6553
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-      "opens": "09:00",
-      "closes": "19:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Friday",
-      "opens": "09:00",
-      "closes": "14:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/nails_epshtein",
-    "https://www.facebook.com/share/18afmCSD26/"
-  ]
-};
 
 const TESTIMONIALS = [
   { nameHe: 'יעל כ.', nameRu: 'Яэль К.', nameEn: 'Yael K.', textHe: 'אלנה פשוט מדהימה! כבר שנה שאני מגיעה אליה ותמיד יוצאת עם ציפורניים מושלמות. המקצועיות והיחס האישי לא מצויים בשום מקום אחר.', textRu: 'Елена просто невероятная! Уже год хожу к ней — всегда выхожу с идеальными ногтями. Профессионализм и личный подход несравнимы.', textEn: "Elena is simply amazing! I've been coming to her for a year and always leave with perfect nails. The professionalism and personal touch are unmatched." },
@@ -97,7 +58,71 @@ export default function Home() {
     };
   }, [t]);
 
-  const combinedSchema = useMemo(() => [SCHEMA_DATA, faqSchemaData], [faqSchemaData]);
+  const localBusinessSchema = useMemo(() => {
+    const isRu = lang === 'ru';
+    const isEn = lang === 'en';
+    
+    return {
+      "@context": "https://schema.org",
+      "@type": "NailSalon",
+      "name": isRu ? "Студия маникюра Елены Эпштейн" : isEn ? "Elena Epshtein Premium Nail Studio" : "ELENA EPSHTEIN - סטודיו לציפורניים יוקרתי באשדוד",
+      "image": "https://elenanails.beauty/assets/logo.png",
+      "@id": "https://elenanails.beauty",
+      "url": "https://elenanails.beauty",
+      "telephone": "+972534611370",
+      "priceRange": "$$",
+      "description": isRu 
+        ? "Эксклюзивная студия маникюра и педикюра Елены Эпштейн в Ашдоде. Аппаратный маникюр, гель-лак, наращивание ногтей, педикюр Ашдод, Ашкелон, Ган Явне."
+        : isEn 
+        ? "Elena Epshtein's luxury nail studio in Ashdod. Hardware manicure, gel polish, builder gel extensions, medical pedicure for clients in Ashdod, Ashkelon, Gan Yavne."
+        : "סטודיו יוקרתי לעיצוב ציפורניים באשדוד של אלנה אפשטיין. מניקור מכשירי, לק ג'ל, בניית ציפורניים ופדיקור רפואי באשדוד, אשקלון, גן יבנה.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "העצמאות 93",
+        "addressLocality": "אשדוד",
+        "postalCode": "77452",
+        "addressCountry": "IL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 31.8044,
+        "longitude": 34.6553
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/nails_epshtein",
+        "https://www.facebook.com/share/18afmCSD26/"
+      ],
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Ashdod" },
+        { "@type": "AdministrativeArea", "name": "Ashkelon" },
+        { "@type": "AdministrativeArea", "name": "Gan Yavne" },
+        { "@type": "AdministrativeArea", "name": "אשדוד" },
+        { "@type": "AdministrativeArea", "name": "אשקלון" },
+        { "@type": "AdministrativeArea", "name": "גן יבנה" }
+      ],
+      "knowsAbout": [
+        "Manicure", "Pedicure", "Medical Pedicure", "Gel Polish", "Nail Extension", "Nail Art",
+        "מניקור מכשירי", "פדיקור רפואי", "לק ג'ל", "בניית ציפורניים בג'ל", "עיצוב ציפורניים",
+        "Аппаратный маникюр", "Медицинский педикюр", "Наращивание ногтей", "Дизайн ногтей"
+      ]
+    };
+  }, [lang]);
+
+  const combinedSchema = useMemo(() => [localBusinessSchema, faqSchemaData], [localBusinessSchema, faqSchemaData]);
 
   return (
     <div className="flex flex-col overflow-hidden">

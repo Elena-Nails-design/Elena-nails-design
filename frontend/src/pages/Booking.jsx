@@ -134,6 +134,11 @@ export default function Booking() {
       <SEO 
         title={t('nav.booking')} 
         description={t('booking.subtitle')} 
+        keywords={
+          i18n.language === 'he' ? 'קביעת תור לק ג\'ל אשדוד, תיאום תור מניקור אשדוד, הזמנת תור פדיקור אשדוד, לק ג\'ל אשדוד מומלצת, תיאום תור אלנה אפשטיין, קביעת תור לק ג\'ל אשקלון, מניקור גן יבנה קביעת תור' :
+          i18n.language === 'ru' ? 'записаться на маникюр Ашдод, онлайн запись педикюр Ашдод, бронирование ногти Ашдод, Елена Эпштейн запись' :
+          'book manicure Ashdod, online booking gel polish Ashdod, schedule pedicure Ashdod, Elena Epshtein scheduling'
+        }
       />
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
