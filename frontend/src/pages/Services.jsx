@@ -108,6 +108,8 @@ export default function Services() {
                     alt={service.title}
                     loading="lazy"
                     decoding="async"
+                    width={400}
+                    height={320}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />

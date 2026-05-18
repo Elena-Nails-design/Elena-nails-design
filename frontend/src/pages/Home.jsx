@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useCallback } from 'react';
+import React, { useRef, useMemo, useCallback, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -63,6 +63,15 @@ export default function Home() {
   const isRtl = i18n.dir() === 'rtl';
   const lang = i18n.language;
 
+  // Defer video loading until after initial paint for better LCP
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef(null);
+  useEffect(() => {
+    // Delay video load to prioritize LCP image (poster)
+    const timer = setTimeout(() => setVideoReady(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Parallax Effect
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -106,15 +115,29 @@ export default function Home() {
       <section ref={targetRef} className="relative h-screen flex items-center justify-center bg-dark overflow-hidden">
         {/* Cinematic Video Background with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0 z-0">
-          <video 
-            src={`${import.meta.env.BASE_URL}assets/nails_epshtein/AQP9V0mme-uDwapBpUMH2MIlzpyh1jxvH8zBBR6UZq38ewW_hxFeDh1Ce_CDyCc5rnMxAhAz3fIDl2RdLuEaMLdmB7u1KqmaTJNWJ1w.mp4`} 
-            poster={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-60 scale-110"
+          {/* Poster image shown immediately as LCP element — stays in DOM to prevent CLS */}
+          <img
+            src={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`}
+            alt="Elena Nails Studio"
+            fetchpriority="high"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 w-full h-full object-cover opacity-60 scale-110"
           />
+          {/* Video fades in on top of the poster — no layout shift */}
+          {videoReady && (
+            <video 
+              ref={videoRef}
+              src={`${import.meta.env.BASE_URL}assets/nails_epshtein/AQP9V0mme-uDwapBpUMH2MIlzpyh1jxvH8zBBR6UZq38ewW_hxFeDh1Ce_CDyCc5rnMxAhAz3fIDl2RdLuEaMLdmB7u1KqmaTJNWJ1w.mp4`}
+              poster={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover opacity-60 scale-110"
+            />
+          )}
           {/* Custom Luxury Overlay */}
           <div className="absolute inset-0 hero-overlay" />
         </motion.div>
@@ -284,7 +307,7 @@ export default function Home() {
                     <div key={idx} className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">✓</div>
                       <div>
-                        <h4 className="font-bold text-white tracking-wide">{item.title}</h4>
+                        <h3 className="font-bold text-white tracking-wide text-base">{item.title}</h3>
                         <p className="text-sm text-gray-400 font-light mt-1">{item.desc}</p>
                       </div>
                     </div>
@@ -297,8 +320,11 @@ export default function Home() {
                 <img 
                   src={`${import.meta.env.BASE_URL}assets/nails_epshtein/626295418_18076514747616810_7167713800782786002_n.jpg`} 
                   alt="Clinical sterilization autoclave and tools" 
+                  width={800}
+                  height={500}
                   className="w-full h-[500px] object-cover transition-transform duration-1000 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-40" />
               </div>

@@ -73,10 +73,10 @@ export default function Footer() {
         </div>
         
         {/* Copyright */}
-        <div className="pt-10 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-600 font-bold">
+        <div className="pt-10 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-gray-600 dark:text-gray-400 font-bold">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <p>© {new Date().getFullYear()} {t('nav.logo_text')}</p>
-            <Link to="/accessibility" className="hover:text-primary transition-colors decoration-primary/30 underline-offset-4 underline">
+            <Link to="/accessibility" className="hover:text-primary transition-colors decoration-primary/30 underline-offset-4 underline text-gray-600 dark:text-gray-400">
               הצהרת נגישות
             </Link>
           </div>

@@ -155,6 +155,10 @@ export default function BeforeAfter() {
                   <img 
                     src={currentTreatment.before} 
                     alt="Before Treatment" 
+                    width={550}
+                    height={687}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover filter grayscale contrast-125"
                     draggable="false"
                   />
@@ -171,6 +175,10 @@ export default function BeforeAfter() {
                   <img 
                     src={currentTreatment.after} 
                     alt="After Treatment" 
+                    width={550}
+                    height={687}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ width: '100%', height: '100%', maxWidth: 'none' }}
                     draggable="false"
