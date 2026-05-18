@@ -5,12 +5,12 @@ import { X } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const blogImages = {
-  healthy: '/assets/blog/healthy_nails.jpg',
-  gel_pros_cons: '/assets/blog/gel_polish_luxio.jpg',
-  manicure_duration: '/assets/blog/longevity.jpg',
-  trends_2026: '/assets/blog/trends_2026.jpg',
-  choose_salon: '/assets/blog/salon_choice.jpg',
-  foot_care: '/assets/blog/foot_care.jpg'
+  healthy: '/assets/blog/healthy_nails.png',
+  gel_pros_cons: '/assets/blog/gel_polish_luxio.png',
+  manicure_duration: '/assets/blog/longevity.png',
+  trends_2026: '/assets/blog/trends_2026.png',
+  choose_salon: '/assets/blog/salon_choice.png',
+  foot_care: '/assets/blog/foot_care.png'
 };
 
 const ArticleModal = ({ isOpen, onClose, article, image }) => {
@@ -53,8 +53,6 @@ const ArticleModal = ({ isOpen, onClose, article, image }) => {
                 <img
                   src={image}
                   alt={article.title}
-                  loading="lazy"
-                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -110,8 +108,6 @@ const ArticleCard = ({ id, article, image, onClick }) => {
           transition={{ duration: 0.6 }}
           src={image}
           alt={article.title}
-          loading="lazy"
-          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
@@ -165,11 +161,9 @@ const Blog = () => {
       <div className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden mb-16">
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/blog/hero_bg.jpg"
+            src="/assets/blog/hero_bg.png"
             className="w-full h-full object-cover"
             alt="Beauty Secrets Background"
-            loading="lazy"
-            decoding="async"
           />
           <div className="absolute inset-0 bg-white/40 dark:bg-black/60 backdrop-blur-[2px]" />
         </div>

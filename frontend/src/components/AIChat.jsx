@@ -1,11 +1,9 @@
-import { useState, useRef, useEffect, lazy, Suspense } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Sparkles, Loader2, User, Bot, Phone } from 'lucide-react';
-
-// Lazy-load heavy AI and markdown libs — only loaded when chat is actually used
-const ReactMarkdown = lazy(() => import('react-markdown'));
-let genAIModule = null;
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import ReactMarkdown from 'react-markdown';
 
 // Component constants
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
@@ -20,19 +18,8 @@ export default function AIChat() {
   const [error, setError] = useState(null);
   const scrollRef = useRef(null);
 
-  // Initialize Gemini lazily on first message
-  const genAIRef = useRef(null);
-  const getGenAI = async () => {
-    if (!GEMINI_API_KEY) return null;
-    if (!genAIModule) {
-      const mod = await import('@google/generative-ai');
-      genAIModule = mod;
-    }
-    if (!genAIRef.current) {
-      genAIRef.current = new genAIModule.GoogleGenerativeAI(GEMINI_API_KEY);
-    }
-    return genAIRef.current;
-  };
+  // Initialize Gemini
+  const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
 
   const scrollToBottom = () => {
     if (scrollRef.current) {
@@ -118,10 +105,7 @@ export default function AIChat() {
         geminiHistory[0].parts[0].text = `Persona/Instructions: ${SYSTEM_PROMPT}\n\nClient Message: ${geminiHistory[0].parts[0].text}`;
       }
 
-      const genAI = await getGenAI();
-      if (!genAI) throw new Error('Failed to initialize AI');
-
-      const MODEL_NAME = "gemini-2.0-flash";
+      const MODEL_NAME = "gemini-3-flash-preview";
 
       const model = genAI.getGenerativeModel({ model: MODEL_NAME });
       const result = await model.generateContent({ contents: geminiHistory });
@@ -253,11 +237,9 @@ export default function AIChat() {
                         : 'bg-white dark:bg-stone-800 text-dark dark:text-white rounded-tl-none border border-black/5 dark:border-white/5'
                     }`}>
                       <div className="markdown-chat whitespace-pre-wrap">
-                        <Suspense fallback={<span>{msg.content}</span>}>
-                          <ReactMarkdown>
-                            {msg.content}
-                          </ReactMarkdown>
-                        </Suspense>
+                        <ReactMarkdown>
+                          {msg.content}
+                        </ReactMarkdown>
                       </div>
                     </div>
                   </div>

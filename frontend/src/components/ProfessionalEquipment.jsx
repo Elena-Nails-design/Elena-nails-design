@@ -82,10 +82,6 @@ export default function ProfessionalEquipment() {
                   <img
                     src={item.image}
                     alt={t(`equipment.items.${item.id}.name`)}
-                    loading="lazy"
-                    decoding="async"
-                    width={400}
-                    height={400}
                     className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>

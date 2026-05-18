@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ThemeProvider } from './contexts/ThemeContext';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
-const AIChat = lazy(() => import('./components/AIChat'));
+import AIChat from './components/AIChat';
 import AccessibilityMenu from './components/AccessibilityMenu';
 import ScrollToTop from './components/ScrollToTop';
 import WelcomePopup from './components/WelcomePopup';
@@ -88,9 +88,7 @@ function App() {
           </main>
           <Footer />
           <FloatingWhatsApp />
-          <Suspense fallback={null}>
-            <AIChat />
-          </Suspense>
+          <AIChat />
           <AccessibilityMenu />
           <WelcomePopup />
         </div>

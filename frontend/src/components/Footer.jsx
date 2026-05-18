@@ -26,29 +26,29 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="space-y-6">
-            <h3 className="text-[10px] font-bold text-[#D25D7E] dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.contact_title')}</h3>
+            <h3 className="text-[10px] font-bold text-primary dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.contact_title')}</h3>
             <ul className="space-y-4 text-xs text-gray-600 dark:text-gray-400 font-light tracking-wider">
               <li className="flex items-start gap-3 group">
-                <MapPin className="w-4 h-4 text-[#D25D7E]/50 dark:text-primary-dark/40 group-hover:text-[#D25D7E] dark:group-hover:text-primary transition-colors shrink-0" />
+                <MapPin className="w-4 h-4 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
                 <span>{t('footer.address')}</span>
               </li>
               <li className="flex items-center gap-3 group">
-                <Phone className="w-4 h-4 text-[#D25D7E]/50 dark:text-primary-dark/40 group-hover:text-[#D25D7E] dark:group-hover:text-primary transition-colors shrink-0" />
-                <a href="tel:+9720534611370" dir="ltr" className="tracking-widest hover:text-[#D25D7E] dark:hover:text-primary transition-colors">{t('footer.phone')}</a>
+                <Phone className="w-4 h-4 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
+                <a href="tel:+9720534611370" dir="ltr" className="tracking-widest hover:text-primary transition-colors">{t('footer.phone')}</a>
               </li>
             </ul>
           </div>
 
           {/* Hours */}
           <div className="space-y-6">
-            <h3 className="text-[10px] font-bold text-[#D25D7E] dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.hours_title')}</h3>
+            <h3 className="text-[10px] font-bold text-primary dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.hours_title')}</h3>
             <ul className="space-y-3 text-xs text-gray-600 dark:text-gray-400 font-light tracking-wider">
               <li className="flex items-start gap-3 group">
-                <Clock className="w-4 h-4 text-[#D25D7E]/50 dark:text-primary-dark/40 group-hover:text-[#D25D7E] dark:group-hover:text-primary transition-colors shrink-0" />
+                <Clock className="w-4 h-4 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
                 <div className="flex flex-col gap-2">
                   <span className="text-dark dark:text-white font-medium">{t('footer.sun_thu')}</span>
                   <span>{t('footer.fri')}</span>
-                  <span className="text-[#D25D7E]/80 dark:text-primary-dark/60 italic">{t('footer.sat')}</span>
+                  <span className="text-primary/60 italic">{t('footer.sat')}</span>
                 </div>
               </li>
             </ul>
@@ -56,15 +56,15 @@ export default function Footer() {
 
           {/* Social */}
           <div className="space-y-6">
-            <h3 className="text-[10px] font-bold text-[#D25D7E] dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.social_title')}</h3>
+            <h3 className="text-[10px] font-bold text-primary dark:text-primary-dark uppercase tracking-[0.3em]">{t('footer.social_title')}</h3>
             <div className="flex gap-4">
-              <a href="https://wa.me/9720534611370" target="_blank" rel="noreferrer" aria-label="שלחי הודעה בוואטסאפ" className="w-10 h-10 glass-luxury flex items-center justify-center text-[#D25D7E] dark:text-primary-dark hover:text-white hover:bg-[#25D366] transition-all duration-300">
+              <a href="https://wa.me/9720534611370" target="_blank" rel="noreferrer" aria-label="שלחי הודעה בוואטסאפ" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#25D366] transition-all duration-300">
                 <MessageCircle className="w-4 h-4" />
               </a>
-              <a href={t('footer.instagram')} target="_blank" rel="noreferrer" aria-label="עקבי אחרינו באינסטגרם" className="w-10 h-10 glass-luxury flex items-center justify-center text-[#D25D7E] dark:text-primary-dark hover:text-white hover:bg-[#E1306C] transition-all duration-300">
+              <a href={t('footer.instagram')} target="_blank" rel="noreferrer" aria-label="עקבי אחרינו באינסטגרם" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#E1306C] transition-all duration-300">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href={t('footer.facebook')} target="_blank" rel="noreferrer" aria-label="עקבי אחרינו בפייסבוק" className="w-10 h-10 glass-luxury flex items-center justify-center text-[#D25D7E] dark:text-primary-dark hover:text-white hover:bg-[#1877F2] transition-all duration-300">
+              <a href={t('footer.facebook')} target="_blank" rel="noreferrer" aria-label="עקבי אחרינו בפייסבוק" className="w-10 h-10 glass-luxury flex items-center justify-center text-primary hover:text-white hover:bg-[#1877F2] transition-all duration-300">
                 <Facebook className="w-4 h-4" />
               </a>
             </div>
@@ -73,10 +73,10 @@ export default function Footer() {
         </div>
         
         {/* Copyright */}
-        <div className="pt-10 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-gray-600 dark:text-gray-400 font-bold">
+        <div className="pt-10 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-600 font-bold">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <p>© {new Date().getFullYear()} {t('nav.logo_text')}</p>
-            <Link to="/accessibility" className="hover:text-primary transition-colors decoration-primary/30 underline-offset-4 underline text-gray-600 dark:text-gray-400">
+            <Link to="/accessibility" className="hover:text-primary transition-colors decoration-primary/30 underline-offset-4 underline">
               הצהרת נגישות
             </Link>
           </div>

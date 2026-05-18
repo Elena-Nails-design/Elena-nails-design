@@ -116,3 +116,7 @@ Created with ❤️ for **Elena Nails**. This project showcases the power of mod
 
 ---
 **[Visit the Live Site](https://elenanails.beauty/)**
+
+---
+*Note: The website code has been restored to the stable state defined in tag `working-instagram-feed` (Commit: `29346c638543db52be7e14a1023a112d5cf38658` - "fix: restore dynamic Instagram feed with clean native-sizing to homepage").*
+

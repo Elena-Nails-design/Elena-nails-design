@@ -1,44 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function InstagramFeed({ limitToFour = false }) {
   const { i18n } = useTranslation();
-  const containerRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Lazy-load Elfsight script only when section is near the viewport
-  useEffect(() => {
-    // Check if Elfsight is already loaded
-    if (document.querySelector('script[src*="elfsight.com/platform/platform.js"]')) {
-      setIsLoaded(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          const script = document.createElement('script');
-          script.src = 'https://static.elfsight.com/platform/platform.js';
-          script.defer = true;
-          script.setAttribute('data-use-service-core', '');
-          script.onload = () => setIsLoaded(true);
-          document.body.appendChild(script);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '300px' } // Start loading 300px before section enters viewport
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
-    if (!isLoaded) return;
-
     // Hack to hide Elfsight title, branding, and limit posts inside its Shadow DOM
     const hideTitleInterval = setInterval(() => {
       const widget = document.querySelector('.elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f');
@@ -109,10 +75,10 @@ export default function InstagramFeed({ limitToFour = false }) {
     return () => {
       clearInterval(hideTitleInterval);
     };
-  }, [limitToFour, isLoaded]);
+  }, [limitToFour]);
 
   return (
-    <div ref={containerRef} className={`w-full relative flex justify-center min-h-[600px] md:min-h-[650px] items-start ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
+    <div className={`w-full relative flex justify-center min-h-[300px] items-start ${limitToFour ? 'instagram-feed-homepage-limited' : 'instagram-feed-gallery-full'}`}>
       {/* Inject CSS to hide the Elfsight watermark, title, and optionally limit posts in Light DOM */}
       <style>
         {`
@@ -138,8 +104,8 @@ export default function InstagramFeed({ limitToFour = false }) {
         `}
       </style>
 
-      <div className="text-center absolute pointer-events-none text-dark/70 dark:text-white/70 text-sm font-medium z-0 top-24">
-        {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : i18n.language === 'ru' ? 'Загрузка Instagram...' : 'Loading Instagram Gallery...'}
+      <div className="text-center absolute pointer-events-none opacity-50 text-sm z-0 top-20">
+        {i18n.language === 'he' ? 'טוען גלריית אינסטגרם...' : 'Loading Instagram Gallery...'}
       </div>
 
       <div className="elfsight-app-3dd90e71-9dc2-4a31-b149-946ad464c73f w-full z-10 relative" data-elfsight-app-lazy></div>
