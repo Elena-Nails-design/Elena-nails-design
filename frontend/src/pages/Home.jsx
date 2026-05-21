@@ -128,7 +128,7 @@ export default function Home() {
     <div className="flex flex-col overflow-hidden">
       <SEO schemaData={combinedSchema} />
       {/* Hero Section */}
-      <section ref={targetRef} className="relative h-screen flex items-center justify-center bg-dark overflow-hidden">
+      <section ref={targetRef} className="relative min-h-[100dvh] flex items-center justify-center bg-dark overflow-hidden pt-32 pb-24">
         {/* Cinematic Video Background with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <video 
@@ -153,7 +153,7 @@ export default function Home() {
 
           <Reveal delay={0.4} width="100%">
             <h1 
-              className="text-5xl md:text-8xl font-bold text-white mb-8 leading-[1.1] tracking-tight drop-shadow-2xl text-center"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.15] tracking-tight drop-shadow-2xl text-center"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               {t('home.hero_title')}
@@ -161,7 +161,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.6} width="100%">
-            <p className="text-lg md:text-2xl text-white/80 mb-12 font-light max-w-2xl mx-auto leading-relaxed italic drop-shadow-lg text-center">
+            <p className="text-base md:text-xl text-white/80 mb-10 font-light max-w-4xl mx-auto leading-relaxed italic drop-shadow-lg text-center">
               {t('home.hero_subtitle')}
             </p>
           </Reveal>
