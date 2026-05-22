@@ -224,7 +224,7 @@ export default function Booking() {
                         filterDate={(date) => date.getDay() !== 6}
                         dateFormat="dd/MM/yyyy"
                         locale={i18n.language === 'en' ? 'en' : i18n.language}
-                        withPortal
+                        portalId="root-portal"
                         onKeyDown={(e) => e.preventDefault()}
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white cursor-pointer"
                         placeholderText={t('booking.form_date')}
