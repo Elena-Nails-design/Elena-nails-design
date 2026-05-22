@@ -118,15 +118,19 @@ export default function Booking() {
   }, [buildMessage]);
 
   const sendViaInstagram = useCallback(() => {
-    copyToClipboard().then(() => {
-      window.open(INSTAGRAM_URL, '_blank');
-    });
+    copyToClipboard()
+      .catch((e) => console.warn('Clipboard writing blocked in WebView:', e))
+      .finally(() => {
+        window.open(INSTAGRAM_URL, '_blank');
+      });
   }, [copyToClipboard]);
 
   const sendViaFacebook = useCallback(() => {
-    copyToClipboard().then(() => {
-      window.open(FACEBOOK_URL, '_blank');
-    });
+    copyToClipboard()
+      .catch((e) => console.warn('Clipboard writing blocked in WebView:', e))
+      .finally(() => {
+        window.open(FACEBOOK_URL, '_blank');
+      });
   }, [copyToClipboard]);
 
   return (
@@ -161,7 +165,14 @@ export default function Booking() {
               <div className="space-y-4 pt-10 border-t border-white/10">
                 <div className="flex items-center gap-3 text-xs tracking-widest opacity-70">
                   <MapPin className="w-4 h-4 shrink-0" />
-                  <span>{t('footer.address')}</span>
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=העצמאות+93,+אשדוד" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="hover:underline hover:opacity-100 transition-opacity"
+                  >
+                    {t('footer.address')}
+                  </a>
                 </div>
                 <div className="flex items-center gap-3 text-xs tracking-widest opacity-70" dir="ltr">
                   <Phone className="w-4 h-4 shrink-0" />
@@ -223,7 +234,7 @@ export default function Booking() {
                       Facebook
                     </button>
 
-                    <p className="text-[9px] text-gray-400 dark:text-gray-600 text-center pt-1">
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400 text-center pt-1 leading-relaxed">
                       {i18n.language === 'he'
                         ? '* אינסטגרם ופייסבוק יפתחו את הפרופיל — שלחי הודעה ישירות'
                         : i18n.language === 'ru'
@@ -254,7 +265,7 @@ export default function Booking() {
                   {/* Name + Phone */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="group">
-                      <label htmlFor="name" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_name')}</label>
+                      <label htmlFor="name" className="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_name')}</label>
                       <input
                         id="name"
                         type="text" name="name" required
@@ -265,7 +276,7 @@ export default function Booking() {
                       />
                     </div>
                     <div className="group">
-                      <label htmlFor="phone" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_phone')}</label>
+                      <label htmlFor="phone" className="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_phone')}</label>
                       <input
                         id="phone"
                         type="tel" name="phone" required
@@ -279,7 +290,7 @@ export default function Booking() {
 
                   {/* Service */}
                   <div className="group">
-                    <label htmlFor="service" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_service')}</label>
+                    <label htmlFor="service" className="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_service')}</label>
                     <select
                       id="service"
                       name="service" required
@@ -299,7 +310,7 @@ export default function Booking() {
                   {/* Date + Time */}
                   <div className="grid grid-cols-2 gap-8">
                     <div className="group">
-                      <label htmlFor="date" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_date')}</label>
+                      <label htmlFor="date" className="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_date')}</label>
                       <input
                         id="date"
                         type="date" name="date" required
@@ -312,12 +323,12 @@ export default function Booking() {
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white cursor-pointer"
                       />
                       {dateError && (
-                        <p id="date-error" className="text-[10px] text-red-500 mt-1 font-bold" role="alert">{dateError}</p>
+                        <p id="date-error" className="text-xs text-red-500 mt-1.5 font-bold" role="alert">{dateError}</p>
                       )}
                     </div>
 
                     <div className="group">
-                      <label htmlFor="time" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_time')}</label>
+                      <label htmlFor="time" className="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-[0.2em] mb-2 group-focus-within:text-primary transition-colors">{t('booking.form_time')}</label>
                       <select
                         id="time"
                         name="time" required

@@ -30,7 +30,14 @@ export default function Footer() {
             <ul className="space-y-4 text-xs text-gray-600 dark:text-gray-400 font-light tracking-wider">
               <li className="flex items-start gap-3 group">
                 <MapPin className="w-4 h-4 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
-                <span>{t('footer.address')}</span>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=העצמאות+93,+אשדוד" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="hover:text-primary transition-colors"
+                >
+                  {t('footer.address')}
+                </a>
               </li>
               <li className="flex items-center gap-3 group">
                 <Phone className="w-4 h-4 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
