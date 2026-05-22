@@ -2,8 +2,13 @@ import { useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Phone, MessageCircle, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { he, ru, enUS } from 'date-fns/locale';
+
+registerLocale('he', he);
+registerLocale('ru', ru);
+registerLocale('en', enUS);
 import SEO from '../components/SEO';
 
 const STUDIO_PHONE = '9720534611370';
@@ -216,6 +221,7 @@ export default function Booking() {
                         minDate={new Date()}
                         filterDate={(date) => date.getDay() !== 6}
                         dateFormat="dd/MM/yyyy"
+                        locale={i18n.language === 'en' ? 'en' : i18n.language}
                         withPortal
                         onKeyDown={(e) => e.preventDefault()}
                         className="w-full bg-transparent border-b border-black/10 dark:border-white/10 py-2 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-all text-dark dark:text-white cursor-pointer"
