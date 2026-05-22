@@ -1,31 +1,37 @@
 # 💅 Elena Nails - Premium Nail Art Studio Ecosystem
 
 [![Deploy to Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://elenanails.beauty/)
-[![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Node%20%7C%20SQLite-blue?style=for-the-badge)](https://github.com/Elena-Nails-design/Elena-nails-design)
+[![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Vite%20%7C%20TailwindCSS-blue?style=for-the-badge)](https://github.com/Elena-Nails-design/Elena-nails-design)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-orange?style=for-the-badge&logo=github-actions)](https://github.com/Elena-Nails-design/Elena-nails-design/actions)
 
 ---
 
 ## 🇮🇱 שלום וברוכים הבאים ל-Elena Nails
-פרויקט זה מייצג פתרון טכנולוגי מקצה לקצה עבור סטודיו לעיצוב ציפורניים, המשלב עיצוב יוקרתי, מערכת הזמנות חכמה ואוטומציה מלאה.
+פרויקט זה מייצג פתרון טכנולוגי מתקדם עבור סטודיו לעיצוב ציפורניים ופדיקור רפואי (פודולוגיה). האתר משלב עיצוב יוקרתי, חווית המרה חלקה דרך וואטסאפ, ואופטימיזציה מלאה למנועי חיפוש ולרשתות חברתיות.
 
 ---
 
 ## 🌟 The Vision
-**Elena Nails** isn't just a website; it's a digital experience designed to bridge the gap between high-end nail artistry and seamless client management. Built with a "Customer-First" philosophy, the platform ensures that every interaction—from the first click to the final booking confirmation—feels premium and professional.
+**Elena Nails** is a highly optimized, ultra-premium digital experience designed for high-end local clientele. Built with a "Customer-First" philosophy, the platform guarantees that every interaction—from the seamless localized interface to the final WhatsApp booking flow—feels luxurious, intuitive, and frictionless.
 
 ## 🚀 Key Achievements & Features
 
-### 💎 Frontend Excellence
-- **Ultra-Modern UI:** A sleek, responsive interface built with **React 18** and **Vite**, featuring glassmorphism effects and smooth transitions.
-- **Smart Booking System:** An intuitive calendar-based booking flow that captures client details and service preferences in real-time.
-- **AI-Powered Concierge:** Integrated with **Google Gemini AI** to provide 24/7 automated assistance, answering client queries and guiding them through the booking process.
-- **Multi-language Support (i18n):** Ready for a global audience with built-in internationalization.
+### 💎 Frontend Excellence & UI/UX
+- **Ultra-Modern UI:** A sleek, responsive Single Page Application (SPA) built with **React 19** and **Vite**, featuring glassmorphism effects and dynamic **Framer Motion** transitions.
+- **Smart Booking System:** An intuitive calendar-based booking flow utilizing `react-datepicker`. Features include:
+  - Smart prevention of weekend (Saturday) bookings.
+  - Automatic timezone synchronization.
+  - **Frictionless Conversion:** Instantly routes users directly to WhatsApp with a pre-filled, localized appointment request.
+- **Cross-Platform Resilience:** Built-in safeguards for Social Media In-App Browsers (WebView). Implements robust fallback mechanisms if native Clipboard APIs are blocked by Instagram/Facebook.
 
-### ⚙️ Robust Backend & Automation
-- **Real-time API:** A custom **Node.js/Express** server managing a secure **SQLite** database for lightning-fast data retrieval.
-- **Automated SMS Notification System:** A built-in logic that simulates (and is ready for) real-time SMS alerts for both the admin and the client upon booking confirmation.
-- **Admin Command Center:** Secure endpoints to manage, confirm, and update booking statuses.
+### 🌍 Global & Local Accessibility
+- **Full Trilingual Localization (i18n):** Complete semantic translation across Hebrew (RTL), Russian, and English. The calendar UI natively matches the user's selected language.
+- **Premium Copywriting:** Tailored messaging positioning the brand as a top-tier "Podiatry" (Medical Pedicure) and Clinical-Grade sterilization salon.
+- **Accessibility (a11y):** High-contrast modes, scalable typography, and native dark/light mode integration using Tailwind CSS.
+
+### 🔎 Technical & Local SEO
+- **Discoverability:** Dynamic injection of hidden `H1` tags localized per language to capture high-intent local searches (e.g., "Medical Pedicure Ashdod").
+- **Google Maps Integration:** Direct geographic routing built into the footer and booking forms for immediate local navigation.
 
 ---
 
@@ -33,45 +39,45 @@
 
 | Layer | Technology | Purpose |
 | :--- | :--- | :--- |
-| **Frontend** | React, Vite, CSS3 | Performance-driven, high-fidelity UI |
-| **Backend** | Node.js, Express | Scalable API & Business logic |
-| **Database** | SQLite | Lightweight, reliable data persistence |
-| **AI** | Google Gemini API | Intelligent customer engagement |
-| **CI/CD** | GitHub Actions | Automated build and test pipelines |
+| **Framework** | React 19, Vite | High-performance component rendering and fast builds |
+| **Styling** | Tailwind CSS v4 | Utility-first, highly responsive, native Dark Mode |
+| **Localization** | react-i18next | Trilingual support (HE, RU, EN) |
+| **Animations** | Framer Motion | Fluid DOM transitions and interactive micro-animations |
+| **Date Logic** | react-datepicker, date-fns | Complex calendar routing and localized time slots |
+| **Icons** | Lucide React | Clean, scalable vector graphics |
 | **Deployment** | Vercel | Global edge-network hosting |
 
 ---
 
-## 🏗️ DevOps & CI/CD Pipeline (The "Magic" Behind the Scenes)
+## 🏗️ DevOps & CI/CD Pipeline
 
-We've implemented a professional-grade DevOps workflow to ensure the project is always online, secure, and up-to-date.
+The project utilizes a professional-grade continuous integration workflow:
 
-### 🔄 Continuous Integration (GitHub Actions)
-Our custom `.github/workflows/deploy.yml` automates the heavy lifting:
-- **Automatic Builds:** Every push to `main` triggers a fresh build to catch errors early.
-- **Security Scans:** Ensures secrets like `VITE_GEMINI_API_KEY` are handled securely via GitHub Secrets.
-- **Artifact Management:** Packages the production-ready code for distribution.
+### 🔄 Continuous Integration (GitHub)
+- **Version Control:** All features strictly branch from and merge to `main`.
+- **Atomic Commits:** Standardized semantic commit messages for tracking features, UI fixes, and SEO patches.
 
 ### 🚀 Continuous Deployment (Vercel)
 The production environment is hosted on **Vercel**, providing:
 - **Edge Delivery:** Sub-second load times globally.
-- **Zero-Downtime Deploys:** New features are rolled out instantly without interrupting users.
-- **Preview Deployments:** Every Pull Request generates a unique staging URL for testing.
+- **Zero-Downtime Deploys:** Pushes to the `main` branch automatically deploy to production.
 
 ---
 
 ## 📂 Project Structure
 
 ```bash
-.
-├── .github/workflows/    # CI/CD Pipeline definitions
-├── backend/              # Node.js Server & SQLite Database
-│   ├── server.js         # Core API Logic & SMS Simulator
-│   └── database.sqlite   # Local storage
-└── frontend/             # React Application
-    ├── src/              # Source code (Components, Pages, Hooks)
-    ├── public/           # Static assets
-    └── vite.config.js    # Optimized build configuration
+Elena-nails-design/
+├── frontend/               # The entire SPA
+│   ├── src/                
+│   │   ├── components/     # Reusable UI (Navigation, Footer, SEO)
+│   │   ├── locales/        # JSON translations (he.json, ru.json, en.json)
+│   │   ├── pages/          # Full page views (Booking.jsx, Home.jsx)
+│   │   ├── index.css       # Global Tailwind & Z-index overrides
+│   │   └── App.jsx         # Router & Theme Context Provider
+│   ├── package.json        
+│   └── vite.config.js      # Build configurations
+└── README.md
 ```
 
 ---
@@ -87,36 +93,21 @@ The production environment is hosted on **Vercel**, providing:
    ```bash
    git clone https://github.com/Elena-Nails-design/Elena-nails-design.git
    ```
-2. **Setup Backend:**
+2. **Setup Frontend:**
    ```bash
-   cd backend
+   cd frontend
    npm install
-   npm start # Runs on http://localhost:5000
+   npm run dev # Runs the local development server at http://localhost:5173
    ```
-3. **Setup Frontend:**
+3. **Build for Production:**
    ```bash
-   cd ../frontend
-   npm install
-   # Add your VITE_GEMINI_API_KEY to .env
-   npm run dev # Runs on http://localhost:5173
+   npm run build
    ```
-
----
-
-## 📈 Future Roadmap
-- [ ] Integration with Twilio for real-time SMS.
-- [ ] Payment gateway integration (Stripe/PayPal).
-- [ ] Advanced analytics dashboard for the owner.
-- [ ] Native mobile app using React Native.
 
 ---
 
 ## 🤝 Developed By
-Created with ❤️ for **Elena Nails**. This project showcases the power of modern web technologies combined with a passion for design.
+Created with ❤️ for **Elena Nails Design**. This project represents the pinnacle of combining luxury aesthetic design with bulletproof React frontend architecture.
 
 ---
 **[Visit the Live Site](https://elenanails.beauty/)**
-
----
-*Note: The website code has been restored to the stable state defined in tag `working-instagram-feed` (Commit: `29346c638543db52be7e14a1023a112d5cf38658` - "fix: restore dynamic Instagram feed with clean native-sizing to homepage").*
-
