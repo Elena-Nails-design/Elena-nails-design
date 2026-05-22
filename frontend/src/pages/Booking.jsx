@@ -257,7 +257,7 @@ export default function Booking() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="w-full py-4 bg-dark hover:bg-primary-dark text-white rounded-full font-bold uppercase tracking-[0.3em] text-[10px] transition-all duration-500 transform hover:scale-[1.02] active:scale-95 shadow-lg"
+                    className="w-full py-4 bg-dark dark:bg-primary hover:bg-primary-dark dark:hover:bg-primary-dark text-white rounded-full font-bold uppercase tracking-[0.3em] text-[10px] transition-all duration-500 transform hover:scale-[1.02] active:scale-95 shadow-lg"
                   >
                     {t('booking.form_submit')}
                   </button>
