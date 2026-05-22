@@ -163,3 +163,9 @@ body {
 .nav-link-fancy:hover::after, .active-link-fancy::after {
   width: 100%;
 }
+
+/* Fix react-datepicker z-index when using portal */
+.react-datepicker-popper,
+#root-portal {
+  z-index: 9999 !important;
+}
