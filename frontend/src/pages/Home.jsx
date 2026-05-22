@@ -164,6 +164,10 @@ export default function Home() {
             <p className="text-base md:text-xl text-white/80 mb-10 font-light max-w-4xl mx-auto leading-relaxed italic drop-shadow-lg text-center">
               {t('home.hero_subtitle')}
             </p>
+            {/* Hidden SEO Keywords */}
+            <p className="sr-only">
+              {t('home.seo_hidden')}
+            </p>
           </Reveal>
           
           <Reveal delay={0.8} y={20} width="100%">
