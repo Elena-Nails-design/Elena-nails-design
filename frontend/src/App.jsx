@@ -10,6 +10,7 @@ import AIChat from './components/AIChat';
 import AccessibilityMenu from './components/AccessibilityMenu';
 import ScrollToTop from './components/ScrollToTop';
 import WelcomePopup from './components/WelcomePopup';
+import CookieConsent from './components/CookieConsent';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -91,6 +92,7 @@ function App() {
           <AIChat />
           <AccessibilityMenu />
           <WelcomePopup />
+          <CookieConsent />
         </div>
       </Router>
     </ThemeProvider>

@@ -343,5 +343,11 @@
         ]
       }
     }
+  },
+  "cookie_consent": {
+    "title": "We use cookies 🍪",
+    "desc": "Our website uses cookies to ensure you get the best browsing experience, analyze site performance, and deliver personalized care. Continuing to browse indicates your agreement.",
+    "accept": "Accept & Continue 💖",
+    "decline": "Decline"
   }
 }
