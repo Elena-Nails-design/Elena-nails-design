@@ -17,8 +17,26 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer"
       initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      whileHover={{ scale: 1.05 }}
+      animate={{ 
+        x: 0, 
+        opacity: 1,
+        y: [0, -8, 0, -4, 0]
+      }}
+      transition={{
+        x: { type: "spring", stiffness: 200, damping: 20, delay: 1 },
+        opacity: { duration: 0.5, delay: 1 },
+        y: {
+          repeat: Infinity,
+          repeatDelay: 6,
+          duration: 1.2,
+          ease: "easeInOut"
+        }
+      }}
+      whileHover={{ 
+        scale: 1.05, 
+        y: -4,
+        boxShadow: "0 20px 40px rgba(37, 211, 102, 0.4)"
+      }}
       whileTap={{ scale: 0.95 }}
       className="fixed bottom-8 left-8 z-50 flex items-center gap-3 px-6 h-16 bg-[#25D366] text-white rounded-full shadow-luxury hover:bg-[#20bd5a] transition-all duration-300 group text-decoration-none"
       aria-label={i18n.language === 'he' ? 'צרי קשר בוואטסאפ עם אלנה' : 'Contact Elena on WhatsApp'}

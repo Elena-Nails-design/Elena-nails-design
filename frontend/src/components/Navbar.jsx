@@ -115,17 +115,20 @@ export default function Navbar() {
           <div className="hidden md:flex flex-1 justify-end items-center gap-3 lg:gap-5">
             <div className="flex gap-2" dir="ltr">
               {['he', 'ru', 'en'].map((lng) => (
-                <button 
+                <motion.button 
                   key={lng}
                   onClick={() => changeLanguage(lng)} 
-                  className={`text-[9px] md:text-[10px] font-bold tracking-tight transition-all duration-300 px-2.5 py-1.5 rounded-full border ${
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className={`text-[9px] md:text-[10px] font-bold tracking-tight px-2.5 py-1.5 rounded-full border cursor-pointer ${
                     i18n.language === lng 
-                      ? 'bg-dark text-white border-dark dark:bg-primary-dark dark:text-dark dark:border-primary-dark shadow-sm scale-105' 
+                      ? 'bg-dark text-white border-dark dark:bg-primary-dark dark:text-dark dark:border-primary-dark shadow-sm' 
                       : 'text-dark/40 border-dark/10 dark:text-white/40 dark:border-white/10 hover:border-dark/30 dark:hover:border-white/30'
                   }`}
                 >
                   {lng.toUpperCase()}
-                </button>
+                </motion.button>
               ))}
             </div>
             <div className="scale-75 lg:scale-90 opacity-80 hover:opacity-100 transition-opacity">
@@ -138,10 +141,13 @@ export default function Navbar() {
             {/* Compact language switcher visible on mobile */}
             <div className="flex gap-1" dir="ltr">
               {['he', 'ru', 'en'].map((lng) => (
-                <button
+                <motion.button
                   key={lng}
                   onClick={() => changeLanguage(lng)}
-                  className={`text-[9px] font-bold tracking-widest px-2 py-1 rounded-full border transition-all duration-300 ${
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className={`text-[9px] font-bold tracking-widest px-2 py-1 rounded-full border cursor-pointer ${
                     i18n.language === lng
                       ? 'bg-primary-dark text-dark border-primary-dark'
                       : isOpen 
@@ -150,29 +156,43 @@ export default function Navbar() {
                   }`}
                 >
                   {lng.toUpperCase()}
-                </button>
+                </motion.button>
               ))}
             </div>
             <div className={isOpen ? 'text-white' : ''}>
               <ThemeToggle />
             </div>
-            <button
+            <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 transition-colors ${isOpen ? 'text-white' : 'text-dark dark:text-white'}`}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.9 }}
+              className={`p-2 transition-colors cursor-pointer ${isOpen ? 'text-white' : 'text-dark dark:text-white'}`}
               aria-label={isOpen ? t('accessibility.close_menu', 'Close Menu') : t('accessibility.open_menu', 'Open Menu')}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
-                  <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+                  <motion.div 
+                    key="close" 
+                    initial={{ rotate: -90, opacity: 0 }} 
+                    animate={{ rotate: 0, opacity: 1 }} 
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  >
                     <X className="w-8 h-8" />
                   </motion.div>
                 ) : (
-                  <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+                  <motion.div 
+                    key="menu" 
+                    initial={{ rotate: 90, opacity: 0 }} 
+                    animate={{ rotate: 0, opacity: 1 }} 
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  >
                     <Menu className="w-8 h-8" />
                   </motion.div>
                 )}
               </AnimatePresence>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>

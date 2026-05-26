@@ -8,6 +8,7 @@ import SEO from '../components/SEO';
 
 export default function Services() {
   const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
 
   // Mapping the new JSON structure (object with numbered keys) to a display array
   const serviceListData = t('services.list', { returnObjects: true }) || {};
@@ -112,7 +113,6 @@ export default function Services() {
                     src={service.image} 
                     alt={service.title}
                     loading="lazy"
-                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
@@ -180,7 +180,7 @@ export default function Services() {
                 
                 <div className="relative z-10 space-y-8">
                   {menuItems.map((item, idx) => (
-                    <div key={idx} className="group">
+                    <div key={idx} className="group transition-all duration-300 hover:translate-x-2 rtl:hover:-translate-x-2">
                       <div className="flex justify-between items-baseline mb-2 gap-4">
                         <h3 className="text-lg md:text-2xl font-bold text-dark dark:text-white tracking-tight group-hover:text-primary transition-colors">
                           {item.name}
@@ -211,10 +211,19 @@ export default function Services() {
             <p className="text-white/70 text-xl md:text-2xl font-light italic mb-10 leading-relaxed">
               {i18n.language === 'he' ? 'מצאת את הטיפול המתאים? קבעי תור עכשיו 💅' : i18n.language === 'ru' ? 'Нашли подходящую процедуру? Записывайтесь сейчас 💅' : 'Found the right treatment? Book now 💅'}
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+            <motion.div 
+              whileHover="hover" 
+              whileTap={{ scale: 0.95 }} 
+              className="inline-block"
+            >
               <Link to="/booking" className="btn-premium inline-flex items-center gap-4 shimmer-gold">
                 <span>{t('home.book_now')}</span>
-                <span>→</span>
+                <motion.span
+                  variants={{
+                    hover: { x: isRtl ? -5 : 5 }
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >→</motion.span>
               </Link>
             </motion.div>
           </div>

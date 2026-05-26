@@ -8,16 +8,19 @@ export default function ThemeToggle() {
   const { t } = useTranslation();
 
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
-      className="relative flex items-center justify-center p-2 text-gray-500 hover:text-primary-dark transition-colors rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50"
+      whileHover={{ scale: 1.15, rotate: 12 }}
+      whileTap={{ scale: 0.9, rotate: -12 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+      className="relative flex items-center justify-center p-2 text-gray-500 hover:text-primary-dark transition-colors rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer"
       aria-label={theme === 'dark' ? t('theme.light_mode') : t('theme.dark_mode')}
       title={theme === 'dark' ? t('theme.light_mode') : t('theme.dark_mode')}
     >
       <motion.div
         initial={false}
         animate={{ rotate: theme === 'dark' ? 180 : 0, scale: theme === 'dark' ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ type: "spring", stiffness: 300, damping: 15 }}
         className="absolute"
       >
         <Sun className="w-5 h-5" />
@@ -25,10 +28,10 @@ export default function ThemeToggle() {
       <motion.div
         initial={false}
         animate={{ rotate: theme === 'dark' ? 0 : -180, scale: theme === 'dark' ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ type: "spring", stiffness: 300, damping: 15 }}
       >
         <Moon className="w-5 h-5 text-gray-200" />
       </motion.div>
-    </button>
+    </motion.button>
   );
 }

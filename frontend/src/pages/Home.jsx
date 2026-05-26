@@ -1,7 +1,7 @@
-import React, { useRef, useMemo, useCallback } from 'react';
+import React, { useState, useRef, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Sparkles, ShieldCheck, Waves, Star, MessageCircle, Instagram, ChevronDown } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import ProfessionalEquipment from '../components/ProfessionalEquipment';
@@ -25,6 +25,7 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.dir() === 'rtl';
   const lang = i18n.language;
+  const [openFaq, setOpenFaq] = useState(null);
 
   // Parallax Effect
   const targetRef = useRef(null);
@@ -401,8 +402,13 @@ export default function Home() {
             {TESTIMONIALS.map((review, i) => (
               <Reveal key={i} delay={0.1 * i} width="100%">
                 <motion.div
-                  whileHover={{ y: -8 }}
-                  className="glass-luxury p-10 rounded-[2.5rem] border border-white/40 dark:border-white/5 relative overflow-hidden group"
+                  whileHover={{ 
+                    y: -10, 
+                    scale: 1.01, 
+                    boxShadow: "0 30px 60px -15px rgba(212, 175, 55, 0.18)" 
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  className="glass-luxury p-10 rounded-[2.5rem] border border-white/40 dark:border-white/5 relative overflow-hidden group transition-all duration-500"
                 >
                   {/* Quote mark */}
                   <span className="absolute top-6 right-8 text-8xl text-primary/10 font-serif leading-none pointer-events-none select-none">"</span>
@@ -468,23 +474,45 @@ export default function Home() {
           </Reveal>
 
           <div className="space-y-4">
-            {[1, 2, 3, 4].map((i) => (
-              <Reveal key={i} delay={0.1 * i} width="100%">
-                <div className="border-b border-dark/5 dark:border-white/5">
-                  <details className="group">
-                    <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
-                      <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-white group-hover:text-primary transition-colors pr-8">
+            {[1, 2, 3, 4].map((i) => {
+              const isOpen = openFaq === i;
+              return (
+                <Reveal key={i} delay={0.1 * i} width="100%">
+                  <div className="border-b border-dark/5 dark:border-white/5">
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between py-8 cursor-pointer text-start"
+                    >
+                      <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-white hover:text-primary transition-colors pr-8">
                         {t(`home.faq.q${i}`)}
                       </h3>
-                      <ChevronDown className="w-6 h-6 text-primary transition-transform group-open:rotate-180" />
-                    </summary>
-                    <div className="pb-8 text-text-secondary dark:text-text-secondary-dark text-lg font-light leading-relaxed">
-                      <p>{t(`home.faq.a${i}`)}</p>
-                    </div>
-                  </details>
-                </div>
-              </Reveal>
-            ))}
+                      <motion.div
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className="text-primary"
+                      >
+                        <ChevronDown className="w-6 h-6" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-8 text-text-secondary dark:text-text-secondary-dark text-lg font-light leading-relaxed">
+                            <p>{t(`home.faq.a${i}`)}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
