@@ -68,7 +68,7 @@ export default function Accessibility() {
                 </div>
                 <div className="flex items-start gap-3 p-4 bg-stone-50 dark:bg-stone-900/50 rounded-2xl">
                   <Phone className="text-primary-dark w-5 h-5 mt-1" />
-                  <span>ניתן לקבל שיוע אישי ממזכירות הסטודיו במידת הצורך.</span>
+                  <span>ניתן לקבל סיוע אישי ממזכירות הסטודיו במידת הצורך.</span>
                 </div>
               </div>
             </section>
