@@ -7,27 +7,27 @@ export default function SEO({ title, description, keywords, schemaData }) {
   const location = useLocation();
   const lang = i18n.language;
   
-  // Localized Site Titles
+  // Localized Site Titles with dense high-value keywords
   const titleMap = {
-    he: "ELENA EPSHTEIN - סטודיו לציפורניים יוקרתי | מניקור, לק ג'ל ופדיקור רפואי באשדוד",
-    ru: "ELENA EPSHTEIN - Премиум Студия Маникюра и Педикюра | Ашдод",
-    en: "ELENA EPSHTEIN - Premium Nail Art & Pedicure Studio | Ashdod"
+    he: "אלנה אפשטיין | לק ג'ל באשדוד, מניקור מכשירי, בניית ציפורניים ופדיקור רפואי מומלץ",
+    ru: "Елена Эпштейн | Маникюр Ашдод, гель-лак, наращивание ногтей и медицинский педикюр Ашдод",
+    en: "Elena Epshtein | Manicure Ashdod, Gel Polish, Nail Extensions & Medical Pedicure Ashdod"
   };
   const siteTitle = titleMap[lang] || titleMap.he;
 
-  // Localized Default Descriptions (highly optimized for Google search CTR)
+  // Localized Default Descriptions (optimized for Google search CTR with rich key-phrases)
   const descMap = {
-    he: "סטודיו בוטיק יוקרתי לעיצוב ציפורניים באשדוד של אלנה (ילנה) אפשטיין. מציעה מניקור מכשירי, לק ג'ל, בניית ציפורניים בג'ל ופוליג'ל, פדיקור רפואי וטיפוח מקצועי לנשים באשדוד, אשקלון, גן יבנה והסביבה. סטריליזציה ברמה רפואית, חומרים ברמת פרימיום ויחס אישי.",
-    ru: "Эксклюзивная студия маникюра и педикюра Елены Эпштейн в Ашдоде. Профессиональный аппаратный маникюр, покрытие гель-лаком, наращивание ногтей гелем и акригелем, медицинский педикюр для клиентов из Ашдода, Ашкелона, Ган-Явне и окрестностей. Клиническая стерилизация, премиум материалы.",
-    en: "Elena Epshtein's luxury nail studio in Ashdod. Professional hardware manicure, gel polish, builder gel nail extensions, medical pedicure, and elite nail art for clients in Ashdod, Ashkelon, Gan Yavne, and surrounding areas. Medical-grade sterilization, premium materials, and custom designs."
+    he: "מחפשת לק ג'ל מומלץ באשדוד? סטודיו בוטיק יוקרתי של אלנה (ילנה) אפשטיין מציע מניקור מכשירי (רוסי) מדויק, בניית ציפורניים בג'ל ופוליג'ל, פדיקור רפואי משקם, פדיקור לחולי סוכרת וטיפול בציפורן חודרנית ויבלות באשדוד, אשקלון, גן יבנה והסביבה. סטריליזציה רפואית באוטוקלאב, חומרים מובילים (Luxio) ויחס אישי.",
+    ru: "Ищете лучший маникюр и педикюр в Ашдоде? Салон Елены Эпштейн предлагает чистый аппаратный маникюр, покрытие гель-лаком Luxio, анатомическое выравнивание, наращивание ногтей гелем/полигелем, и профессиональный медицинский педикюр (вросший ноготь, мозоли) Ашдод, Ашкелон, Ган Явне. 100% стерильно.",
+    en: "Looking for the best nail salon in Ashdod? Elena Epshtein's boutique studio offers precise hardware (Russian) manicure, premium gel polish, anatomical leveling, builder gel/polygel extensions, medical pedicure, ingrown nail & callus treatments in Ashdod, Ashkelon, and Gan Yavne. Clinic-grade autoclave sterilization."
   };
   const defaultDescription = descMap[lang] || descMap.he;
 
-  // Highly optimized multilingual localized keyword array covering manicure, pedicure, gel, etc. for Ashdod and surrounding regions
+  // Expanded Hebrew, Russian, and English local search keywords covering all possible terminologies and geographic areas
   const keywordsMap = {
-    he: "מניקור אשדוד, פדיקור אשדוד, לק ג'ל אשדוד, ציפורניים אשדוד, בניית ציפורניים אשדוד, פדיקור רפואי אשדוד, אלנה אפשטיין, ילנה אפשטיין, סטודיו ציפורניים יוקרתי, מניקור אשקלון, לק ג'ל גן יבנה, מניקור רוסי אשדוד, מניקור מכשירי, פדיקור רפואי אשקלון, בניית ציפורניים בג'ל, לק ג'ל אשקלון, סטודיו מניקור אשדוד, מניקור פדיקור אשדוד, אפשטיין ציפורניים, סטודיו פרמיום ציפורניים, לק ג'ל מומלץ אשדוד, טיפוח ציפורניים אשדוד, טיפול בציפורן חודרנית באשדוד, פטרת ציפורניים אשדוד, פדיקור רפואי לחולי סוכרת אשדוד, פדיקורסטית רפואית באשדוד, מניקוריסטית מומלצת באשדוד, פדיקוריסטית מומלצת באשדוד, מניקור באשדוד הסיטי, מניקור פדיקור פתוח בשישי אשדוד, ציפורניים אשדוד העצמאות, סטודיו ציפורניים בוטיק אשדוד, מניקור סטרילי באשדוד, לק ג'ל לוקסיו אשדוד, לק ג'ל קודי אשדוד",
-    ru: "маникюр Ашдод, педикюр Ашдод, гель лак Ашдод, ногти Ашдод, наращивание ногтей Ашдод, медицинский педикюр Ашдод, Елена Эпштейн, Епштейн ногти, салон красоты Ашдод, маникюр Ашкелон, гель лак Ган Явне, аппаратный маникюр Ашдод, педикюр Ашкелон, дизайн ногтей Ашдод, премиум студия ногтей, дизайн ногтей в Ашдоде, русский маникюр Ашдод, вросший ноготь лечение Ашдод, грибок ногтей Ашдод, медицинский педикюр для диабетиков Ашдод, хороший мастер маникюра Ашдод, медицинский педикюр Хаацмаут, стерильный маникюр Ашдод, гель-лак Люксио Ашдод, коди гель лак Ашдод",
-    en: "manicure Ashdod, pedicure Ashdod, gel polish Ashdod, nails Ashdod, nail extension Ashdod, medical pedicure Ashdod, Elena Epshtein, Ephtein nails, luxury nail salon Ashdod, manicure Ashkelon, gel nails Gan Yavne, hardware manicure Ashdod, pedicure Ashkelon, nail art Ashdod, premium nail studio Israel, nail art in Ashdod, Russian manicure Ashdod, ingrown nail treatment Ashdod, nail fungus treatment Ashdod, medical pedicure for diabetics Ashdod, recommended manicurist Ashdod, recommended pedicurist Ashdod, manicure Ashdod City, sterile manicure Ashdod, Luxio gel polish Ashdod, Kodi gel polish Ashdod"
+    he: "לק ג'ל אשדוד, מניקור אשדוד, פדיקור אשדוד, ציפורניים אשדוד, בניית ציפורניים באשדוד, פדיקור רפואי אשדוד, מניקוריסטית באשדוד, פדיקוריסטית באשדוד, מניקור מכשירי אשדוד, מניקור רוסי אשדוד, אלנה אפשטיין, ילנה אפשטיין, לק ג'ל מומלצת אשדוד, מניקוריסטית מומלצת אשדוד, פדיקוריסטית רפואית באשדוד, לק ג'ל אשדוד הסיטי, ציפורניים אשדוד העצמאות, סטודיו ציפורניים אשדוד, לק ג'ל רגליים אשדוד, לק ג'ל ידיים אשדוד, בניית ציפורניים בג'ל אשדוד, בניית ציפורניים בפוליג'ל אשדוד, מבנה אנטומי ציפורניים אשדוד, מריחת ג'ל לקוטיקולה אשדוד, לק ג'ל לוקסיו אשדוד, לק ג'ל קודי אשדוד, טיפול ציפורן חודרנית באשדוד, טיפול יבלות ברגל אשדוד, פדיקור רפואי לסוכרתיים אשדוד, פטרת ציפורניים אשדוד טיפול, קישוטים לציפורניים אשדוד, פרנץ' לק ג'ל אשדוד, מניקור פדיקור אשדוד מחיר, לק ג'ל אשדוד זול, מניקור פתוח בשישי אשדוד, מניקור אשקלון, לק ג'ל אשקלון, פדיקור אשקלון, לק ג'ל גן יבנה, מניקור גן יבנה, פדיקור גן יבנה, בניית ציפורניים אשקלון, בניית ציפורניים גן יבנה, טיפוח ציפורניים אשדוד, מכון יופי באשדוד, קוסמטיקאית אשדוד",
+    ru: "маникюр Ашдод, педикюр Ашдод, гель лак Ашдод, ногти Ашдод, наращивание ногтей Ашдод, медицинский педикюр Ашдод, аппаратный маникюр Ашдод, русский маникюр Ашдод, мастер маникюра Ашдод, салон красоты Ашдод, ногтевой салон Ашдод, Елена Эпштейн, выравнивание ногтевой пластины Ашдод, укрепление ногтей Ашдод, покрытие под кутикулу Ашдод, дизайн ногтей Ашдод, французский маникюр Ашдод, вросший ноготь Ашдод, лечение вросшего ногтя Ашдод, грибок ногтей Ашдод, удаление мозолей Ашдод, медицинский педикюр для диабетиков Ашдод, хороший мастер маникюра Ашдод, рекомендованная маникюрша Ашдод, педикюр Хаацмаут Ашдод, маникюр Ашкелон, педикюр Ашкелон, гель лак Ашкелон, маникюр Ган Явне, гель лак Ган Явне, педикюр Ган Явне, стерильный маникюр Ашдод, гель лак люксио Ашдод",
+    en: "manicure Ashdod, pedicure Ashdod, gel polish Ashdod, nails Ashdod, nail salon Ashdod, medical pedicure Ashdod, hardware manicure Ashdod, Russian manicure Ashdod, nail extension Ashdod, nail art Ashdod, beauty salon Ashdod, Elena Epshtein, recommended manicurist Ashdod, recommended pedicurist Ashdod, best nail salon Ashdod, gel polish Ashdod price, builder gel Ashdod, polygel nails Ashdod, anatomical nail leveling Ashdod, ingrown nail treatment Ashdod, nail fungus treatment Ashdod, diabetic pedicure Ashdod, callus removal Ashdod, manicure Ashkelon, pedicure Ashkelon, manicure Gan Yavne, gel polish Gan Yavne, Luxio gel Ashdod, Kodi gel Ashdod, sterile manicure Ashdod, nails HaAtzmaut Ashdod"
   };
   const defaultKeywords = keywordsMap[lang] || keywordsMap.he;
 
@@ -41,10 +41,22 @@ export default function SEO({ title, description, keywords, schemaData }) {
     "url": "https://elenanails.beauty",
     "telephone": "+972534611370",
     "priceRange": "$$",
+    "founder": {
+      "@type": "Person",
+      "name": "Elena Epshtein"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "128",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "העצמאות 93",
       "addressLocality": "אשדוד",
+      "addressRegion": "South District",
       "postalCode": "77452",
       "addressCountry": "IL"
     },
@@ -83,7 +95,37 @@ export default function SEO({ title, description, keywords, schemaData }) {
       "Manicure", "Pedicure", "Medical Pedicure", "Gel Polish", "Nail Extension", "Nail Art",
       "מניקור מכשירי", "פדיקור רפואי", "לק ג'ל", "בניית ציפורניים בג'ל", "עיצוב ציפורניים",
       "Аппаратный маникюр", "Медицинский педикюр", "Наращивание ногтей", "Дизайн ногтей"
-    ]
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Nail & Pedicure Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Gel Manicure + Anatomical Structure / מניקור ג'ל ומבנה אנטומי",
+            "description": "Precise e-file manicure and nail strengthening structure using elite materials."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Medical Pedicure / פדיקור רפואי משקם",
+            "description": "Clinical treatment for foot health, including ingrown nails and calluses."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Nail Extensions (Polygel) / בניית ציפורניים בג'ל",
+            "description": "Full set extension with a natural, premium finish."
+          }
+        }
+      ]
+    }
   };
 
   // Canonical URL for avoiding duplicate content penalties
@@ -96,6 +138,16 @@ export default function SEO({ title, description, keywords, schemaData }) {
       <meta name="description" content={description || defaultDescription} />
       <meta name="keywords" content={keywords || defaultKeywords} />
       
+      {/* Local SEO Geographic Tags */}
+      <meta name="geo.region" content="IL-D" />
+      <meta name="geo.placename" content="Ashdod" />
+      <meta name="geo.position" content="31.8044;34.6553" />
+      <meta name="ICBM" content="31.8044, 34.6553" />
+      
+      {/* General Search Engine Meta */}
+      <meta name="robots" content="index, follow, max-image-preview:large" />
+      <meta name="googlebot" content="index, follow" />
+      
       {/* Canonical Link */}
       <link rel="canonical" href={currentUrl} />
 
@@ -105,14 +157,15 @@ export default function SEO({ title, description, keywords, schemaData }) {
       <link rel="alternate" hrefLang="ru" href={`https://elenanails.beauty/ru${location.pathname}`} />
       <link rel="alternate" hrefLang="x-default" href={`https://elenanails.beauty${location.pathname}`} />
       
-      {/* Open Graph */}
+      {/* Open Graph / Facebook */}
       <meta property="og:title" content={title || siteTitle} />
       <meta property="og:description" content={description || defaultDescription} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={i18n.language === 'he' ? 'he_IL' : i18n.language === 'ru' ? 'ru_RU' : 'en_US'} />
+      <meta property="og:site_name" content="Elena Nails Design" />
 
-      {/* Schema.org Markup for Google & LLMs */}
+      {/* Schema.org Markup for Google & AI Search Crawlers */}
       <script type="application/ld+json">
         {JSON.stringify(schemaData || defaultSchema)}
       </script>

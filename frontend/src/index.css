@@ -52,6 +52,19 @@
   box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.3);
 }
 
+@utility bg-radial-glow {
+  background: radial-gradient(circle, rgba(245, 198, 214, 0.12) 0%, rgba(212, 175, 55, 0.04) 60%, transparent 100%);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+}
+
+@utility animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
 @layer base {
 html,
 body {

@@ -63,6 +63,23 @@
       "title": "Recent Works from Instagram",
       "subtitle": "Follow my latest creations on the feed",
       "follow_btn": "More Works on Instagram ↗️"
+    },
+    "scroll_cards": {
+      "section_badge": "Our Professional Standard",
+      "section_title": "Uncompromising Premium Experience",
+      "section_subtitle": "At Elena Epshtein's studio, every detail is crafted for your ultimate care. Scroll down to discover the new standard for your nails.",
+      "card1_num": "01",
+      "card1_title": "Precise Hardware Manicure",
+      "card1_desc": "Advanced Russian technique for thorough and gentle cuticle cleansing, ensuring a flawless look and extending gel polish wear to 4+ weeks.",
+      "card2_num": "02",
+      "card2_title": "Clinical-Grade Sterilization",
+      "card2_desc": "Absolute peace of mind: 100% medical autoclave (Class B) sterilization, opening a personal sealed indicator pouch directly in front of you.",
+      "card3_num": "03",
+      "card3_title": "Elite Global Materials",
+      "card3_desc": "We work exclusively with elite brands like Luxio, offering a brilliant glass-like shine, unmatched durability, and absolute protection for natural nails.",
+      "card4_num": "04",
+      "card4_title": "Bespoke Art & Custom Designs",
+      "card4_desc": "Every nail is a canvas. From clean minimalist designs to intricate hand-painted nail art and luxury decorations customized to your style."
     }
   },
   "about": {

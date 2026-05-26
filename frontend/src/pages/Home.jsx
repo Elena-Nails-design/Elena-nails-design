@@ -8,6 +8,8 @@ import ProfessionalEquipment from '../components/ProfessionalEquipment';
 import SEO from '../components/SEO';
 import BeforeAfter from '../components/BeforeAfter';
 import InstagramFeed from '../components/InstagramFeed';
+import ScrollStackingCards from '../components/ScrollStackingCards';
+import ScrollTextReveal from '../components/ScrollTextReveal';
 
 const STUDIO_PHONE = '9720534611370';
 
@@ -269,6 +271,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Scroll Stacking Cards Section */}
+      <ScrollStackingCards />
+
       {/* Professional Equipment Section */}
       <ProfessionalEquipment />
 
@@ -289,11 +294,14 @@ export default function Home() {
                    lang === 'ru' ? 'Стерилизация медицинского уровня: ваше здоровье на первом месте 🛡️' :
                    'Medical-Grade Sterilization: Your Health Comes First 🛡️'}
                 </h2>
-                <p className="text-gray-400 font-light text-lg leading-relaxed">
-                  {lang === 'he' ? 'בסטודיו של אלנה, היגיינה היא לא רק המלצה – היא חוק ברזל. אנחנו מחויבים לשמירה מקסימלית על הבריאות שלך על ידי שימוש בטכנולוגיות העיקור המחמירות ביותר של עולם הרפואה.' :
-                   lang === 'ru' ? 'В студии Елены гигиена — это железное правило. Мы обеспечиваем максимальную безопасность вашего здоровья с помощью самых строгих медицинских технологий.' :
-                   'At Elena\'s studio, hygiene is an absolute law. We ensure the maximum safety of your health by using the most rigorous medical-grade sterilization technologies.'}
-                </p>
+                <ScrollTextReveal 
+                  text={
+                    lang === 'he' ? 'בסטודיו של אלנה, היגיינה היא לא רק המלצה – היא חוק ברזל. אנחנו מחויבים לשמירה מקסימלית על הבריאות שלך על ידי שימוש בטכנולוגיות העיקור המחמירות ביותר של עולם הרפואה.' :
+                    lang === 'ru' ? 'В студии Елены гигиена — это железное правило. Мы обеспечиваем максимальную безопасность вашего здоровья с помощью самых строгих медицинских технологий.' :
+                    "At Elena's studio, hygiene is an absolute law. We ensure the maximum safety of your health by using the most rigorous medical-grade sterilization technologies."
+                  }
+                  className="text-gray-400 font-light text-lg leading-relaxed text-start justify-start"
+                />
 
                 <div className="space-y-6 pt-4">
                   {[

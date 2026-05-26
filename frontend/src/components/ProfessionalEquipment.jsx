@@ -27,9 +27,9 @@ export default function ProfessionalEquipment() {
   const { t } = useTranslation();
 
   return (
-    <section className="py-24 bg-white dark:bg-surface-dark overflow-hidden transition-colors duration-500">
+    <section className="py-20 bg-white dark:bg-surface-dark overflow-hidden transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function ProfessionalEquipment() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {equipmentData.map((item, index) => (
             <motion.div
               key={item.id}
@@ -73,12 +73,12 @@ export default function ProfessionalEquipment() {
               transition={{ delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative h-full bg-stone-50/50 dark:bg-dark rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-gold/10 border border-stone-100 dark:border-white/5 group-hover:-translate-y-2">
+              <div className="relative h-full bg-stone-50/50 dark:bg-dark rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl hover:shadow-gold/10 border border-stone-100 dark:border-white/5 group-hover:-translate-y-2">
                 {/* Background Decoration */}
                 <div className={`absolute top-0 right-0 w-32 h-32 ${item.color} blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full`} />
 
                 {/* Image Container */}
-                <div className="relative aspect-square mb-8 overflow-hidden rounded-2xl bg-white dark:bg-dark p-4 group-hover:shadow-lg transition-all duration-500">
+                <div className="relative aspect-square mb-6 overflow-hidden rounded-2xl bg-white dark:bg-dark p-4 group-hover:shadow-lg transition-all duration-500">
                   <img
                     src={item.image}
                     alt={t(`equipment.items.${item.id}.name`)}
