@@ -49,13 +49,6 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
-      {/* Announcement Bar */}
-      <div className="bg-dark dark:bg-primary-dark text-white dark:text-dark text-center text-[10px] md:text-xs py-2 font-bold tracking-widest border-b border-white/10 dark:border-dark/10">
-        <span className="flex items-center justify-center gap-1 md:gap-2">
-          <span className="text-[14px]">🎁</span> {i18n.language === 'he' ? '10% הנחה לטיפול ראשון במיוחד בשבילך! לקביעת תור' : i18n.language === 'ru' ? 'Скидка 10% на первую процедуру!' : '10% off your first treatment!'} 
-          <Link to="/booking" className="underline underline-offset-4 ms-1 hover:text-primary transition-colors">{i18n.language === 'he' ? 'לחצי כאן' : i18n.language === 'ru' ? 'Нажми сюда' : 'Click Here'}</Link>
-        </span>
-      </div>
 
       <nav 
         className={`transition-all duration-500 ease-in-out border-b ${

@@ -9,7 +9,6 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import AIChat from './components/AIChat';
 import AccessibilityMenu from './components/AccessibilityMenu';
 import ScrollToTop from './components/ScrollToTop';
-import WelcomePopup from './components/WelcomePopup';
 import CookieConsent from './components/CookieConsent';
 
 const Home = lazy(() => import('./pages/Home'));
@@ -84,14 +83,13 @@ function App() {
             {t('accessibility.skip_to_main', 'Skip to main content')}
           </a>
           <Navbar />
-          <main id="main-content" className="flex-grow pt-[124px] outline-none" tabIndex="-1">
+          <main id="main-content" className="flex-grow pt-[92px] outline-none" tabIndex="-1">
             <AnimatedRoutes />
           </main>
           <Footer />
           <FloatingWhatsApp />
           <AIChat />
           <AccessibilityMenu />
-          <WelcomePopup />
           <CookieConsent />
         </div>
       </Router>
